@@ -197,6 +197,27 @@ em {
   box-shadow: 0 4px 20px rgba(204, 160, 124, 0.15);
 }
 
+/* Staging Banner */
+.staging-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 32px;
+  background: linear-gradient(90deg, #d32f2f, #b71c1c);
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10001;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
 /* Header & Navigation */
 .header {
   position: fixed;
@@ -206,6 +227,10 @@ em {
   z-index: 1000;
   transition: var(--transition-normal);
   padding: 24px 0;
+}
+
+.staging-banner + .header {
+  top: 32px;
 }
 
 .header.scrolled {
