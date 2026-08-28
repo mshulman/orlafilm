@@ -66,7 +66,6 @@
       <div class="text-center novel-header">
         <span class="novel-tag">FROM ACCLAIMED NOVEL TO FEATURE FILM</span>
         <h2 class="accent-heading">THE GOSPEL OF ORLA</h2>
-        <p class="novel-byline">by Eoghan Walls</p>
       </div>
 
       <div class="novel-showcase">
@@ -75,7 +74,10 @@
           <div class="novel-book-frame">
             <img src="images/book_cover.jpeg" alt="The Gospel of Orla Novel Book Cover by Eoghan Walls" class="novel-book-img">
           </div>
-          <p class="novel-caption"><em>The Gospel of Orla</em><br><span class="novel-publisher">Seven Stories Press</span></p>
+          <div class="novel-book-info">
+            <h3 class="novel-book-title">THE GOSPEL<br>OF ORLA</h3>
+            <span class="novel-publisher">Seven Stories Press</span>
+          </div>
         </div>
 
         <!-- Reviews / Praise Carousel Column -->
@@ -117,6 +119,22 @@
             </div>
             <button class="control-btn" id="next-quote" aria-label="Next review">&#8594;</button>
           </div>
+        </div>
+
+        <!-- Author Column: Eoghan Walls -->
+        <div class="novel-author-card">
+          <div class="novel-author-top">
+            <div class="novel-author-photo-wrapper">
+              <img src="images/eoghan_walls.jpg" alt="Eoghan Walls - Author" class="novel-author-photo">
+            </div>
+            <div class="novel-author-header">
+              <h3 class="novel-author-name">EOGHAN<br>WALLS</h3>
+              <span class="novel-author-role">AUTHOR</span>
+            </div>
+          </div>
+          <p class="novel-author-bio">
+            Eoghan Walls is an award-winning poet and author from Derry, Northern Ireland. His critically acclaimed debut novel, <em>The Gospel of Orla</em> (Seven Stories Press), serves as the source material for the film adaptation.
+          </p>
         </div>
       </div>
     </div>
@@ -163,7 +181,8 @@
         </div>
       </div>
 
-      <!-- Film Metadata (Genre / Audience / Tone) Block -->
+      <!-- Film Metadata (Genre / Audience / Tone) Block (Hidden) -->
+      <!--
       <div class="film-metadata">
         <div class="metadata-card">
           <h4 class="metadata-title">GENRE</h4>
@@ -178,6 +197,7 @@
           <p class="metadata-value">Deeply contemplative drama about the effects of loss and heartfelt redemption</p>
         </div>
       </div>
+      -->
     </div>
   </section>
 
@@ -201,7 +221,7 @@
 
         <!-- Photo 3: Corner Store -->
         <div class="world-item">
-          <img src="https://img1.wsimg.com/isteam/ip/25c80e0c-0757-4c39-a570-2e290b42bc79/IMG_1612.jpg" alt="Corner Store and Shops" class="world-img">
+          <img src="images/shops_corner_store.jpg" alt="Corner Store and Shops" class="world-img">
         </div>
 
         <!-- Photo 4: The Northwest -->
@@ -325,89 +345,70 @@
         <h2 class="accent-heading">THE FILMMAKERS</h2>
       </div>
 
-      <!-- Key Filmmakers: Author, Writer/Producer, Producers -->
+      <!-- Key Filmmakers: Writer/Producer & Producers -->
       <div class="filmmakers-grid">
-        <!-- Eoghan Walls -->
-        <div class="filmmaker-card">
-          <div class="filmmaker-photo-wrapper">
-            <img src="images/eoghan_walls.jpg" alt="Eoghan Walls - Author" class="filmmaker-photo">
-          </div>
-          <div class="filmmaker-info">
-            <div class="filmmaker-header">
-              <h3 class="filmmaker-name">EOGHAN WALLS</h3>
-              <span class="filmmaker-role">AUTHOR</span>
-            </div>
-            <p class="filmmaker-bio">
-              Eoghan Walls is an award-winning poet and author from Derry, Northern Ireland. His critically acclaimed debut novel, <em>The Gospel of Orla</em> (Seven Stories Press), serves as the source material for the film adaptation.
-            </p>
-            <div class="filmmaker-credentials">
-              <span class="credential-tag">Author, <em>The Gospel of Orla</em></span>
-              <span class="credential-tag">Pigott Prize Runner-Up</span>
-              <span class="credential-tag">Lecturer in Creative Writing, Lancaster University</span>
-            </div>
-          </div>
-        </div>
-
         <!-- Nancy Garvin -->
         <div class="filmmaker-card">
-          <div class="filmmaker-photo-wrapper">
-            <img src="images/nancy_garvin.jpeg" alt="Nancy Garvin - Writer & Producer" class="filmmaker-photo">
-          </div>
-          <div class="filmmaker-info">
+          <div class="filmmaker-top">
+            <div class="filmmaker-photo-wrapper">
+              <img src="images/nancy_garvin.jpeg" alt="Nancy Garvin - Writer & Producer" class="filmmaker-photo filmmaker-photo-nancy">
+            </div>
             <div class="filmmaker-header">
               <h3 class="filmmaker-name">NANCY GARVIN</h3>
               <span class="filmmaker-role">WRITER / PRODUCER</span>
             </div>
-            <p class="filmmaker-bio">
-              Nancy Garvin is the CEO and Producer at Well Produced Films, and the screenwriter adapting <em>The Gospel of Orla</em> for the screen. She is dedicated to bringing character-driven, emotionally resonant stories to global cinema.
-            </p>
-            <div class="filmmaker-credentials">
-              <span class="credential-tag">CEO &amp; Producer, Well Produced Films</span>
-              <span class="credential-tag">Screenwriter, <em>ORLA</em></span>
-              <span class="credential-tag">Independent Film Producer</span>
-            </div>
+          </div>
+          <div class="filmmaker-bio">
+            <p>At the helm is Producer Nancy Garvin, whose passion for developing rich, emotionally complex narratives drives the company's creative vision.</p>
+            <p>With experience spanning all facets of film production and a sharp eye for story development, Nancy leads with a collaborative, audience-focused approach, partnering with visionary writers, directors and talent to bring meaningful, high-quality films to life.</p>
+            <p><em>ORLA</em> marks a powerful next chapter in her mission to produce compelling, emotionally resonant cinema with international appeal.</p>
+          </div>
+          <div class="filmmaker-credentials">
+            <span class="credential-tag">CEO &amp; Producer, Well Produced Films</span>
+            <span class="credential-tag">Screenwriter, <em>ORLA</em></span>
+            <span class="credential-tag">Independent Film Producer</span>
           </div>
         </div>
 
         <!-- Michael Shulman -->
         <div class="filmmaker-card">
-          <div class="filmmaker-photo-wrapper">
-            <img src="images/michael_shulman.jpg" alt="Michael Shulman - Producer" class="filmmaker-photo">
-          </div>
-          <div class="filmmaker-info">
+          <div class="filmmaker-top">
+            <div class="filmmaker-photo-wrapper">
+              <img src="images/michael_shulman.jpg" alt="Michael Shulman - Producer" class="filmmaker-photo">
+            </div>
             <div class="filmmaker-header">
               <h3 class="filmmaker-name">MICHAEL SHULMAN</h3>
               <span class="filmmaker-role">PRODUCER</span>
             </div>
-            <p class="filmmaker-bio">
-              An accomplished executive program leader with more than 30 years’ experience across Google, Apple, Microsoft, and startups. Michael brings proven operational discipline to film production, promising investors transparent governance, rigorous schedule management, and uncompromising budget control for ambitious creative visions.
-            </p>
-            <div class="filmmaker-credentials">
-              <span class="credential-tag">Executive Program Leader</span>
-              <span class="credential-tag">30+ Years Tech &amp; Program Leadership</span>
-              <span class="credential-tag">Governance &amp; Budget Control</span>
-            </div>
+          </div>
+          <p class="filmmaker-bio">
+            An accomplished executive program leader with more than 30 years’ experience across Google, Apple, Microsoft, and startups. Michael brings proven operational discipline to film production, promising investors transparent governance, rigorous schedule management, and uncompromising budget control for ambitious creative visions.
+          </p>
+          <div class="filmmaker-credentials">
+            <span class="credential-tag">Executive Program Leader</span>
+            <span class="credential-tag">30+ Years Tech &amp; Program Leadership</span>
+            <span class="credential-tag">Governance &amp; Budget Control</span>
           </div>
         </div>
 
         <!-- Tim Juby -->
         <div class="filmmaker-card">
-          <div class="filmmaker-photo-wrapper">
-            <img src="images/tim_juby.jpg" alt="Tim Juby - Producer" class="filmmaker-photo">
-          </div>
-          <div class="filmmaker-info">
+          <div class="filmmaker-top">
+            <div class="filmmaker-photo-wrapper">
+              <img src="images/tim_juby.jpg" alt="Tim Juby - Producer" class="filmmaker-photo">
+            </div>
             <div class="filmmaker-header">
               <h3 class="filmmaker-name">TIM JUBY</h3>
               <span class="filmmaker-role">PRODUCER</span>
             </div>
-            <p class="filmmaker-bio">
-              An award-winning Creative Producer and Director with more than 30 years' experience across film, television, animation and commercial production. Tim brings extensive experience in developing and delivering ambitious creative projects, combining strong storytelling with the practical realities of production.
-            </p>
-            <div class="filmmaker-credentials">
-              <span class="credential-tag">Award-Winning Producer &amp; Director</span>
-              <span class="credential-tag">30+ Years Film, TV &amp; Animation</span>
-              <span class="credential-tag">Creative Development &amp; Execution</span>
-            </div>
+          </div>
+          <p class="filmmaker-bio">
+            An award-winning Creative Producer and Director with more than 30 years' experience across film, television, animation and commercial production. Tim brings extensive experience in developing and delivering ambitious creative projects, combining strong storytelling with the practical realities of production.
+          </p>
+          <div class="filmmaker-credentials">
+            <span class="credential-tag">Award-Winning Producer &amp; Director</span>
+            <span class="credential-tag">30+ Years Film, TV &amp; Animation</span>
+            <span class="credential-tag">Creative Development &amp; Execution</span>
           </div>
         </div>
       </div>
