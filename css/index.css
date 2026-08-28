@@ -226,7 +226,11 @@ em {
   width: 100%;
   z-index: 1000;
   transition: var(--transition-normal);
-  padding: 24px 0;
+  padding: 20px 0;
+  background-color: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--glass-border);
 }
 
 .staging-banner + .header {
@@ -234,12 +238,8 @@ em {
 }
 
 .header.scrolled {
-  background-color: var(--glass-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--glass-border);
-  padding: 16px 0;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  padding: 14px 0;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
 }
 
 .header-container {
@@ -337,14 +337,16 @@ em {
 
 /* Hero Section */
 .hero {
-  height: 100vh;
-  min-height: 600px;
+  height: calc(100vh - 110px);
+  min-height: 620px;
+  margin-top: 110px;
   position: relative;
   background-image: url('../images/hero_final.jpeg');
   background-size: cover;
-  background-position: center;
+  background-position: center top;
   display: flex;
   align-items: center;
+  padding: 40px 0;
 }
 
 .hero-overlay {
