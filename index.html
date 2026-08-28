@@ -35,10 +35,10 @@
       </button>
       <nav class="nav-menu" id="nav-menu">
         <a href="#hero" class="nav-link active">FILM</a>
+        <a href="#novel" class="nav-link">NOVEL</a>
         <a href="#about" class="nav-link">STORY</a>
-        <a href="#characters" class="nav-link">WORLD</a>
+        <a href="#world" class="nav-link">WORLD</a>
         <a href="#bios" class="nav-link">TEAM</a>
-        <a href="#praise" class="nav-link">NOVEL</a>
         <a href="#contact" class="nav-link">INVEST</a>
         <a href="#contact" class="nav-link nav-btn">CONTACT</a>
       </nav>
@@ -52,7 +52,6 @@
       <span class="hero-subtitle">Coming Soon</span>
       <h1 class="hero-title">ORLA</h1>
       <p class="hero-synopsis">"Orla" tells the coming-of-age story of a troubled young girl who recently lost her mother. On her journey to find peace, she encounters a strange foreign man who is also on a journey to claim his destiny.</p>
-      <p class="hero-tagline">Adapted from the acclaimed novel <em>The Gospel of Orla</em> by Eoghan Walls</p>
       <div class="hero-actions">
         <a href="#about" class="btn btn-primary">EXPLORE THE STORY</a>
         <a href="#contact" class="btn btn-outline">PRODUCTION ENQUIRIES</a>
@@ -60,37 +59,161 @@
     </div>
   </section>
 
-  <!-- About Section -->
-  <section class="section about" id="about">
+  <!-- Novel / Praise Section -->
+  <section class="section praise" id="novel">
+    <div class="praise-bg-decor"></div>
     <div class="container">
-      <div class="about-grid">
-        <div class="about-text-wrapper">
-          <div class="premise-header" style="display: flex; align-items: flex-start; justify-content: space-between; gap: 30px; margin-bottom: 1.5rem;">
-            <div>
-              <span class="section-tag">The Premise</span>
-              <h2 class="section-title" style="margin-bottom: 0;">Adapted from the novel by Eoghan Walls</h2>
-            </div>
-            <img src="images/book_cover.jpeg" alt="Gospel of Orla Book Cover" class="book-cover-img" style="max-width: 140px; flex-shrink: 0; border-radius: 4px; box-shadow: 0 4px 15px rgba(0,0,0,0.6); border: 1px solid var(--glass-border);">
+      <div class="text-center novel-header">
+        <span class="novel-tag">FROM ACCLAIMED NOVEL TO FEATURE FILM</span>
+        <h2 class="accent-heading">THE GOSPEL OF ORLA</h2>
+        <p class="novel-byline">by Eoghan Walls</p>
+      </div>
+
+      <div class="novel-showcase">
+        <!-- Book Cover Column -->
+        <div class="novel-cover-col">
+          <div class="novel-book-frame">
+            <img src="images/book_cover.jpeg" alt="The Gospel of Orla Novel Book Cover by Eoghan Walls" class="novel-book-img">
           </div>
-          <p class="about-description">
-            "Orla" tells the coming-of-age story of a troubled young girl who recently lost her mother. On her journey to find peace, she encounters a strange foreign man who is also on a journey to claim his destiny.
-          </p>
-          
-          <div class="film-metadata">
-            <div class="metadata-card">
-              <h4 class="metadata-title">Genre</h4>
-              <p class="metadata-value">Coming of Age / Magical Realism</p>
+          <p class="novel-caption"><em>The Gospel of Orla</em><br><span class="novel-publisher">Seven Stories Press</span></p>
+        </div>
+
+        <!-- Reviews / Praise Carousel Column -->
+        <div class="carousel-wrapper">
+          <div class="praise-carousel" id="praise-carousel">
+            <!-- Slide 1 -->
+            <div class="praise-slide active">
+              <blockquote class="praise-quote">
+                "<em>The Gospel of Orla</em> is written with immense control and precision so that the voice of the protagonist emerges as alive, individual and memorable. Eoghan Walls manages to make every single emotion Orla feels―every thought, response and action―utterly convincing and fresh and original."
+              </blockquote>
+              <cite class="praise-author">Colm Tóibín</cite>
+              <span class="author-title">Acclaimed Novelist &amp; Critic</span>
             </div>
-            <div class="metadata-card">
-              <h4 class="metadata-title">Audience</h4>
-              <p class="metadata-value">YA and Family</p>
+
+            <!-- Slide 2 -->
+            <div class="praise-slide">
+              <blockquote class="praise-quote">
+                "As coming-of-age stories go, <em>The Gospel of Orla</em> is winningly off-kilter. Walls refuses easy sentimentality, and the story is brisk and surprising, perfectly paced. Walls’s marvelous novel asks what we might look for by way of consolation. A miracle shouldn’t be too much to ask."
+              </blockquote>
+              <cite class="praise-author">The New York Times Book Review</cite>
             </div>
-            <div class="metadata-card">
-              <h4 class="metadata-title">Tone</h4>
-              <p class="metadata-value">Deeply contemplative drama about the effects of loss and heartfelt redemption</p>
+
+            <!-- Slide 3 -->
+            <div class="praise-slide">
+              <blockquote class="praise-quote">
+                "Although Orla longs to see her mother again, it is the girl herself who needs bringing back to life – something Walls manages in this poignant, hopeful, compelling little book that offers a window into a troubled teenage soul."
+              </blockquote>
+              <cite class="praise-author">Irish Times</cite>
             </div>
+          </div>
+
+          <!-- Carousel Nav Controls -->
+          <div class="carousel-controls">
+            <button class="control-btn" id="prev-quote" aria-label="Previous review">&#8592;</button>
+            <div class="carousel-dots" id="carousel-dots">
+              <span class="dot active" data-slide="0"></span>
+              <span class="dot" data-slide="1"></span>
+              <span class="dot" data-slide="2"></span>
+            </div>
+            <button class="control-btn" id="next-quote" aria-label="Next review">&#8594;</button>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Synopsis Section with Image Overlay -->
+  <section class="section synopsis-banner" id="about">
+    <div class="synopsis-banner-bg" style="background-image: url('images/orla_in_school.png');"></div>
+    <div class="synopsis-banner-overlay"></div>
+    <div class="container synopsis-banner-container">
+      <div class="synopsis-content">
+        <span class="section-tag">STORY</span>
+        <h2 class="section-title synopsis-headline">HOW FAR WOULD YOU GO FOR ONE MORE DAY?</h2>
+        <div class="synopsis-body">
+          <p>Fourteen-year-old Orla is smart, angry and struggling to survive the loss of her mother.</p>
+          <p>Unable to connect with her grieving father, she sets out on her own journey through the canals and back roads of Lancashire, determined to find something – or someone – that might bring her closer to the mother she has lost.</p>
+          <p>Along the way she encounters a mysterious refugee, a stranger whose own journey is driven by a very different kind of loss and a desperate desire to find his destiny.</p>
+          <p>Their unlikely meeting changes both of them.</p>
+          <p>Against the atmospheric landscape of Lancaster and Glasson Docks, ORLA becomes a story about grief, displacement, family, compassion and the possibility of finding hope in the most unexpected places.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Story Details Section (Below Photograph) -->
+  <section class="section story-details-section">
+    <div class="container">
+      <!-- Why This Film 3-Column Block -->
+      <div class="why-film-section">
+        <h3 class="why-film-main-title">WHY THIS FILM?</h3>
+        <div class="why-film-grid">
+          <div class="why-film-card">
+            <h4 class="why-film-card-title">A STORY ABOUT GRIEF</h4>
+            <p class="why-film-card-text">Orla is trying to make sense of a world without her mother.</p>
+          </div>
+          <div class="why-film-card">
+            <h4 class="why-film-card-title">A STORY ABOUT BELIEF</h4>
+            <p class="why-film-card-text">A mysterious encounter makes her question what is possible.</p>
+          </div>
+          <div class="why-film-card">
+            <h4 class="why-film-card-title">A STORY ABOUT REDEMPTION</h4>
+            <p class="why-film-card-text"><strong>Two</strong> very different journeys become unexpectedly connected.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Film Metadata (Genre / Audience / Tone) Block -->
+      <div class="film-metadata">
+        <div class="metadata-card">
+          <h4 class="metadata-title">GENRE</h4>
+          <p class="metadata-value">Coming of Age / Magical Realism</p>
+        </div>
+        <div class="metadata-card">
+          <h4 class="metadata-title">AUDIENCE</h4>
+          <p class="metadata-value">YA and Family</p>
+        </div>
+        <div class="metadata-card">
+          <h4 class="metadata-title">TONE</h4>
+          <p class="metadata-value">Deeply contemplative drama about the effects of loss and heartfelt redemption</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The World of Orla Section -->
+  <section class="section settings" id="world">
+    <div class="container">
+      <div class="text-center">
+        <h2 class="accent-heading">THE WORLD OF ORLA</h2>
+      </div>
+
+      <div class="world-gallery">
+        <!-- Photo 1: Bridge Over Towpath -->
+        <div class="world-item">
+          <img src="images/bridge_over_towpath.jpeg" alt="Bridge Over Lancashire Towpath" class="world-img">
+        </div>
+
+        <!-- Photo 2: Canal -->
+        <div class="world-item">
+          <img src="https://img1.wsimg.com/isteam/ip/25c80e0c-0757-4c39-a570-2e290b42bc79/blob-f2e33a3.png" alt="Lancaster Canal" class="world-img">
+        </div>
+
+        <!-- Photo 3: Corner Store -->
+        <div class="world-item">
+          <img src="https://img1.wsimg.com/isteam/ip/25c80e0c-0757-4c39-a570-2e290b42bc79/IMG_1612.jpg" alt="Corner Store and Shops" class="world-img">
+        </div>
+
+        <!-- Photo 4: The Northwest -->
+        <div class="world-item">
+          <img src="https://img1.wsimg.com/isteam/ip/25c80e0c-0757-4c39-a570-2e290b42bc79/blob-5d3a6c9.png" alt="The Northwest - Lancaster and Glasson Docks" class="world-img">
+        </div>
+      </div>
+
+      <div class="text-center">
+        <p class="world-intro-text">
+          Set against the canals, towpaths and historic landscapes of Lancaster and Glasson Dock, ORLA inhabits a recognisably northern England that gradually becomes something stranger — a world where the ordinary and the miraculous can exist side by side.
+        </p>
       </div>
     </div>
   </section>
@@ -158,7 +281,7 @@
         <!-- Character: Mom -->
         <div class="character-card" data-char="mom">
           <div class="character-img-wrapper">
-            <img src="https://img1.wsimg.com/isteam/ip/25c80e0c-0757-4c39-a570-2e290b42bc79/Gemini_Generated_Image_bdf46xbdf46xbdf4.jpeg" alt="Orla's Mom" class="character-img">
+            <img src="images/orlas_mum.jpeg" alt="Orla's Mom" class="character-img">
             <div class="character-hover-overlay">
               <p class="character-short-bio">Mom comes to the story only through Orla’s memory of her, yet she is a pivotal character...</p>
             </div>
@@ -195,109 +318,144 @@
     </div>
   </div>
 
-  <!-- Settings Section -->
-  <section class="section settings" id="settings">
-    <div class="container">
-      <div class="text-center">
-        <h2 class="accent-heading">SETTINGS</h2>
-      </div>
-
-      <div class="settings-grid">
-        <!-- Setting 1: Towpath -->
-        <div class="setting-card">
-          <div class="setting-img-wrapper towpath-bg"></div>
-          <div class="setting-content">
-            <h3 class="setting-name">Towpath</h3>
-            <p class="setting-desc">She is on a towpath like this when she runs into the Stranger.</p>
-          </div>
-        </div>
-
-        <!-- Setting 2: Canal -->
-        <div class="setting-card">
-          <div class="setting-img-wrapper canal-bg"></div>
-          <div class="setting-content">
-            <h3 class="setting-name">Canal</h3>
-            <p class="setting-desc">Orla stays away from the roads so she isn't spotted by her father. Instead, she rides on the back roads and by the canals.</p>
-          </div>
-        </div>
-
-        <!-- Setting 3: Corner Store -->
-        <div class="setting-card">
-          <div class="setting-img-wrapper shops-bg"></div>
-          <div class="setting-content">
-            <h3 class="setting-name">Shops</h3>
-            <p class="setting-desc">Orla "earns" money for her trip by stealing from the corner store.</p>
-          </div>
-        </div>
-
-        <!-- Setting 4: The Northwest -->
-        <div class="setting-card">
-          <div class="setting-img-wrapper northwest-bg"></div>
-          <div class="setting-content">
-            <h3 class="setting-name">The Northwest</h3>
-            <p class="setting-desc">The story takes place in Lancaster and Glasson Docks, part of Lancastershire, in the north-western part of England. Canals and the old cities are very much a part of the feeling of the story.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- Praise / Reviews Section -->
-  <section class="section praise" id="praise">
-    <div class="praise-bg-decor"></div>
-    <div class="container">
-      <div class="text-center">
-        <h2 class="accent-heading">Praise for the book</h2>
-      </div>
-
-      <div class="carousel-wrapper">
-        <div class="praise-carousel" id="praise-carousel">
-          <!-- Slide 1 -->
-          <div class="praise-slide active">
-            <blockquote class="praise-quote">
-              "<em>The Gospel of Orla</em> is written with immense control and precision so that the voice of the protagonist emerges as alive, individual and memorable. Eoghan Walls manages to make every single emotion Orla feels―every thought, response and action―utterly convincing and fresh and original."
-            </blockquote>
-            <cite class="praise-author">Colm Tóibín</cite>
-            <span class="author-title">Acclaimed Novelist &amp; Critic</span>
-          </div>
-
-          <!-- Slide 2 -->
-          <div class="praise-slide">
-            <blockquote class="praise-quote">
-              "As coming-of-age stories go, <em>The Gospel of Orla</em> is winningly off-kilter. Walls refuses easy sentimentality, and the story is brisk and surprising, perfectly paced. Walls’s marvelous novel asks what we might look for by way of consolation. A miracle shouldn’t be too much to ask."
-            </blockquote>
-            <cite class="praise-author">The New York Times Book Review</cite>
-          </div>
-
-          <!-- Slide 3 -->
-          <div class="praise-slide">
-            <blockquote class="praise-quote">
-              "Although Orla longs to see her mother again, it is the girl herself who needs bringing back to life – something Walls manages in this poignant, hopeful, compelling little book that offers a window into a troubled teenage soul."
-            </blockquote>
-            <cite class="praise-author">Irish Times</cite>
-          </div>
-        </div>
-
-        <!-- Carousel Nav Controls -->
-        <div class="carousel-controls">
-          <button class="control-btn" id="prev-quote" aria-label="Previous review">&#8592;</button>
-          <div class="carousel-dots" id="carousel-dots">
-            <span class="dot active" data-slide="0"></span>
-            <span class="dot" data-slide="1"></span>
-            <span class="dot" data-slide="2"></span>
-          </div>
-          <button class="control-btn" id="next-quote" aria-label="Next review">&#8594;</button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Producer/Author Notes & Bios Section -->
+  <!-- Team & Filmmakers Section -->
   <section class="section bios" id="bios">
     <div class="container">
       <div class="text-center">
-        <h2 class="accent-heading">Notes from Nancy Garvin, Producer, and Eoghan Walls, Author</h2>
+        <h2 class="accent-heading">THE FILMMAKERS</h2>
+      </div>
+
+      <!-- Key Filmmakers: Author, Writer/Producer, Producers -->
+      <div class="filmmakers-grid">
+        <!-- Eoghan Walls -->
+        <div class="filmmaker-card">
+          <div class="filmmaker-photo-wrapper">
+            <img src="images/eoghan_walls.jpg" alt="Eoghan Walls - Author" class="filmmaker-photo">
+          </div>
+          <div class="filmmaker-info">
+            <div class="filmmaker-header">
+              <h3 class="filmmaker-name">EOGHAN WALLS</h3>
+              <span class="filmmaker-role">AUTHOR</span>
+            </div>
+            <p class="filmmaker-bio">
+              Eoghan Walls is an award-winning poet and author from Derry, Northern Ireland. His critically acclaimed debut novel, <em>The Gospel of Orla</em> (Seven Stories Press), serves as the source material for the film adaptation.
+            </p>
+            <div class="filmmaker-credentials">
+              <span class="credential-tag">Author, <em>The Gospel of Orla</em></span>
+              <span class="credential-tag">Pigott Prize Runner-Up</span>
+              <span class="credential-tag">Lecturer in Creative Writing, Lancaster University</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Nancy Garvin -->
+        <div class="filmmaker-card">
+          <div class="filmmaker-photo-wrapper">
+            <img src="images/nancy_garvin.jpeg" alt="Nancy Garvin - Writer & Producer" class="filmmaker-photo">
+          </div>
+          <div class="filmmaker-info">
+            <div class="filmmaker-header">
+              <h3 class="filmmaker-name">NANCY GARVIN</h3>
+              <span class="filmmaker-role">WRITER / PRODUCER</span>
+            </div>
+            <p class="filmmaker-bio">
+              Nancy Garvin is the CEO and Producer at Well Produced Films, and the screenwriter adapting <em>The Gospel of Orla</em> for the screen. She is dedicated to bringing character-driven, emotionally resonant stories to global cinema.
+            </p>
+            <div class="filmmaker-credentials">
+              <span class="credential-tag">CEO &amp; Producer, Well Produced Films</span>
+              <span class="credential-tag">Screenwriter, <em>ORLA</em></span>
+              <span class="credential-tag">Independent Film Producer</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Michael Shulman -->
+        <div class="filmmaker-card">
+          <div class="filmmaker-photo-wrapper">
+            <img src="images/michael_shulman.jpg" alt="Michael Shulman - Producer" class="filmmaker-photo">
+          </div>
+          <div class="filmmaker-info">
+            <div class="filmmaker-header">
+              <h3 class="filmmaker-name">MICHAEL SHULMAN</h3>
+              <span class="filmmaker-role">PRODUCER</span>
+            </div>
+            <p class="filmmaker-bio">
+              An accomplished executive program leader with more than 30 years’ experience across Google, Apple, Microsoft, and startups. Michael brings proven operational discipline to film production, promising investors transparent governance, rigorous schedule management, and uncompromising budget control for ambitious creative visions.
+            </p>
+            <div class="filmmaker-credentials">
+              <span class="credential-tag">Executive Program Leader</span>
+              <span class="credential-tag">30+ Years Tech &amp; Program Leadership</span>
+              <span class="credential-tag">Governance &amp; Budget Control</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tim Juby -->
+        <div class="filmmaker-card">
+          <div class="filmmaker-photo-wrapper">
+            <img src="images/tim_juby.jpg" alt="Tim Juby - Producer" class="filmmaker-photo">
+          </div>
+          <div class="filmmaker-info">
+            <div class="filmmaker-header">
+              <h3 class="filmmaker-name">TIM JUBY</h3>
+              <span class="filmmaker-role">PRODUCER</span>
+            </div>
+            <p class="filmmaker-bio">
+              An award-winning Creative Producer and Director with more than 30 years' experience across film, television, animation and commercial production. Tim brings extensive experience in developing and delivering ambitious creative projects, combining strong storytelling with the practical realities of production.
+            </p>
+            <div class="filmmaker-credentials">
+              <span class="credential-tag">Award-Winning Producer &amp; Director</span>
+              <span class="credential-tag">30+ Years Film, TV &amp; Animation</span>
+              <span class="credential-tag">Creative Development &amp; Execution</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Additional Producing Partners -->
+      <div class="producers-grid producers-grid-duo">
+        <!-- Maryam Ghorbankarimi -->
+        <div class="producer-card">
+          <div class="producer-photo-placeholder">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+            <span class="placeholder-text">Photo</span>
+          </div>
+          <div class="producer-info">
+            <h4 class="producer-name">MARYAM GHORBANKARIMI</h4>
+            <span class="producer-role">PRODUCER</span>
+          </div>
+        </div>
+
+        <!-- Red Robin Films -->
+        <div class="producer-card">
+          <div class="producer-photo-placeholder">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect>
+              <line x1="7" y1="2" x2="7" y2="22"></line>
+              <line x1="17" y1="2" x2="17" y2="22"></line>
+              <line x1="2" y1="12" x2="22" y2="12"></line>
+              <line x1="2" y1="7" x2="7" y2="7"></line>
+              <line x1="2" y1="17" x2="7" y2="17"></line>
+              <line x1="17" y1="17" x2="22" y2="17"></line>
+              <line x1="17" y1="7" x2="22" y2="7"></line>
+            </svg>
+            <span class="placeholder-text">Production</span>
+          </div>
+          <div class="producer-info">
+            <h4 class="producer-name">RED ROBIN FILMS</h4>
+            <span class="producer-role">PRODUCTION</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="filmmakers-divider"></div>
+
+      <!-- Notes Subheading -->
+      <div class="notes-header text-center">
+        <h3 class="notes-section-title">Notes from Nancy Garvin, Producer, and Eoghan Walls, Author</h3>
       </div>
 
       <div class="notes-quotes-grid">
@@ -424,10 +582,10 @@
       <div class="footer-links">
         <h4>Navigation</h4>
         <a href="#hero">Film</a>
+        <a href="#novel">Novel</a>
         <a href="#about">Story</a>
-        <a href="#characters">World</a>
+        <a href="#world">World</a>
         <a href="#bios">Team</a>
-        <a href="#praise">Novel</a>
         <a href="#contact">Invest</a>
         <a href="#contact">Contact</a>
       </div>

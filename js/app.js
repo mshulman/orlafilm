@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
     mom: {
       name: "Orla’s mom",
       role: "",
-      img: "https://img1.wsimg.com/isteam/ip/25c80e0c-0757-4c39-a570-2e290b42bc79/Gemini_Generated_Image_bdf46xbdf46xbdf4.jpeg",
+      img: "images/orlas_mum.jpeg",
       desc: "Mom comes to the story only through Orla’s memory of her, yet she is a pivotal character to Orla’s conflict, and ultimately to her redemption."
     },
     fantasmo: {
