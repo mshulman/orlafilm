@@ -12,6 +12,30 @@ document.addEventListener('DOMContentLoaded', () => {
   if (gateOverlay && gateForm && gatePassword) {
     const savedPassword = sessionStorage.getItem('orla_saved_pwd');
 
+    const checkLocalPasswordValid = (pwd) => {
+      const clean = (pwd || '').trim().toLowerCase();
+      if (!clean) return false;
+      if (clean === CORRECT_PASSWORD.toLowerCase()) return true;
+      try {
+        const usersJson = localStorage.getItem('orla_admin_users');
+        if (usersJson) {
+          const users = JSON.parse(usersJson);
+          const found = users.some(u => u.password && u.password.toLowerCase() === clean);
+          if (found) {
+            const nowStr = new Date().toISOString().replace('T', ' ').substring(0, 19) + ' UTC';
+            users.forEach(u => {
+              if (u.password && u.password.toLowerCase() === clean) {
+                u.last_login = nowStr;
+              }
+            });
+            localStorage.setItem('orla_admin_users', JSON.stringify(users));
+            return true;
+          }
+        }
+      } catch (e) {}
+      return false;
+    };
+
     const unlockGate = () => {
       gateOverlay.classList.add('unlocked');
       document.body.style.overflow = '';
@@ -38,16 +62,22 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         if (res.ok) {
           unlockGate();
-        } else {
+          return;
+        } else if (res.status === 401 || res.status === 403) {
+          // Explicit invalid / deleted user response from backend
           sessionStorage.removeItem('orla_saved_pwd');
           lockGate();
+          return;
         }
       } catch (err) {
-        if (savedPassword.toLowerCase() === CORRECT_PASSWORD.toLowerCase()) {
-          unlockGate();
-        } else {
-          lockGate();
-        }
+        // Backend offline / static host
+      }
+
+      if (checkLocalPasswordValid(savedPassword)) {
+        unlockGate();
+      } else {
+        sessionStorage.removeItem('orla_saved_pwd');
+        lockGate();
       }
     };
 
@@ -71,24 +101,20 @@ document.addEventListener('DOMContentLoaded', () => {
         if (res.ok) {
           sessionStorage.setItem('orla_saved_pwd', entered);
           unlockGate();
-        } else {
-          if (entered.toLowerCase() === CORRECT_PASSWORD.toLowerCase()) {
-            sessionStorage.setItem('orla_saved_pwd', entered);
-            unlockGate();
-          } else {
-            showError();
-          }
+          if (submitBtn) submitBtn.disabled = false;
+          return;
         }
       } catch (err) {
-        if (entered.toLowerCase() === CORRECT_PASSWORD.toLowerCase()) {
-          sessionStorage.setItem('orla_saved_pwd', entered);
-          unlockGate();
-        } else {
-          showError();
-        }
-      } finally {
-        if (submitBtn) submitBtn.disabled = false;
+        // Backend offline / static host
       }
+
+      if (checkLocalPasswordValid(entered)) {
+        sessionStorage.setItem('orla_saved_pwd', entered);
+        unlockGate();
+      } else {
+        showError();
+      }
+      if (submitBtn) submitBtn.disabled = false;
     });
 
     const showError = () => {

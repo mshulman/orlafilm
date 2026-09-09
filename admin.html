@@ -303,6 +303,40 @@
     const createBtn = document.getElementById('create-btn');
     const toast = document.getElementById('toast');
 
+    const STORAGE_KEY = 'orla_admin_users';
+
+    function getLocalUsers() {
+      try {
+        const data = localStorage.getItem(STORAGE_KEY);
+        return data ? JSON.parse(data) : [];
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function saveLocalUsers(users) {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(users));
+      } catch (e) {
+        console.error(e);
+      }
+    }
+
+    async function generate5LetterPassword(name) {
+      const cleanName = (name || '').trim().toLowerCase();
+      const text = cleanName + "_orla_salt";
+      const encoder = new TextEncoder();
+      const data = encoder.encode(text);
+      const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      const chars = "abcdefghijklmnopqrstuvwxyz";
+      let pwd = "";
+      for (let i = 0; i < 5; i++) {
+        pwd += chars[hashArray[i] % chars.length];
+      }
+      return pwd;
+    }
+
     function showToast(message) {
       toast.textContent = message;
       toast.classList.add('show');
@@ -319,13 +353,19 @@
     async function loadUsers() {
       try {
         const res = await fetch('/api/users');
-        if (!res.ok) throw new Error('Failed to fetch users');
-        const data = await res.json();
-        renderUsers(data.users || []);
+        if (res.ok) {
+          const data = await res.json();
+          const users = data.users || [];
+          saveLocalUsers(users);
+          renderUsers(users);
+          return;
+        }
       } catch (err) {
-        console.error(err);
-        usersTbody.innerHTML = `<tr><td colspan="4" class="empty-state">Failed to load users. Ensure backend server is running.</td></tr>`;
+        // Fall back to local storage
       }
+
+      const localUsers = getLocalUsers();
+      renderUsers(localUsers);
     }
 
     function renderUsers(users) {
@@ -362,19 +402,17 @@
       }
 
       try {
-        const res = await fetch(`/api/users/${encodeURIComponent(userId)}`, {
+        await fetch(`/api/users/${encodeURIComponent(userId)}`, {
           method: 'DELETE'
         });
-        if (res.ok) {
-          showToast(`Deleted password for "${userName}"`);
-          loadUsers();
-        } else {
-          showToast('Failed to delete user.');
-        }
       } catch (err) {
-        console.error(err);
-        showToast('Error connecting to server.');
+        // Server offline
       }
+
+      const users = getLocalUsers().filter(u => String(u.id) !== String(userId));
+      saveLocalUsers(users);
+      showToast(`Deleted password for "${userName}"`);
+      loadUsers();
     }
 
     createForm.addEventListener('submit', async (e) => {
@@ -385,28 +423,46 @@
       createBtn.disabled = true;
       createBtn.textContent = 'CREATING...';
 
+      let createdUser = null;
       try {
         const res = await fetch('/api/users', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ name })
         });
-
         if (res.ok) {
-          const newUser = await res.json();
-          userNameInput.value = '';
-          showToast(`Created password "${newUser.password}" for ${newUser.name}`);
-          loadUsers();
-        } else {
-          showToast('Failed to create user password.');
+          createdUser = await res.json();
         }
       } catch (err) {
-        console.error(err);
-        showToast('Error connecting to server.');
-      } finally {
-        createBtn.disabled = false;
-        createBtn.textContent = 'CREATE PASSWORD';
+        // Server offline
       }
+
+      if (!createdUser) {
+        const pwd = await generate5LetterPassword(name);
+        const users = getLocalUsers();
+        const existingIdx = users.findIndex(u => u.name.toLowerCase() === name.toLowerCase());
+        const nowStr = new Date().toISOString().replace('T', ' ').substring(0, 19) + ' UTC';
+        if (existingIdx >= 0) {
+          users[existingIdx].password = pwd;
+          createdUser = users[existingIdx];
+        } else {
+          createdUser = {
+            id: Date.now().toString(),
+            name: name,
+            password: pwd,
+            created_at: nowStr,
+            last_login: null
+          };
+          users.push(createdUser);
+        }
+        saveLocalUsers(users);
+      }
+
+      userNameInput.value = '';
+      showToast(`Created password "${createdUser.password}" for ${createdUser.name}`);
+      createBtn.disabled = false;
+      createBtn.textContent = 'CREATE PASSWORD';
+      loadUsers();
     });
 
     // Initial load
