@@ -10,120 +10,32 @@ document.addEventListener('DOMContentLoaded', () => {
   const CORRECT_PASSWORD = 'orlawpf';
 
   if (gateOverlay && gateForm && gatePassword) {
-    const savedPassword = sessionStorage.getItem('orla_saved_pwd');
-
-    const checkLocalPasswordValid = (pwd) => {
-      const clean = (pwd || '').trim().toLowerCase();
-      if (!clean) return false;
-      if (clean === CORRECT_PASSWORD.toLowerCase()) return true;
-      try {
-        const usersJson = localStorage.getItem('orla_admin_users');
-        if (usersJson) {
-          const users = JSON.parse(usersJson);
-          const found = users.some(u => u.password && u.password.toLowerCase() === clean);
-          if (found) {
-            const nowStr = new Date().toISOString().replace('T', ' ').substring(0, 19) + ' UTC';
-            users.forEach(u => {
-              if (u.password && u.password.toLowerCase() === clean) {
-                u.last_login = nowStr;
-              }
-            });
-            localStorage.setItem('orla_admin_users', JSON.stringify(users));
-            return true;
-          }
-        }
-      } catch (e) {}
-      return false;
-    };
-
-    const unlockGate = () => {
-      gateOverlay.classList.add('unlocked');
-      document.body.style.overflow = '';
-      if (gateError) gateError.textContent = '';
-      gatePassword.classList.remove('input-error');
-    };
-
-    const lockGate = () => {
-      gateOverlay.classList.remove('unlocked');
+    const isAuth = sessionStorage.getItem('orla_gate_auth') === 'true';
+    if (!isAuth) {
       document.body.style.overflow = 'hidden';
       setTimeout(() => gatePassword.focus(), 100);
-    };
+    } else {
+      gateOverlay.classList.add('unlocked');
+      document.body.style.overflow = '';
+    }
 
-    const checkExistingAuth = async () => {
-      if (!savedPassword) {
-        lockGate();
-        return;
-      }
-      try {
-        const res = await fetch('/api/verify', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ password: savedPassword })
-        });
-        if (res.ok) {
-          unlockGate();
-          return;
-        } else if (res.status === 401 || res.status === 403) {
-          // Explicit invalid / deleted user response from backend
-          sessionStorage.removeItem('orla_saved_pwd');
-          lockGate();
-          return;
-        }
-      } catch (err) {
-        // Backend offline / static host
-      }
-
-      if (checkLocalPasswordValid(savedPassword)) {
-        unlockGate();
-      } else {
-        sessionStorage.removeItem('orla_saved_pwd');
-        lockGate();
-      }
-    };
-
-    checkExistingAuth();
-
-    gateForm.addEventListener('submit', async (e) => {
+    gateForm.addEventListener('submit', (e) => {
       e.preventDefault();
       const entered = (gatePassword.value || '').trim();
-      if (!entered) return;
-
-      const submitBtn = document.getElementById('gate-submit-btn');
-      if (submitBtn) submitBtn.disabled = true;
-
-      try {
-        const res = await fetch('/api/login', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ password: entered })
-        });
-
-        if (res.ok) {
-          sessionStorage.setItem('orla_saved_pwd', entered);
-          unlockGate();
-          if (submitBtn) submitBtn.disabled = false;
-          return;
-        }
-      } catch (err) {
-        // Backend offline / static host
-      }
-
-      if (checkLocalPasswordValid(entered)) {
-        sessionStorage.setItem('orla_saved_pwd', entered);
-        unlockGate();
+      if (entered.toLowerCase() === CORRECT_PASSWORD.toLowerCase()) {
+        sessionStorage.setItem('orla_gate_auth', 'true');
+        gateOverlay.classList.add('unlocked');
+        document.body.style.overflow = '';
+        if (gateError) gateError.textContent = '';
+        gatePassword.classList.remove('input-error');
       } else {
-        showError();
+        if (gateError) gateError.textContent = 'Incorrect password. Please try again.';
+        gatePassword.classList.remove('input-error');
+        void gatePassword.offsetWidth;
+        gatePassword.classList.add('input-error');
+        gatePassword.select();
       }
-      if (submitBtn) submitBtn.disabled = false;
     });
-
-    const showError = () => {
-      if (gateError) gateError.textContent = 'Incorrect password. Please try again.';
-      gatePassword.classList.remove('input-error');
-      void gatePassword.offsetWidth;
-      gatePassword.classList.add('input-error');
-      gatePassword.select();
-    };
 
     gatePassword.addEventListener('input', () => {
       if (gatePassword.classList.contains('input-error')) {
