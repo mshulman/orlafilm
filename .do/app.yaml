@@ -1,0 +1,14 @@
+name: orlafilm-staging
+region: nyc
+services:
+- name: web
+  github:
+    branch: staging
+    repo: mshulman/orlafilm
+    deploy_on_push: true
+  dockerfile_path: Dockerfile
+  http_port: 8080
+  instance_count: 1
+  instance_size_slug: basic-xxs
+  routes:
+  - path: /
