@@ -1,6 +1,51 @@
 document.addEventListener('DOMContentLoaded', () => {
   
   // =========================================================================
+  // 0. Password Gate Speedbump
+  // =========================================================================
+  const gateOverlay = document.getElementById('gate-overlay');
+  const gateForm = document.getElementById('gate-form');
+  const gatePassword = document.getElementById('gate-password');
+  const gateError = document.getElementById('gate-error');
+  const CORRECT_PASSWORD = 'orlawpf';
+
+  if (gateOverlay && gateForm && gatePassword) {
+    const isAuth = sessionStorage.getItem('orla_gate_auth') === 'true';
+    if (!isAuth) {
+      document.body.style.overflow = 'hidden';
+      setTimeout(() => gatePassword.focus(), 100);
+    } else {
+      gateOverlay.classList.add('unlocked');
+      document.body.style.overflow = '';
+    }
+
+    gateForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const entered = (gatePassword.value || '').trim();
+      if (entered.toLowerCase() === CORRECT_PASSWORD.toLowerCase()) {
+        sessionStorage.setItem('orla_gate_auth', 'true');
+        gateOverlay.classList.add('unlocked');
+        document.body.style.overflow = '';
+        if (gateError) gateError.textContent = '';
+        gatePassword.classList.remove('input-error');
+      } else {
+        if (gateError) gateError.textContent = 'Incorrect password. Please try again.';
+        gatePassword.classList.remove('input-error');
+        void gatePassword.offsetWidth;
+        gatePassword.classList.add('input-error');
+        gatePassword.select();
+      }
+    });
+
+    gatePassword.addEventListener('input', () => {
+      if (gatePassword.classList.contains('input-error')) {
+        gatePassword.classList.remove('input-error');
+        if (gateError) gateError.textContent = '';
+      }
+    });
+  }
+
+  // =========================================================================
   // 1. Header Scroll Spy & Active States
   // =========================================================================
   const header = document.getElementById('site-header');
