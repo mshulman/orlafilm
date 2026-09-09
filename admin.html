@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Access Management - ORLA</title>
+  <link rel="stylesheet" href="css/index.css?v=9">
+  <style>
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .admin-header {
+      padding: 24px 0;
+      border-bottom: 1px solid var(--glass-border);
+      background: var(--bg-secondary);
+    }
+
+    .admin-header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .admin-logo {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      letter-spacing: 2px;
+      color: var(--text-primary);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: var(--transition-fast);
+    }
+
+    .admin-logo:hover {
+      color: var(--text-accent);
+    }
+
+    .admin-badge {
+      font-size: 0.75rem;
+      letter-spacing: 1.5px;
+      color: var(--text-accent);
+      background: var(--bg-accent);
+      padding: 4px 10px;
+      border-radius: 4px;
+      border: 1px solid var(--glass-border);
+      text-transform: uppercase;
+    }
+
+    .admin-main {
+      flex: 1;
+      padding: 48px 0;
+    }
+
+    .admin-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--glass-border);
+      border-radius: 8px;
+      padding: 32px;
+      margin-bottom: 32px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .admin-card-title {
+      font-family: var(--font-heading);
+      font-size: 1.4rem;
+      letter-spacing: 1.5px;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+
+    .admin-card-desc {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      margin-bottom: 24px;
+    }
+
+    .admin-form {
+      display: flex;
+      gap: 16px;
+      align-items: flex-end;
+      flex-wrap: wrap;
+    }
+
+    .admin-form-group {
+      flex: 1;
+      min-width: 280px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .admin-form-group label {
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .admin-input {
+      width: 100%;
+      padding: 12px 16px;
+      background: var(--bg-accent);
+      border: 1px solid var(--glass-border);
+      border-radius: 4px;
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      font-size: 1rem;
+      outline: none;
+      transition: var(--transition-fast);
+      box-sizing: border-box;
+    }
+
+    .admin-input:focus {
+      border-color: var(--text-accent);
+      box-shadow: 0 0 10px rgba(204, 160, 124, 0.2);
+    }
+
+    .admin-btn {
+      padding: 12px 24px;
+      white-space: nowrap;
+    }
+
+    /* Table Styles */
+    .table-responsive {
+      overflow-x: auto;
+    }
+
+    .admin-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    .admin-table th {
+      font-family: var(--font-heading);
+      font-size: 0.85rem;
+      letter-spacing: 1.5px;
+      color: var(--text-accent);
+      text-transform: uppercase;
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--glass-border);
+      background: var(--bg-accent);
+    }
+
+    .admin-table td {
+      padding: 16px 18px;
+      border-bottom: 1px solid rgba(204, 160, 124, 0.08);
+      font-size: 0.95rem;
+      vertical-align: middle;
+    }
+
+    .admin-table tr:hover td {
+      background: rgba(204, 160, 124, 0.02);
+    }
+
+    .user-name {
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .user-password {
+      font-family: monospace;
+      font-size: 1.15rem;
+      letter-spacing: 2px;
+      color: var(--text-accent);
+      background: rgba(0, 0, 0, 0.4);
+      padding: 4px 10px;
+      border-radius: 4px;
+      border: 1px solid var(--glass-border);
+      display: inline-block;
+    }
+
+    .last-login-text {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    .last-login-never {
+      color: rgba(165, 156, 143, 0.5);
+      font-style: italic;
+    }
+
+    .btn-delete {
+      background: transparent;
+      border: 1px solid rgba(224, 108, 117, 0.4);
+      color: #e06c75;
+      padding: 6px 14px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: var(--transition-fast);
+      letter-spacing: 0.5px;
+    }
+
+    .btn-delete:hover {
+      background: #e06c75;
+      color: #ffffff;
+      border-color: #e06c75;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 48px 16px;
+      color: var(--text-secondary);
+      font-style: italic;
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--bg-accent);
+      border: 1px solid var(--text-accent);
+      color: var(--text-primary);
+      padding: 12px 20px;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 9999;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Admin Top Bar -->
+  <header class="admin-header">
+    <div class="container admin-header-container">
+      <a href="/" class="admin-logo" title="Back to main site">ORLA <span style="font-size: 0.95rem; opacity: 0.7; letter-spacing: 1px;">// MANAGEMENT</span></a>
+      <div class="admin-badge">Admin Access</div>
+    </div>
+  </header>
+
+  <!-- Admin Main Body -->
+  <main class="admin-main">
+    <div class="container">
+      
+      <!-- Create New Password Card -->
+      <section class="admin-card">
+        <h2 class="admin-card-title">Create User Password</h2>
+        <p class="admin-card-desc">Enter the recipient or user name. A 5-letter lowercase password will be automatically generated.</p>
+        
+        <form id="create-user-form" class="admin-form" autocomplete="off">
+          <div class="admin-form-group">
+            <label for="user-name">Who is this password for?</label>
+            <input type="text" id="user-name" class="admin-input" placeholder="e.g. Jane Doe - Producer" required autofocus>
+          </div>
+          <button type="submit" class="btn btn-primary admin-btn" id="create-btn">CREATE PASSWORD</button>
+        </form>
+      </section>
+
+      <!-- Users & Last Login Table Card -->
+      <section class="admin-card">
+        <h2 class="admin-card-title">Authorized Users &amp; Access Log</h2>
+        <p class="admin-card-desc">All created user passwords and their recorded last login timestamp.</p>
+        
+        <div class="table-responsive">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Recipient / Name</th>
+                <th>Password</th>
+                <th>Last Login</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="users-tbody">
+              <tr>
+                <td colspan="4" class="empty-state">Loading users...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    const usersTbody = document.getElementById('users-tbody');
+    const createForm = document.getElementById('create-user-form');
+    const userNameInput = document.getElementById('user-name');
+    const createBtn = document.getElementById('create-btn');
+    const toast = document.getElementById('toast');
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3500);
+    }
+
+    function formatDate(dateStr) {
+      if (!dateStr) return '<span class="last-login-never">Never</span>';
+      return `<span class="last-login-text">${dateStr}</span>`;
+    }
+
+    async function loadUsers() {
+      try {
+        const res = await fetch('/api/users');
+        if (!res.ok) throw new Error('Failed to fetch users');
+        const data = await res.json();
+        renderUsers(data.users || []);
+      } catch (err) {
+        console.error(err);
+        usersTbody.innerHTML = `<tr><td colspan="4" class="empty-state">Failed to load users. Ensure backend server is running.</td></tr>`;
+      }
+    }
+
+    function renderUsers(users) {
+      if (!users || users.length === 0) {
+        usersTbody.innerHTML = `<tr><td colspan="4" class="empty-state">No users found. Create one using the form above.</td></tr>`;
+        return;
+      }
+
+      usersTbody.innerHTML = users.map(user => `
+        <tr data-id="${user.id}">
+          <td class="user-name">${escapeHtml(user.name)}</td>
+          <td><code class="user-password">${escapeHtml(user.password)}</code></td>
+          <td>${formatDate(user.last_login)}</td>
+          <td>
+            <button class="btn-delete" onclick="deleteUser('${user.id}', '${escapeHtml(user.name)}')">Delete</button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    async function deleteUser(userId, userName) {
+      if (!confirm(`Are you sure you want to delete the password for "${userName}"?`)) {
+        return;
+      }
+
+      try {
+        const res = await fetch(`/api/users/${encodeURIComponent(userId)}`, {
+          method: 'DELETE'
+        });
+        if (res.ok) {
+          showToast(`Deleted password for "${userName}"`);
+          loadUsers();
+        } else {
+          showToast('Failed to delete user.');
+        }
+      } catch (err) {
+        console.error(err);
+        showToast('Error connecting to server.');
+      }
+    }
+
+    createForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const name = userNameInput.value.trim();
+      if (!name) return;
+
+      createBtn.disabled = true;
+      createBtn.textContent = 'CREATING...';
+
+      try {
+        const res = await fetch('/api/users', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name })
+        });
+
+        if (res.ok) {
+          const newUser = await res.json();
+          userNameInput.value = '';
+          showToast(`Created password "${newUser.password}" for ${newUser.name}`);
+          loadUsers();
+        } else {
+          showToast('Failed to create user password.');
+        }
+      } catch (err) {
+        console.error(err);
+        showToast('Error connecting to server.');
+      } finally {
+        createBtn.disabled = false;
+        createBtn.textContent = 'CREATE PASSWORD';
+      }
+    });
+
+    // Initial load
+    loadUsers();
+  </script>
+</body>
+</html>

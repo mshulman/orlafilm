@@ -1262,12 +1262,25 @@ em {
 }
 
 /* Bios & Filmmakers Section */
-.filmmakers-grid {
+.filmmakers-row-top {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 28px;
   margin-top: 48px;
-  margin-bottom: 32px;
+  margin-bottom: 28px;
+}
+
+.filmmakers-row-bottom {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  margin-bottom: 48px;
+  width: 100%;
+}
+
+.filmmakers-row-bottom .filmmaker-card {
+  width: calc((100% - 56px) / 3);
+  box-sizing: border-box;
 }
 
 .filmmaker-card {
@@ -1306,6 +1319,18 @@ em {
 
 .filmmaker-photo-nancy {
   object-position: center 8%;
+}
+
+.filmmaker-photo-logo {
+  background-color: var(--bg-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+}
+
+.filmmaker-logo-img {
+  object-fit: contain;
 }
 
 .filmmaker-photo-placeholder {
@@ -1400,6 +1425,10 @@ em {
   letter-spacing: 0.4px;
 }
 
+.filmmaker-card-centered {
+  grid-column: 2;
+}
+
 /* Producers Grid */
 .producers-grid {
   display: grid;
@@ -1411,6 +1440,12 @@ em {
 .producers-grid-duo {
   grid-template-columns: repeat(2, 1fr);
   max-width: 520px;
+  margin: 0 auto 48px auto;
+}
+
+.producers-grid-single {
+  grid-template-columns: 1fr;
+  max-width: 260px;
   margin: 0 auto 48px auto;
 }
 
@@ -1827,8 +1862,14 @@ em {
   .novel-author-card {
     grid-column: span 2;
   }
-  .filmmakers-grid {
+  .filmmakers-row-top,
+  .filmmakers-row-bottom {
+    display: grid;
     grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+  .filmmakers-row-bottom .filmmaker-card {
+    width: 100%;
   }
   .producers-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -1864,8 +1905,14 @@ em {
     grid-column: span 1;
     text-align: left;
   }
-  .filmmakers-grid {
+  .filmmakers-row-top,
+  .filmmakers-row-bottom {
+    display: grid;
     grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .filmmakers-row-bottom .filmmaker-card {
+    width: 100%;
   }
   .praise-slide {
     text-align: center;

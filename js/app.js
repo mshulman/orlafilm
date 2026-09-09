@@ -10,32 +10,94 @@ document.addEventListener('DOMContentLoaded', () => {
   const CORRECT_PASSWORD = 'orlawpf';
 
   if (gateOverlay && gateForm && gatePassword) {
-    const isAuth = sessionStorage.getItem('orla_gate_auth') === 'true';
-    if (!isAuth) {
-      document.body.style.overflow = 'hidden';
-      setTimeout(() => gatePassword.focus(), 100);
-    } else {
+    const savedPassword = sessionStorage.getItem('orla_saved_pwd');
+
+    const unlockGate = () => {
       gateOverlay.classList.add('unlocked');
       document.body.style.overflow = '';
-    }
+      if (gateError) gateError.textContent = '';
+      gatePassword.classList.remove('input-error');
+    };
 
-    gateForm.addEventListener('submit', (e) => {
+    const lockGate = () => {
+      gateOverlay.classList.remove('unlocked');
+      document.body.style.overflow = 'hidden';
+      setTimeout(() => gatePassword.focus(), 100);
+    };
+
+    const checkExistingAuth = async () => {
+      if (!savedPassword) {
+        lockGate();
+        return;
+      }
+      try {
+        const res = await fetch('/api/verify', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ password: savedPassword })
+        });
+        if (res.ok) {
+          unlockGate();
+        } else {
+          sessionStorage.removeItem('orla_saved_pwd');
+          lockGate();
+        }
+      } catch (err) {
+        if (savedPassword.toLowerCase() === CORRECT_PASSWORD.toLowerCase()) {
+          unlockGate();
+        } else {
+          lockGate();
+        }
+      }
+    };
+
+    checkExistingAuth();
+
+    gateForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       const entered = (gatePassword.value || '').trim();
-      if (entered.toLowerCase() === CORRECT_PASSWORD.toLowerCase()) {
-        sessionStorage.setItem('orla_gate_auth', 'true');
-        gateOverlay.classList.add('unlocked');
-        document.body.style.overflow = '';
-        if (gateError) gateError.textContent = '';
-        gatePassword.classList.remove('input-error');
-      } else {
-        if (gateError) gateError.textContent = 'Incorrect password. Please try again.';
-        gatePassword.classList.remove('input-error');
-        void gatePassword.offsetWidth;
-        gatePassword.classList.add('input-error');
-        gatePassword.select();
+      if (!entered) return;
+
+      const submitBtn = document.getElementById('gate-submit-btn');
+      if (submitBtn) submitBtn.disabled = true;
+
+      try {
+        const res = await fetch('/api/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ password: entered })
+        });
+
+        if (res.ok) {
+          sessionStorage.setItem('orla_saved_pwd', entered);
+          unlockGate();
+        } else {
+          if (entered.toLowerCase() === CORRECT_PASSWORD.toLowerCase()) {
+            sessionStorage.setItem('orla_saved_pwd', entered);
+            unlockGate();
+          } else {
+            showError();
+          }
+        }
+      } catch (err) {
+        if (entered.toLowerCase() === CORRECT_PASSWORD.toLowerCase()) {
+          sessionStorage.setItem('orla_saved_pwd', entered);
+          unlockGate();
+        } else {
+          showError();
+        }
+      } finally {
+        if (submitBtn) submitBtn.disabled = false;
       }
     });
+
+    const showError = () => {
+      if (gateError) gateError.textContent = 'Incorrect password. Please try again.';
+      gatePassword.classList.remove('input-error');
+      void gatePassword.offsetWidth;
+      gatePassword.classList.add('input-error');
+      gatePassword.select();
+    };
 
     gatePassword.addEventListener('input', () => {
       if (gatePassword.classList.contains('input-error')) {
@@ -119,7 +181,7 @@ document.addEventListener('DOMContentLoaded', () => {
     dad: {
       name: "Orla's Dad",
       role: "",
-      img: "https://img1.wsimg.com/isteam/ip/25c80e0c-0757-4c39-a570-2e290b42bc79/Gemini_Generated_Image_pz7g1hpz7g1hpz7g.jpg",
+      img: "images/orlas_dad.jpg",
       desc: "Dad is barely holding it together. Recently widowed and grieving deeply, Dad has the responsibility of caring for his two daughters, Orla, 14, and Lily, 2yo. By day his is trying to be a good dad, but by night the sadness moves in and he drinks to ease his profound sorrow."
     },
     lilly: {
@@ -129,10 +191,10 @@ document.addEventListener('DOMContentLoaded', () => {
       desc: "Lily is the bridge between Orla and Dad, who while complete at odds with one another, they both agree that Lily needs their loving care."
     },
     mom: {
-      name: "Orla’s mom",
+      name: "Orla’s Mum",
       role: "",
-      img: "images/orlas_mum.jpeg",
-      desc: "Mom comes to the story only through Orla’s memory of her, yet she is a pivotal character to Orla’s conflict, and ultimately to her redemption."
+      img: "images/orlas_mom.jpg",
+      desc: "Mum comes to the story only through Orla’s memory of her, yet she is a pivotal character to Orla’s conflict, and ultimately to her redemption."
     },
     fantasmo: {
       name: "Fantasmo the Elephant",

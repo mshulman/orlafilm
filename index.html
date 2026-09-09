@@ -34,11 +34,6 @@
       </form>
     </div>
   </div>
-  <script>
-    if (sessionStorage.getItem('orla_gate_auth') === 'true') {
-      document.getElementById('gate-overlay').classList.add('unlocked');
-    }
-  </script>
 
   <!-- Staging Environment Indicator Banner -->
   <div class="staging-banner">
@@ -60,8 +55,8 @@
         <a href="#about" class="nav-link">STORY</a>
         <a href="#world" class="nav-link">WORLD</a>
         <a href="#bios" class="nav-link">TEAM</a>
-        <a href="#contact" class="nav-link">INVEST</a>
-        <a href="#contact" class="nav-link nav-btn">CONTACT</a>
+        <a href="#contact" class="nav-link" style="display: none;">INVEST</a>
+        <a href="#contact" class="nav-link nav-btn" style="display: none;">CONTACT</a>
       </nav>
     </div>
   </header>
@@ -75,7 +70,7 @@
       <p class="hero-synopsis">"Orla" tells the coming-of-age story of a troubled young girl who recently lost her mother. On her journey to find peace, she encounters a strange foreign man who is also on a journey to claim his destiny.</p>
       <div class="hero-actions">
         <a href="#about" class="btn btn-primary">EXPLORE THE STORY</a>
-        <a href="#contact" class="btn btn-outline">PRODUCTION ENQUIRIES</a>
+        <a href="#contact" class="btn btn-outline" style="display: none;">PRODUCTION ENQUIRIES</a>
       </div>
     </div>
   </section>
@@ -296,7 +291,7 @@
         <!-- Character: Dad -->
         <div class="character-card" data-char="dad">
           <div class="character-img-wrapper">
-            <img src="https://img1.wsimg.com/isteam/ip/25c80e0c-0757-4c39-a570-2e290b42bc79/Gemini_Generated_Image_pz7g1hpz7g1hpz7g.jpg" alt="Orla's Dad" class="character-img">
+            <img src="images/orlas_dad.jpg" alt="Orla's Dad" class="character-img">
             <div class="character-hover-overlay">
               <p class="character-short-bio">Dad is barely holding it together. Recently widowed and grieving deeply, Dad has the responsibility of caring for his two daughters...</p>
             </div>
@@ -319,16 +314,16 @@
           </div>
         </div>
 
-        <!-- Character: Mom -->
+        <!-- Character: Mum -->
         <div class="character-card" data-char="mom">
           <div class="character-img-wrapper">
-            <img src="images/orlas_mum.jpeg" alt="Orla's Mom" class="character-img">
+            <img src="images/orlas_mom.jpg" alt="Orla's Mum" class="character-img">
             <div class="character-hover-overlay">
-              <p class="character-short-bio">Mom comes to the story only through Orla’s memory of her, yet she is a pivotal character...</p>
+              <p class="character-short-bio">Mum comes to the story only through Orla’s memory of her, yet she is a pivotal character...</p>
             </div>
           </div>
           <div class="character-info">
-            <h3 class="character-name">Orla’s mom</h3>
+            <h3 class="character-name">Orla’s Mum</h3>
           </div>
         </div>
 
@@ -366,8 +361,8 @@
         <h2 class="accent-heading">THE FILMMAKERS</h2>
       </div>
 
-      <!-- Key Filmmakers: Writer/Producer & Producers -->
-      <div class="filmmakers-grid">
+      <!-- Key Filmmakers (5 Cards: Row 1 = 3 cards, Row 2 = 2 cards centered) -->
+      <div class="filmmakers-row-top">
         <!-- Nancy Garvin -->
         <div class="filmmaker-card">
           <div class="filmmaker-top">
@@ -391,24 +386,25 @@
           </div>
         </div>
 
-        <!-- Michael Shulman -->
+        <!-- Maryam Ghorbankarimi -->
         <div class="filmmaker-card">
           <div class="filmmaker-top">
             <div class="filmmaker-photo-wrapper">
-              <img src="images/michael_shulman.jpg" alt="Michael Shulman - Producer" class="filmmaker-photo">
+              <img src="images/maryam_ghorbankarimi.jpg" alt="Maryam Ghorbankarimi - Producer" class="filmmaker-photo">
             </div>
             <div class="filmmaker-header">
-              <h3 class="filmmaker-name">MICHAEL SHULMAN</h3>
+              <h3 class="filmmaker-name">MARYAM GHORBANKARIMI</h3>
               <span class="filmmaker-role">PRODUCER</span>
             </div>
           </div>
-          <p class="filmmaker-bio">
-            An accomplished executive program leader with more than 30 years’ experience across Google, Apple, Microsoft, and startups. Michael brings proven operational discipline to film production, promising investors transparent governance, rigorous schedule management, and uncompromising budget control for ambitious creative visions.
-          </p>
+          <div class="filmmaker-bio">
+            <p>An award-winning filmmaker and film scholar, Dr. Maryam Ghorbankarimi brings extensive creative and production expertise spanning narrative and documentary cinema.</p>
+            <p>As Senior Lecturer in Film Practice at Lancaster University and founder of independent production company Bina Film, Maryam bridges academic rigor with practical filmmaking, championing compelling, character-driven storytelling with a distinctive international perspective.</p>
+          </div>
           <div class="filmmaker-credentials">
-            <span class="credential-tag">Executive Program Leader</span>
-            <span class="credential-tag">30+ Years Tech &amp; Program Leadership</span>
-            <span class="credential-tag">Governance &amp; Budget Control</span>
+            <span class="credential-tag">Senior Lecturer in Film Practice, Lancaster University</span>
+            <span class="credential-tag">Founder &amp; Producer, Bina Film</span>
+            <span class="credential-tag">Award-Winning Filmmaker &amp; Scholar</span>
           </div>
         </div>
 
@@ -423,9 +419,9 @@
               <span class="filmmaker-role">PRODUCER</span>
             </div>
           </div>
-          <p class="filmmaker-bio">
-            An award-winning Creative Producer and Director with more than 30 years' experience across film, television, animation and commercial production. Tim brings extensive experience in developing and delivering ambitious creative projects, combining strong storytelling with the practical realities of production.
-          </p>
+          <div class="filmmaker-bio">
+            <p>An award-winning Creative Producer and Director with more than 30 years' experience across film, television, animation and commercial production. Tim brings extensive experience in developing and delivering ambitious creative projects, combining strong storytelling with the practical realities of production.</p>
+          </div>
           <div class="filmmaker-credentials">
             <span class="credential-tag">Award-Winning Producer &amp; Director</span>
             <span class="credential-tag">30+ Years Film, TV &amp; Animation</span>
@@ -434,41 +430,47 @@
         </div>
       </div>
 
-      <!-- Additional Producing Partners -->
-      <div class="producers-grid producers-grid-duo">
-        <!-- Maryam Ghorbankarimi -->
-        <div class="producer-card">
-          <div class="producer-photo-placeholder">
-            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-              <circle cx="12" cy="7" r="4"></circle>
-            </svg>
-            <span class="placeholder-text">Photo</span>
+      <div class="filmmakers-row-bottom">
+        <!-- Michael Shulman -->
+        <div class="filmmaker-card">
+          <div class="filmmaker-top">
+            <div class="filmmaker-photo-wrapper">
+              <img src="images/michael_shulman.jpg" alt="Michael Shulman - Producer" class="filmmaker-photo">
+            </div>
+            <div class="filmmaker-header">
+              <h3 class="filmmaker-name">MICHAEL SHULMAN</h3>
+              <span class="filmmaker-role">PRODUCER</span>
+            </div>
           </div>
-          <div class="producer-info">
-            <h4 class="producer-name">MARYAM GHORBANKARIMI</h4>
-            <span class="producer-role">PRODUCER</span>
+          <div class="filmmaker-bio">
+            <p>An accomplished executive program leader with more than 30 years’ experience across Google, Apple, Microsoft, and startups. Michael brings proven operational discipline to film production, promising investors transparent governance, rigorous schedule management, and uncompromising budget control for ambitious creative visions.</p>
+          </div>
+          <div class="filmmaker-credentials">
+            <span class="credential-tag">Executive Program Leader</span>
+            <span class="credential-tag">30+ Years Tech &amp; Program Leadership</span>
+            <span class="credential-tag">Governance &amp; Budget Control</span>
           </div>
         </div>
 
         <!-- Red Robin Films -->
-        <div class="producer-card">
-          <div class="producer-photo-placeholder">
-            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect>
-              <line x1="7" y1="2" x2="7" y2="22"></line>
-              <line x1="17" y1="2" x2="17" y2="22"></line>
-              <line x1="2" y1="12" x2="22" y2="12"></line>
-              <line x1="2" y1="7" x2="7" y2="7"></line>
-              <line x1="2" y1="17" x2="7" y2="17"></line>
-              <line x1="17" y1="17" x2="22" y2="17"></line>
-              <line x1="17" y1="7" x2="22" y2="7"></line>
-            </svg>
-            <span class="placeholder-text">Production</span>
+        <div class="filmmaker-card">
+          <div class="filmmaker-top">
+            <div class="filmmaker-photo-wrapper filmmaker-photo-logo">
+              <img src="images/red_robin_films.png" alt="Red Robin Films - Production Partner" class="filmmaker-photo filmmaker-logo-img">
+            </div>
+            <div class="filmmaker-header">
+              <h3 class="filmmaker-name">RED ROBIN FILMS</h3>
+              <span class="filmmaker-role">PRODUCTION PARTNER</span>
+            </div>
           </div>
-          <div class="producer-info">
-            <h4 class="producer-name">RED ROBIN FILMS</h4>
-            <span class="producer-role">PRODUCTION</span>
+          <div class="filmmaker-bio">
+            <p>A UK-based independent production company led by producers and directors Isobel Drane and Kieran Lowley, dedicated to ambitious, character-driven storytelling.</p>
+            <p>Pioneering innovative filmmaking and cutting-edge virtual production technologies, Red Robin Films collaborated with Sony Europe on the landmark production <em>Hestia</em> to push the boundaries of cinematic storytelling.</p>
+          </div>
+          <div class="filmmaker-credentials">
+            <span class="credential-tag">UK Production Company</span>
+            <span class="credential-tag">Virtual Production &amp; Innovation</span>
+            <span class="credential-tag">Sony Europe Co-Production Partner</span>
           </div>
         </div>
       </div>
@@ -551,8 +553,8 @@
     </div>
   </section>
 
-  <!-- Contact Section -->
-  <section class="section contact" id="contact">
+  <!-- Contact Section (Hidden) -->
+  <section class="section contact" id="contact" style="display: none;">
     <div class="container">
       <div class="contact-card-wrapper">
         <div class="contact-header text-center">
@@ -608,8 +610,8 @@
         <a href="#about">Story</a>
         <a href="#world">World</a>
         <a href="#bios">Team</a>
-        <a href="#contact">Invest</a>
-        <a href="#contact">Contact</a>
+        <a href="#contact" style="display: none;">Invest</a>
+        <a href="#contact" style="display: none;">Contact</a>
       </div>
       <div class="footer-socials">
         <h4>Contact</h4>
