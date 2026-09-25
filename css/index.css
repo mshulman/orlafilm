@@ -682,7 +682,6 @@ button.btn-primary:hover,
   overflow: hidden;
   border: 1px solid var(--glass-border);
   transition: var(--transition-normal);
-  cursor: pointer;
 }
 
 .character-img-wrapper {
