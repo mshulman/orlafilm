@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ORLA - Bicycle Framing Comparison</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: #0a0908;
+      color: #f4f1ea;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      padding: 30px 20px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    header {
+      max-width: 1000px;
+      width: 100%;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    h1 {
+      font-size: 26px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      color: #c9a96e;
+    }
+    p.subtitle {
+      color: #9a9488;
+      font-size: 15px;
+      margin-bottom: 18px;
+    }
+    .nav-links {
+      margin-bottom: 20px;
+    }
+    .nav-links a {
+      color: #c9a96e;
+      text-decoration: none;
+      font-size: 14px;
+      border: 1px solid #333;
+      padding: 6px 14px;
+      border-radius: 4px;
+      margin: 0 6px;
+      transition: all 0.2s;
+    }
+    .nav-links a:hover {
+      background: #c9a96e;
+      color: #0a0908;
+    }
+    .char-ref-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      background: #141311;
+      border: 1px solid #282622;
+      padding: 10px 18px;
+      border-radius: 6px;
+      margin-bottom: 20px;
+      max-width: 800px;
+      width: 100%;
+    }
+    .char-ref-bar img {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #c9a96e;
+    }
+    .char-ref-text {
+      text-align: left;
+      font-size: 13px;
+      color: #b5afa3;
+    }
+    .char-ref-text strong {
+      color: #f4f1ea;
+    }
+    .tabs {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+      max-width: 1100px;
+    }
+    .tab-btn {
+      background: #191816;
+      color: #c5bfb2;
+      border: 1px solid #302d29;
+      padding: 10px 18px;
+      font-size: 14px;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+    }
+    .tab-btn:hover {
+      background: #252320;
+      color: #fff;
+    }
+    .tab-btn.active {
+      background: #c9a96e;
+      color: #0a0908;
+      font-weight: 600;
+      border-color: #c9a96e;
+    }
+    .viewer-container {
+      max-width: 1200px;
+      width: 100%;
+      background: #11100e;
+      border: 1px solid #24221f;
+      border-radius: 8px;
+      overflow: hidden;
+      padding: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+    }
+    .image-stage {
+      position: relative;
+      width: 100%;
+      height: 75vh;
+      min-height: 520px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #000;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .image-stage img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      display: block;
+      border-radius: 4px;
+    }
+    .info-card {
+      margin-top: 16px;
+      padding: 14px 18px;
+      background: #171513;
+      border-left: 3px solid #c9a96e;
+      border-radius: 0 4px 4px 0;
+    }
+    .info-card h3 {
+      font-size: 16px;
+      margin-bottom: 6px;
+      color: #f4f1ea;
+    }
+    .info-card p {
+      font-size: 14px;
+      color: #a8a296;
+      line-height: 1.5;
+    }
+    .grid-view {
+      display: none;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      max-width: 1400px;
+      width: 100%;
+      margin-top: 10px;
+    }
+    .grid-card {
+      background: #11100e;
+      border: 1px solid #24221f;
+      border-radius: 8px;
+      padding: 16px;
+    }
+    .grid-card img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      border-radius: 4px;
+      margin-bottom: 12px;
+    }
+    .grid-card h4 {
+      font-size: 15px;
+      color: #c9a96e;
+      margin-bottom: 6px;
+    }
+    .grid-card p {
+      font-size: 13px;
+      color: #9a9488;
+      line-height: 1.4;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>The World of Orla &mdash; Photo 1 Framing Options</h1>
+    <p class="subtitle">Comparing camera distances and positioning along the Lancaster canal towpath</p>
+    <div class="nav-links">
+      <a href="index.html#world">&larr; Return to Main Pitch Deck (World Section)</a>
+      <a href="#" id="toggleViewBtn">Switch to 2x2 Grid View</a>
+    </div>
+    <div class="char-ref-bar">
+      <img src="images/orla_new.png" alt="Orla Reference Face">
+      <div class="char-ref-text">
+        <strong>Character Reference:</strong> Orla (14 years old, center-parted brown hair with wispy curtain bangs showing forehead, large melancholy eyes, quiet determination).
+      </div>
+    </div>
+  </header>
+
+  <div class="tabs" id="tabBar">
+    <button class="tab-btn active" data-opt="3">Option 3 (Active, v=5): Midway on Path (Exact Face Match)</button>
+    <button class="tab-btn" data-opt="3c">Option 3-Closer: Medium-Close (Exact Face Match)</button>
+    <button class="tab-btn" data-opt="2">Option 2 (v=3): Distant Near Bridge</button>
+    <button class="tab-btn" data-opt="1">Option 1 (v=2): Close-Up Foreground</button>
+  </div>
+
+  <div class="viewer-container" id="singleViewer">
+    <div class="image-stage">
+      <img id="mainImage" src="images/orla_bike_opt3_mid.jpg" alt="Option 3">
+    </div>
+    <div class="info-card">
+      <h3 id="infoTitle">Option 3 (Active in Lookbook, v=5): Mid-Distance on Towpath</h3>
+      <p id="infoDesc">Orla is riding directly on the dirt towpath midway between the camera and the bridge. Facial likeness and hairstyle exactly match orla_new.png (center part, wispy fringe showing forehead, mournful dark eyes). Stealthy night ride with no lights or lamps.</p>
+    </div>
+  </div>
+
+  <div class="grid-view" id="gridView">
+    <div class="grid-card">
+      <img src="images/orla_bike_opt3_mid.jpg" alt="Option 3">
+      <h4>Option 3 (Active, v=5) &mdash; Midway on Path (Exact Face Match)</h4>
+      <p>Positioned halfway between foreground and bridge. Tires centered on dirt path. Exact facial features and center-parted curtain fringe from orla_new.png.</p>
+    </div>
+    <div class="grid-card">
+      <img src="images/orla_bike_opt3_closer.jpg" alt="Option 3-Closer">
+      <h4>Option 3-Closer &mdash; Medium-Close (Exact Face Match)</h4>
+      <p>Brought slightly forward along the path for even greater facial clarity while keeping full bicycle and open scenery.</p>
+    </div>
+    <div class="grid-card">
+      <img src="images/orla_bike_opt2_far.jpg" alt="Option 2">
+      <h4>Option 2 (v=3) &mdash; Distant Near Bridge</h4>
+      <p>Orla pushed far back toward the stone bridge arch, showing wide landscape and long open path.</p>
+    </div>
+    <div class="grid-card">
+      <img src="images/orla_bike_opt1_close.jpg" alt="Option 1">
+      <h4>Option 1 (v=2) &mdash; Close-Up Foreground</h4>
+      <p>Close-up framing with Orla in the foreground right near the camera.</p>
+    </div>
+  </div>
+
+  <script>
+    const data = {
+      '3': {
+        src: 'images/orla_bike_opt3_mid.jpg',
+        title: 'Option 3 (Active in Lookbook, v=5): Mid-Distance on Towpath (Exact Face Match)',
+        desc: 'Orla is riding directly on the dirt towpath midway between the camera and the bridge. Facial likeness and hairstyle exactly match orla_new.png (center part, wispy fringe showing forehead, mournful dark eyes). Stealthy night ride with no lights or lamps.'
+      },
+      '3c': {
+        src: 'images/orla_bike_opt3_closer.jpg',
+        title: 'Option 3-Closer: Medium-Close on Towpath (Exact Face Match)',
+        desc: 'Slightly closer framing showing her facial features, expression, and center-parted hair with high definition while preserving the bicycle and open towpath.'
+      },
+      '2': {
+        src: 'images/orla_bike_opt2_far.jpg',
+        title: 'Option 2 (v=3): Far Back Toward Bridge Arch',
+        desc: 'Pushed deep into the background right in front of the stone bridge arch, giving maximum prominence to the landscape.'
+      },
+      '1': {
+        src: 'images/orla_bike_opt1_close.jpg',
+        title: 'Option 1 (v=2): Close-Up Foreground',
+        desc: 'Close-up framing right near the camera, cropping her at the waist with handlebars in immediate foreground.'
+      }
+    };
+
+    const mainImg = document.getElementById('mainImage');
+    const infoTitle = document.getElementById('infoTitle');
+    const infoDesc = document.getElementById('infoDesc');
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const toggleBtn = document.getElementById('toggleViewBtn');
+    const singleViewer = document.getElementById('singleViewer');
+    const gridView = document.getElementById('gridView');
+    const tabBar = document.getElementById('tabBar');
+    let isGrid = false;
+
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        tabBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const opt = btn.getAttribute('data-opt');
+        mainImg.src = data[opt].src;
+        infoTitle.textContent = data[opt].title;
+        infoDesc.textContent = data[opt].desc;
+      });
+    });
+
+    toggleBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      isGrid = !isGrid;
+      if (isGrid) {
+        singleViewer.style.display = 'none';
+        tabBar.style.display = 'none';
+        gridView.style.display = 'grid';
+        toggleBtn.textContent = 'Switch to Single Tab View';
+      } else {
+        singleViewer.style.display = 'block';
+        tabBar.style.display = 'flex';
+        gridView.style.display = 'none';
+        toggleBtn.textContent = 'Switch to 2x2 Grid View';
+      }
+    });
+  </script>
+</body>
+</html>
