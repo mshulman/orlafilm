@@ -161,7 +161,138 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Initialize Carousel AutoPlay
   if (slides.length > 0) {
+    showSlide(0);
     startAutoPlay();
+  }
+
+  // =========================================================================
+  // 4b. World of Orla 2.35:1 Cinematic Carousel (Manual Navigation)
+  // =========================================================================
+  const worldSlides = document.querySelectorAll('.world-slide');
+  const worldDotsContainer = document.getElementById('world-dots');
+  const worldPrevBtn = document.getElementById('world-prev-btn');
+  const worldNextBtn = document.getElementById('world-next-btn');
+  const worldCarouselFrame = document.querySelector('.world-carousel-frame');
+  let currentWorldSlide = 0;
+
+  if (worldSlides.length > 0) {
+    // Preload all carousel slide images immediately to guarantee instant display and prevent missing slides
+    worldSlides.forEach(slide => {
+      const img = slide.querySelector('img');
+      if (img && img.src) {
+        const preloader = new Image();
+        preloader.src = img.src;
+      }
+    });
+
+    // Generate pagination dots
+    if (worldDotsContainer) {
+      worldDotsContainer.innerHTML = '';
+      worldSlides.forEach((slide, idx) => {
+        const dot = document.createElement('button');
+        dot.className = `world-dot ${idx === 0 ? 'active' : ''}`;
+        dot.setAttribute('aria-label', `Go to scene slide ${idx + 1} of ${worldSlides.length}`);
+        dot.setAttribute('role', 'tab');
+        dot.setAttribute('aria-selected', idx === 0 ? 'true' : 'false');
+        dot.addEventListener('click', () => {
+          showWorldSlide(idx);
+        });
+        worldDotsContainer.appendChild(dot);
+      });
+    }
+
+    const worldDots = document.querySelectorAll('.world-dot');
+
+    const showWorldSlide = (index) => {
+      worldSlides.forEach(slide => {
+        slide.classList.remove('active');
+        slide.setAttribute('aria-hidden', 'true');
+      });
+      worldDots.forEach(dot => {
+        dot.classList.remove('active');
+        dot.setAttribute('aria-selected', 'false');
+      });
+
+      currentWorldSlide = (index + worldSlides.length) % worldSlides.length;
+      worldSlides[currentWorldSlide].classList.add('active');
+      worldSlides[currentWorldSlide].setAttribute('aria-hidden', 'false');
+      if (worldDots[currentWorldSlide]) {
+        worldDots[currentWorldSlide].classList.add('active');
+        worldDots[currentWorldSlide].setAttribute('aria-selected', 'true');
+      }
+    };
+
+    const nextWorldSlide = () => {
+      showWorldSlide(currentWorldSlide + 1);
+    };
+
+    const prevWorldSlide = () => {
+      showWorldSlide(currentWorldSlide - 1);
+    };
+
+    if (worldPrevBtn) {
+      worldPrevBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        prevWorldSlide();
+      });
+    }
+
+    if (worldNextBtn) {
+      worldNextBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        nextWorldSlide();
+      });
+    }
+
+    // Touch swipe support
+    if (worldCarouselFrame) {
+      let touchStartX = 0;
+      worldCarouselFrame.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      }, { passive: true });
+
+      worldCarouselFrame.addEventListener('touchend', (e) => {
+        const touchEndX = e.changedTouches[0].screenX;
+        const diffX = touchEndX - touchStartX;
+        if (Math.abs(diffX) > 45) {
+          if (diffX < 0) {
+            nextWorldSlide();
+          } else {
+            prevWorldSlide();
+          }
+        }
+      }, { passive: true });
+    }
+
+    // Keyboard navigation when World section is in view
+    document.addEventListener('keydown', (e) => {
+      const worldSection = document.getElementById('world');
+      if (!worldSection) return;
+      const rect = worldSection.getBoundingClientRect();
+      const inView = rect.top < window.innerHeight && rect.bottom > 0;
+      if (inView) {
+        if (e.key === 'ArrowLeft') {
+          prevWorldSlide();
+        } else if (e.key === 'ArrowRight') {
+          nextWorldSlide();
+        }
+      }
+    });
+
+    // Explicitly initialize World carousel to start with image 1 (slide index 0)
+    showWorldSlide(0);
+
+    // Reset to image 1 whenever navigating to World section
+    document.querySelectorAll('a[href="#world"]').forEach(link => {
+      link.addEventListener('click', () => {
+        showWorldSlide(0);
+      });
+    });
+
+    // Reset to image 1 on pageshow (e.g. back/forward navigation or refresh)
+    window.addEventListener('pageshow', () => {
+      showWorldSlide(0);
+    });
   }
 
   // =========================================================================
