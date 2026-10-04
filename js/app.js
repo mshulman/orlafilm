@@ -168,15 +168,15 @@ document.addEventListener('DOMContentLoaded', () => {
   // =========================================================================
   // 4b. World of Orla 2.35:1 Cinematic Carousel (Manual Navigation)
   // =========================================================================
-  const worldSlides = document.querySelectorAll('.world-slide');
+  const worldSlides = document.querySelectorAll('.world-desktop-only .world-slide');
   const worldDotsContainer = document.getElementById('world-dots');
   const worldPrevBtn = document.getElementById('world-prev-btn');
   const worldNextBtn = document.getElementById('world-next-btn');
-  const worldCarouselFrame = document.querySelector('.world-carousel-frame');
+  const worldCarouselFrame = document.querySelector('.world-desktop-only .world-carousel-frame');
   let currentWorldSlide = 0;
 
   if (worldSlides.length > 0) {
-    // Preload all carousel slide images immediately to guarantee instant display and prevent missing slides
+    // Preload all 9 desktop carousel slide images immediately to guarantee instant display and prevent missing slides
     worldSlides.forEach(slide => {
       const img = slide.querySelector('img');
       if (img && img.src) {
@@ -185,7 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Generate pagination dots
+    // Generate pagination dots (for desktop carousel)
     if (worldDotsContainer) {
       worldDotsContainer.innerHTML = '';
       worldSlides.forEach((slide, idx) => {
@@ -244,7 +244,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    // Touch swipe support
+    // Touch swipe support (desktop / tablet carousel)
     if (worldCarouselFrame) {
       let touchStartX = 0;
       worldCarouselFrame.addEventListener('touchstart', (e) => {
@@ -264,8 +264,9 @@ document.addEventListener('DOMContentLoaded', () => {
       }, { passive: true });
     }
 
-    // Keyboard navigation when World section is in view
+    // Keyboard navigation when World section is in view (desktop only)
     document.addEventListener('keydown', (e) => {
+      if (window.innerWidth < 768) return;
       const worldSection = document.getElementById('world');
       if (!worldSection) return;
       const rect = worldSection.getBoundingClientRect();
@@ -279,20 +280,64 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Explicitly initialize World carousel to start with image 1 (slide index 0)
+    // Explicitly initialize World carousel to slide 0
     showWorldSlide(0);
 
-    // Reset to image 1 whenever navigating to World section
+    // Reset to image 1 whenever navigating to World section on desktop
     document.querySelectorAll('a[href="#world"]').forEach(link => {
       link.addEventListener('click', () => {
         showWorldSlide(0);
       });
     });
 
-    // Reset to image 1 on pageshow (e.g. back/forward navigation or refresh)
+    // Reset on pageshow
     window.addEventListener('pageshow', () => {
       showWorldSlide(0);
     });
+
+    // Handle viewport resize: re-sync active slide state
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        if (window.innerWidth >= 768) {
+          showWorldSlide(currentWorldSlide);
+        }
+      }, 150);
+    });
+
+    // Mobile Progressive Disclosure (View All 9 Locations / Show Less)
+    const worldExpandBtn = document.getElementById('world-expand-btn');
+    const worldExpandBtnText = document.querySelector('.world-expand-btn-text');
+    const worldSecondarySlides = document.getElementById('world-secondary-slides');
+
+    if (worldExpandBtn && worldSecondarySlides) {
+      worldExpandBtn.addEventListener('click', () => {
+        const isExpanded = worldExpandBtn.getAttribute('aria-expanded') === 'true';
+        if (isExpanded) {
+          // Collapse
+          worldExpandBtn.setAttribute('aria-expanded', 'false');
+          worldSecondarySlides.classList.remove('is-expanded');
+          worldSecondarySlides.setAttribute('aria-hidden', 'true');
+          if (worldExpandBtnText) {
+            worldExpandBtnText.textContent = 'View All 9 Locations (+5)';
+          }
+          // Smoothly scroll back to button if scrolled below it
+          const btnRect = worldExpandBtn.getBoundingClientRect();
+          if (btnRect.top < 60) {
+            worldExpandBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        } else {
+          // Expand
+          worldExpandBtn.setAttribute('aria-expanded', 'true');
+          worldSecondarySlides.classList.add('is-expanded');
+          worldSecondarySlides.setAttribute('aria-hidden', 'false');
+          if (worldExpandBtnText) {
+            worldExpandBtnText.textContent = 'Show Less';
+          }
+        }
+      });
+    }
   }
 
   // =========================================================================
@@ -383,4 +428,30 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   }
+
+  // =========================================================================
+  // 12. Robust Image Error Recovery & Automatic Fallback Handler
+  // =========================================================================
+  // Listens in capture phase so that if any image fails to load (e.g. network glitch,
+  // stale mobile browser cache, or missing mobile crop on remote server), it automatically
+  // recovers by switching to data-fallback or retrying with a cache-busting timestamp.
+  window.addEventListener('error', (event) => {
+    const target = event.target;
+    if (target && target.tagName === 'IMG') {
+      // 1. If explicit fallback is declared and not yet tried, switch immediately
+      if (target.dataset.fallback && !target.dataset.fallbackAttempted) {
+        target.dataset.fallbackAttempted = 'true';
+        console.warn(`[Image Recovery] Failed: ${target.src} -> Falling back to: ${target.dataset.fallback}`);
+        target.src = target.dataset.fallback;
+        return;
+      }
+      // 2. Retry once with timestamp to bust stale mobile browser 404 cache
+      if (!target.dataset.retryAttempted) {
+        target.dataset.retryAttempted = 'true';
+        const cleanSrc = target.src.split('?')[0];
+        console.warn(`[Image Recovery] Retrying ${target.src} with cache-buster...`);
+        target.src = `${cleanSrc}?retry=${Date.now()}`;
+      }
+    }
+  }, true);
 });
