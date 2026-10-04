@@ -59,12 +59,21 @@ document.addEventListener('DOMContentLoaded', () => {
       header.classList.remove('scrolled');
     }
 
-    // Scroll Spy
+    // Scroll Spy: track chapter sections corresponding to visible nav links
+    const visibleNavLinks = Array.from(navLinks).filter(link => {
+      const href = link.getAttribute('href');
+      return href && href.startsWith('#') && link.style.display !== 'none';
+    });
+
     let currentActive = '';
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop - 120;
-      if (window.scrollY >= sectionTop) {
-        currentActive = section.getAttribute('id');
+    visibleNavLinks.forEach(link => {
+      const targetId = link.getAttribute('href').slice(1);
+      const targetSection = document.getElementById(targetId);
+      if (targetSection) {
+        const sectionTop = targetSection.offsetTop - 150;
+        if (window.scrollY >= sectionTop) {
+          currentActive = targetId;
+        }
       }
     });
 
