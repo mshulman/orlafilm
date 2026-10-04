@@ -513,7 +513,7 @@ button.btn-primary:hover,
 }
 
 .synopsis-content {
-  max-width: 680px;
+  max-width: 740px;
 }
 
 .synopsis-headline {
@@ -526,15 +526,21 @@ button.btn-primary:hover,
 }
 
 .synopsis-body p {
-  font-size: 1.1rem;
+  font-size: 1.25rem;
   line-height: 1.85;
   color: var(--text-primary);
-  margin-bottom: 18px;
+  margin-bottom: 22px;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
 }
 
 .synopsis-body p:last-child {
   margin-bottom: 0;
+}
+
+.synopsis-body strong {
+  color: var(--text-accent);
+  font-weight: 700;
+  letter-spacing: 0.2px;
 }
 
 /* Story Details Section (Below Photograph) */
@@ -2447,6 +2453,11 @@ button.btn-primary:hover,
 }
 
 @media (max-width: 767.98px) {
+  .synopsis-body p {
+    font-size: 1.15rem;
+    line-height: 1.75;
+    margin-bottom: 18px;
+  }
   .novel-showcase {
     grid-template-columns: 1fr;
     gap: 36px;
