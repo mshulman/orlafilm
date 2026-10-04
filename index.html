@@ -24,22 +24,33 @@
     content="A coming-of-age story of loss, magical realism, and heartfelt redemption. Adapted from Eoghan Walls's novel 'The Gospel of Orla'.">
   <meta name="twitter:image" content="https://orlafilm-staging-wj44w.ondigitalocean.app/images/hero_final.jpeg">
 
+  <!-- Preconnect & Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&display=swap">
+
+  <!-- Preload LCP Hero Background Image -->
+  <link rel="preload" as="image" href="images/hero_final.jpeg" fetchpriority="high">
+
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="css/index.css?v=30">
+  <link rel="stylesheet" href="css/index.css?v=31">
 </head>
 
 <body>
+  <!-- Accessibility Skip Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
 
   <!-- Password Gate Speedbump Overlay -->
   <div id="gate-overlay" class="gate-overlay" aria-modal="true" role="dialog">
     <div class="gate-card">
       <span class="gate-tag">PRIVATE PREVIEW</span>
-      <h2 class="gate-title">ORLA</h2>
+      <div class="gate-title" role="heading" aria-level="2">ORLA</div>
       <p class="gate-subtitle">Please enter the password to view this preview.</p>
       <form id="gate-form" class="gate-form" autocomplete="off">
         <div class="gate-input-wrapper">
           <input type="password" id="gate-password" class="gate-input" placeholder="Enter password" required autofocus
-            autocomplete="current-password">
+            autocomplete="current-password" aria-label="Enter password">
         </div>
         <button type="submit" id="gate-submit-btn" class="btn btn-primary gate-btn">ENTER SITE</button>
         <div id="gate-error" class="gate-error" aria-live="polite"></div>
@@ -51,7 +62,7 @@
   <header class="header" id="site-header">
     <div class="container header-container">
       <a href="#" class="logo" id="logo-link">Well Produced Films</a>
-      <button class="mobile-menu-toggle" aria-label="Toggle Menu" id="menu-toggle">
+      <button class="mobile-menu-toggle" aria-label="Toggle Menu" id="menu-toggle" aria-expanded="false" aria-controls="nav-menu">
         <span></span>
         <span></span>
         <span></span>
@@ -61,12 +72,15 @@
         <a href="#novel" class="nav-link">STORY</a>
         <a href="#world" class="nav-link">WORLD</a>
         <a href="#bios" class="nav-link">FILMMAKERS</a>
-        <a href="#opportunity" class="nav-link">PRODUCTION</a>
+        <a href="#production" class="nav-link">PRODUCTION</a>
         <a href="#contact" class="nav-link" style="display: none;">INVEST</a>
         <a href="#contact" class="nav-link nav-btn" style="display: none;">CONTACT</a>
       </nav>
     </div>
   </header>
+
+  <!-- Main Content Landmark -->
+  <main id="main-content">
 
   <!-- Hero Banner Section -->
   <section class="hero" id="hero">
@@ -93,7 +107,7 @@
         <div class="novel-cover-col">
           <div class="novel-book-frame">
             <img src="images/book_cover.jpeg" alt="The Gospel of Orla Novel Book Cover by Eoghan Walls"
-              class="novel-book-img">
+              class="novel-book-img" width="654" height="1000" loading="lazy" decoding="async">
           </div>
           <div class="novel-book-info">
             <h3 class="novel-book-title">THE GOSPEL<br>OF ORLA</h3>
@@ -152,7 +166,7 @@
         <div class="novel-author-card">
           <div class="novel-author-top">
             <div class="novel-author-photo-wrapper">
-              <img src="images/eoghan_walls.jpg" alt="Eoghan Walls - Author" class="novel-author-photo">
+              <img src="images/eoghan_walls.jpg" alt="Eoghan Walls - Author" class="novel-author-photo" width="330" height="440" loading="lazy" decoding="async">
             </div>
             <div class="novel-author-header">
               <h3 class="novel-author-name">EOGHAN<br>WALLS</h3>
@@ -171,7 +185,7 @@
 
   <!-- Synopsis Section with Image Overlay -->
   <section class="section synopsis-banner" id="about">
-    <div class="synopsis-banner-bg" style="background-image: url('images/orla_in_school.png');"></div>
+    <div class="synopsis-banner-bg" style="background-image: url('images/orla_in_school.jpg');"></div>
     <div class="synopsis-banner-overlay"></div>
     <div class="container synopsis-banner-container">
       <div class="synopsis-content">
@@ -201,7 +215,7 @@
         <div class="world-slides" id="world-slides">
           <!-- Slide 1: Canal Bridge at Midnight -->
           <div class="world-slide active" role="group" aria-roledescription="slide" aria-label="1 of 9" data-index="0">
-            <img src="images/orla_bike_night_bridge.jpg?v=14" alt="Orla on her Bicycle at the Canal Bridge" class="world-img" loading="eager" width="1200" height="511">
+            <img src="images/orla_bike_night_bridge.jpg?v=14" alt="Orla on her Bicycle at the Canal Bridge" class="world-img" loading="eager" decoding="async" width="1200" height="511">
             <div class="world-caption">
               <span class="world-slide-count">01 / 09</span>
               <h3 class="world-caption-title">Canal Bridge at Midnight</h3>
@@ -211,7 +225,7 @@
 
           <!-- Slide 2: Historic Lancaster -->
           <div class="world-slide" role="group" aria-roledescription="slide" aria-label="2 of 9" data-index="1" aria-hidden="true">
-            <img src="images/town_street_night.jpg?v=14" alt="Historic Lancaster Town Street at Night" class="world-img" loading="eager" width="1200" height="511">
+            <img src="images/town_street_night.jpg?v=14" alt="Historic Lancaster Town Street at Night" class="world-img" loading="lazy" decoding="async" width="1200" height="511">
             <div class="world-caption">
               <span class="world-slide-count">02 / 09</span>
               <h3 class="world-caption-title">Historic Lancaster</h3>
@@ -221,7 +235,7 @@
 
           <!-- Slide 3: The Stranger Defies Death -->
           <div class="world-slide" role="group" aria-roledescription="slide" aria-label="3 of 9" data-index="2" aria-hidden="true">
-            <img src="images/stranger_underwater_peeled.jpg?v=14" alt="The Stranger escaping sinking container underwater" class="world-img" loading="eager" width="1376" height="586">
+            <img src="images/stranger_underwater_peeled.jpg?v=14" alt="The Stranger escaping sinking container underwater" class="world-img" loading="lazy" decoding="async" width="1376" height="586">
             <div class="world-caption">
               <span class="world-slide-count">03 / 09</span>
               <h3 class="world-caption-title">The Stranger Defies Death</h3>
@@ -231,7 +245,7 @@
 
           <!-- Slide 4: Traveling Circus at Twilight -->
           <div class="world-slide" role="group" aria-roledescription="slide" aria-label="4 of 9" data-index="3" aria-hidden="true">
-            <img src="images/circus_twilight.jpg?v=14" alt="Traveling Circus Tent at Twilight" class="world-img" loading="eager" width="1264" height="538">
+            <img src="images/circus_twilight.jpg?v=14" alt="Traveling Circus Tent at Twilight" class="world-img" loading="lazy" decoding="async" width="1264" height="538">
             <div class="world-caption">
               <span class="world-slide-count">04 / 09</span>
               <h3 class="world-caption-title">Traveling Circus at Twilight</h3>
@@ -241,7 +255,7 @@
 
           <!-- Slide 5: Orla & Fantasmo -->
           <div class="world-slide" role="group" aria-roledescription="slide" aria-label="5 of 9" data-index="4" aria-hidden="true">
-            <img src="images/orla_fantasmo_elephant.jpg?v=14" alt="Orla and Fantasmo the Elephant" class="world-img" loading="eager" width="1376" height="586">
+            <img src="images/orla_fantasmo_elephant.jpg?v=14" alt="Orla and Fantasmo the Elephant" class="world-img" loading="lazy" decoding="async" width="1376" height="586">
             <div class="world-caption">
               <span class="world-slide-count">05 / 09</span>
               <h3 class="world-caption-title">Orla & Fantasmo</h3>
@@ -251,7 +265,7 @@
 
           <!-- Slide 6: The Lancaster Towpath -->
           <div class="world-slide" role="group" aria-roledescription="slide" aria-label="6 of 9" data-index="5" aria-hidden="true">
-            <img src="images/canal_towpath_night.jpg?v=14" alt="Lancaster Canal and Towpath at Night" class="world-img" loading="eager" width="1200" height="511">
+            <img src="images/canal_towpath_night.jpg?v=14" alt="Lancaster Canal and Towpath at Night" class="world-img" loading="lazy" decoding="async" width="1200" height="511">
             <div class="world-caption">
               <span class="world-slide-count">06 / 09</span>
               <h3 class="world-caption-title">The Lancaster Towpath</h3>
@@ -261,7 +275,7 @@
 
           <!-- Slide 7: The Stranger's Chair in the Barn -->
           <div class="world-slide" role="group" aria-roledescription="slide" aria-label="7 of 9" data-index="6" aria-hidden="true">
-            <img src="images/strangers_chair_barn.jpg?v=14" alt="The Stranger's Chair in the Barn with Turtledove" class="world-img" loading="eager" width="1200" height="511">
+            <img src="images/strangers_chair_barn.jpg?v=14" alt="The Stranger's Chair in the Barn with Turtledove" class="world-img" loading="lazy" decoding="async" width="1200" height="511">
             <div class="world-caption">
               <span class="world-slide-count">07 / 09</span>
               <h3 class="world-caption-title">The Stranger's Chair in the Barn</h3>
@@ -271,7 +285,7 @@
 
           <!-- Slide 8: The River Crossing -->
           <div class="world-slide" role="group" aria-roledescription="slide" aria-label="8 of 9" data-index="7" aria-hidden="true">
-            <img src="images/orla_river_crossing.jpg?v=14" alt="Orla and The Stranger Crossing the River" class="world-img" loading="eager" width="1376" height="586">
+            <img src="images/orla_river_crossing.jpg?v=14" alt="Orla and The Stranger Crossing the River" class="world-img" loading="lazy" decoding="async" width="1376" height="586">
             <div class="world-caption">
               <span class="world-slide-count">08 / 09</span>
               <h3 class="world-caption-title">The River Crossing</h3>
@@ -281,7 +295,7 @@
 
           <!-- Slide 9: Confrontation at Morecambe Bay -->
           <div class="world-slide" role="group" aria-roledescription="slide" aria-label="9 of 9" data-index="8" aria-hidden="true">
-            <img src="images/orla_dad_parking_lot.jpg?v=14" alt="Confrontation between Orla and her father at Morecambe Bay beach parking lot" class="world-img" loading="eager" width="1376" height="586">
+            <img src="images/orla_dad_parking_lot.jpg?v=14" alt="Confrontation between Orla and her father at Morecambe Bay beach parking lot" class="world-img" loading="lazy" decoding="async" width="1376" height="586">
             <div class="world-caption">
               <span class="world-slide-count">09 / 09</span>
               <h3 class="world-caption-title">Confrontation at Morecambe Bay</h3>
@@ -310,7 +324,7 @@
       <!-- Card 1: Canal Bridge at Midnight -->
       <div class="world-mobile-card">
         <div class="world-mobile-img-wrap">
-          <img src="images/mobile/world_mobile_1_canal_bridge.jpg?v=14" alt="Orla on her Bicycle at the Canal Bridge" class="world-img" loading="eager" width="717" height="896" data-fallback="images/orla_bike_night_bridge.jpg?v=14">
+          <img src="images/mobile/world_mobile_1_canal_bridge.jpg?v=14" alt="Orla on her Bicycle at the Canal Bridge" class="world-img" loading="eager" decoding="async" width="717" height="896" data-fallback="images/orla_bike_night_bridge.jpg?v=14">
         </div>
         <div class="world-caption">
           <span class="world-slide-count">01 / 09</span>
@@ -322,7 +336,7 @@
       <!-- Card 2: The Stranger Defies Death -->
       <div class="world-mobile-card">
         <div class="world-mobile-img-wrap">
-          <img src="images/mobile/world_mobile_2_stranger_defies_death.jpg?v=14" alt="The Stranger escaping sinking container underwater" class="world-img" loading="eager" width="614" height="768" data-fallback="images/stranger_underwater_peeled.jpg?v=14">
+          <img src="images/mobile/world_mobile_2_stranger_defies_death.jpg?v=14" alt="The Stranger escaping sinking container underwater" class="world-img" loading="lazy" decoding="async" width="614" height="768" data-fallback="images/stranger_underwater_peeled.jpg?v=14">
         </div>
         <div class="world-caption">
           <span class="world-slide-count">02 / 09</span>
@@ -334,7 +348,7 @@
       <!-- Card 3: Orla & Fantasmo -->
       <div class="world-mobile-card">
         <div class="world-mobile-img-wrap world-mobile-img-fantasmo">
-          <img src="images/mobile/world_mobile_3_orla_fantasmo.jpg?v=14" alt="Orla and Fantasmo the Elephant" class="world-img" loading="eager" width="960" height="768" data-fallback="images/orla_fantasmo_elephant.jpg?v=14">
+          <img src="images/mobile/world_mobile_3_orla_fantasmo.jpg?v=14" alt="Orla and Fantasmo the Elephant" class="world-img" loading="lazy" decoding="async" width="960" height="768" data-fallback="images/orla_fantasmo_elephant.jpg?v=14">
         </div>
         <div class="world-caption">
           <span class="world-slide-count">03 / 09</span>
@@ -346,7 +360,7 @@
       <!-- Card 4: Confrontation at Morecambe Bay -->
       <div class="world-mobile-card">
         <div class="world-mobile-img-wrap">
-          <img src="images/mobile/world_mobile_4_confrontation_morecambe.jpg?v=14" alt="Confrontation between Orla and her father at Morecambe Bay beach parking lot" class="world-img" loading="eager" width="614" height="768" data-fallback="images/orla_dad_parking_lot.jpg?v=14">
+          <img src="images/mobile/world_mobile_4_confrontation_morecambe.jpg?v=14" alt="Confrontation between Orla and her father at Morecambe Bay beach parking lot" class="world-img" loading="lazy" decoding="async" width="614" height="768" data-fallback="images/orla_dad_parking_lot.jpg?v=14">
         </div>
         <div class="world-caption">
           <span class="world-slide-count">04 / 09</span>
@@ -369,7 +383,7 @@
           <!-- Card 5: Historic Lancaster -->
           <div class="world-mobile-card">
             <div class="world-mobile-img-wrap">
-              <img src="images/mobile/world_mobile_7_historic_lancaster.jpg?v=14" alt="Historic Lancaster Town Street at Night" class="world-img" loading="lazy" width="717" height="896" data-fallback="images/town_street_night.jpg?v=14">
+              <img src="images/mobile/world_mobile_7_historic_lancaster.jpg?v=14" alt="Historic Lancaster Town Street at Night" class="world-img" loading="lazy" decoding="async" width="717" height="896" data-fallback="images/town_street_night.jpg?v=14">
             </div>
             <div class="world-caption">
               <span class="world-slide-count">05 / 09</span>
@@ -381,7 +395,7 @@
           <!-- Card 6: Traveling Circus at Twilight -->
           <div class="world-mobile-card">
             <div class="world-mobile-img-wrap">
-              <img src="images/mobile/world_mobile_6_circus_twilight.jpg?v=14" alt="Traveling Circus Tent at Twilight" class="world-img" loading="lazy" width="678" height="848" data-fallback="images/circus_twilight.jpg?v=14">
+              <img src="images/mobile/world_mobile_6_circus_twilight.jpg?v=14" alt="Traveling Circus Tent at Twilight" class="world-img" loading="lazy" decoding="async" width="678" height="848" data-fallback="images/circus_twilight.jpg?v=14">
             </div>
             <div class="world-caption">
               <span class="world-slide-count">06 / 09</span>
@@ -393,7 +407,7 @@
           <!-- Card 7: The Lancaster Towpath -->
           <div class="world-mobile-card">
             <div class="world-mobile-img-wrap">
-              <img src="images/mobile/world_mobile_towpath.jpg?v=14" alt="Lancaster Canal and Towpath at Night" class="world-img" loading="lazy" width="717" height="896" data-fallback="images/canal_towpath_night.jpg?v=14">
+              <img src="images/mobile/world_mobile_towpath.jpg?v=14" alt="Lancaster Canal and Towpath at Night" class="world-img" loading="lazy" decoding="async" width="717" height="896" data-fallback="images/canal_towpath_night.jpg?v=14">
             </div>
             <div class="world-caption">
               <span class="world-slide-count">07 / 09</span>
@@ -405,7 +419,7 @@
           <!-- Card 8: The Stranger's Chair in the Barn -->
           <div class="world-mobile-card">
             <div class="world-mobile-img-wrap">
-              <img src="images/mobile/world_mobile_barn_chair.jpg?v=14" alt="The Stranger's Chair in the Barn with Turtledove" class="world-img" loading="lazy" width="717" height="896" data-fallback="images/strangers_chair_barn.jpg?v=14">
+              <img src="images/mobile/world_mobile_barn_chair.jpg?v=14" alt="The Stranger's Chair in the Barn with Turtledove" class="world-img" loading="lazy" decoding="async" width="717" height="896" data-fallback="images/strangers_chair_barn.jpg?v=14">
             </div>
             <div class="world-caption">
               <span class="world-slide-count">08 / 09</span>
@@ -417,7 +431,7 @@
           <!-- Card 9: The River Crossing -->
           <div class="world-mobile-card">
             <div class="world-mobile-img-wrap">
-              <img src="images/mobile/world_mobile_river_crossing.jpg?v=14" alt="Orla and The Stranger Crossing the River" class="world-img" loading="lazy" width="614" height="768" data-fallback="images/orla_river_crossing.jpg?v=14">
+              <img src="images/mobile/world_mobile_river_crossing.jpg?v=14" alt="Orla and The Stranger Crossing the River" class="world-img" loading="lazy" decoding="async" width="614" height="768" data-fallback="images/orla_river_crossing.jpg?v=14">
             </div>
             <div class="world-caption">
               <span class="world-slide-count">09 / 09</span>
@@ -432,7 +446,7 @@
     <div class="container">
       <div class="text-center">
         <p class="world-intro-text">
-          Set across the cinematic canals, towpaths, and historic streets of Lancaster and the wider Lancashire landscape, ORLA is a story about the internalized grief and disillusionment of a fourteen-year-old girl—and how running away can sometimes be the only way to find home.
+          ORLA is set along the cinematic canals, towpaths, and historic streets of Lancaster and the lush Lancashire Countryside. There, our heroine follows the canals through a vibrant landscape on her journey to liberate herself from her overwhelming grief.
         </p>
       </div>
     </div>
@@ -449,7 +463,7 @@
         <!-- Character: Orla -->
         <div class="character-card" data-char="orla">
           <div class="character-img-wrapper">
-            <img src="images/orla_new.png?v=14" alt="Orla" class="character-img" loading="eager" width="484" height="391">
+            <img src="images/orla_new.png?v=14" alt="Orla" class="character-img" loading="lazy" decoding="async" width="360" height="291">
             <div class="character-hover-overlay">
               <p class="character-short-bio">Orla is a very smart but deeply troubled 14 year old girl who has recently
                 lost her mother.</p>
@@ -463,7 +477,7 @@
         <!-- Character: Stranger -->
         <div class="character-card" data-char="stranger">
           <div class="character-img-wrapper">
-            <img src="images/character_stranger.jpg?v=14" alt="The Stranger" class="character-img" loading="eager" width="1024" height="1024">
+            <img src="images/character_stranger.jpg?v=14" alt="The Stranger" class="character-img" loading="lazy" decoding="async" width="400" height="400">
             <div class="character-hover-overlay">
               <p class="character-short-bio">The stranger is a mysterious dark skinned, dark haired refugee in his early
                 30’s.</p>
@@ -477,7 +491,7 @@
         <!-- Character: Dad -->
         <div class="character-card" data-char="dad">
           <div class="character-img-wrapper">
-            <img src="images/orlas_dad.jpg?v=14" alt="Orla's Dad" class="character-img" loading="eager" width="1024" height="1024">
+            <img src="images/orlas_dad.jpg?v=14" alt="Orla's Dad" class="character-img" loading="lazy" decoding="async" width="400" height="400">
             <div class="character-hover-overlay">
               <p class="character-short-bio">Dad is barely holding it together. Recently widowed and grieving deeply,
                 Dad has the responsibility of caring for his two daughters...</p>
@@ -491,7 +505,7 @@
         <!-- Character: Lily -->
         <div class="character-card" data-char="lily">
           <div class="character-img-wrapper">
-            <img src="images/character_lily.jpg?v=14" alt="Lily" class="character-img" loading="eager" width="2048" height="2048">
+            <img src="images/character_lily.jpg?v=14" alt="Lily" class="character-img" loading="lazy" decoding="async" width="400" height="400">
             <div class="character-hover-overlay">
               <p class="character-short-bio">Lily is the bridge between Orla and Dad, who while complete at odds with
                 one another...</p>
@@ -505,7 +519,7 @@
         <!-- Character: Mum -->
         <div class="character-card" data-char="mum">
           <div class="character-img-wrapper">
-            <img src="images/orlas_mom.jpg?v=14" alt="Orla's Mum" class="character-img" loading="eager" width="848" height="1264">
+            <img src="images/orlas_mom.jpg?v=14" alt="Orla's Mum" class="character-img" loading="lazy" decoding="async" width="400" height="596">
             <div class="character-hover-overlay">
               <p class="character-short-bio">Mum comes to the story only through Orla’s memory of her, yet she is a
                 pivotal character...</p>
@@ -519,7 +533,7 @@
         <!-- Character: Fantasmo -->
         <div class="character-card" data-char="fantasmo">
           <div class="character-img-wrapper">
-            <img src="images/character_fantasmo.png?v=14" alt="Fantasmo" class="character-img" loading="eager" width="2048" height="2048">
+            <img src="images/character_fantasmo.png?v=14" alt="Fantasmo" class="character-img" loading="lazy" decoding="async" width="400" height="400">
             <div class="character-hover-overlay">
               <p class="character-short-bio">Fantasmo the Elephant becomes a magical force in Orla’s life, as she sees
                 part of herself in the eyes...</p>
@@ -649,8 +663,269 @@
     </div>
   </section>
 
-  <!-- The Journey Section -->
-  <section class="section journey" id="journey">
+  <!-- Tone Comps Section (Cinematic Inspiration) -->
+  <section class="section tone-comps" id="tone-comps">
+    <div class="tone-comps-bg-decor"></div>
+    <div class="container">
+      <div class="text-center tone-comps-header">
+        <span class="section-tag">CINEMATIC INSPIRATION</span><br>
+        <h2 class="accent-heading">TONE COMPS</h2>
+        <p class="section-subtitle tone-comps-subtitle">
+          Blending wondrous magical realism, raw youth perspective, and heartfelt emotional grounding.
+        </p>
+      </div>
+
+      <div class="tone-comps-grid">
+        <!-- Comp 1: Scrapper -->
+        <article class="tone-comp-card">
+          <div class="tone-comp-poster-wrap">
+            <img src="images/comp_scrapper.jpg" alt="Scrapper Movie Poster" class="tone-comp-poster" loading="lazy" decoding="async" width="500" height="750">
+            <div class="tone-comp-poster-overlay"></div>
+          </div>
+          <div class="tone-comp-content">
+            <div class="tone-comp-meta">
+              <span class="tone-comp-director">DIR. CHARLOTTE REGAN</span>
+              <span class="tone-comp-year">2023</span>
+            </div>
+            <h3 class="tone-comp-title">SCRAPPER</h3>
+            <div class="tone-comp-tags">
+              <span class="tone-tag">Working-Class Heart</span>
+              <span class="tone-tag">Fierce Resilience</span>
+              <span class="tone-tag">Whimsical Grief</span>
+            </div>
+            <p class="tone-comp-desc">
+              Captures the spirited resilience and imaginative defense mechanisms of a fiercely self-reliant young girl
+              navigating the loss of her mother—blending vibrant, offbeat British realism with tender emotional
+              revelation.
+            </p>
+          </div>
+        </article>
+
+        <!-- Comp 2: Lady Bird -->
+        <article class="tone-comp-card">
+          <div class="tone-comp-poster-wrap">
+            <img src="images/comp_ladybird.jpeg" alt="Lady Bird Movie Poster" class="tone-comp-poster" loading="lazy" decoding="async" width="220" height="325">
+            <div class="tone-comp-poster-overlay"></div>
+          </div>
+          <div class="tone-comp-content">
+            <div class="tone-comp-meta">
+              <span class="tone-comp-director">DIR. GRETA GERWIG</span>
+              <span class="tone-comp-year">2017</span>
+            </div>
+            <h3 class="tone-comp-title">LADY BIRD</h3>
+            <div class="tone-comp-tags">
+              <span class="tone-tag">Coming-of-Age</span>
+              <span class="tone-tag">Adolescent Rebellion</span>
+              <span class="tone-tag">Family Dynamics</span>
+            </div>
+            <p class="tone-comp-desc">
+              Captures the turbulent, fiercely headstrong essence of teenage girlhood and complicated familial
+              love—navigating rebellion, deep emotional yearning, and the aching search for identity and belonging.
+            </p>
+          </div>
+        </article>
+
+        <!-- Comp 3: The Quiet Girl -->
+        <article class="tone-comp-card">
+          <div class="tone-comp-poster-wrap">
+            <img src="images/comp_the_quiet_girl.jpg" alt="The Quiet Girl Movie Poster" class="tone-comp-poster"
+              loading="lazy" decoding="async" width="259" height="384">
+            <div class="tone-comp-poster-overlay"></div>
+          </div>
+          <div class="tone-comp-content">
+            <div class="tone-comp-meta">
+              <span class="tone-comp-director">DIR. COLM BAIRÉAD</span>
+              <span class="tone-comp-year">2022</span>
+            </div>
+            <h3 class="tone-comp-title">THE QUIET GIRL</h3>
+            <div class="tone-comp-tags">
+              <span class="tone-tag">Lyrical Tenderness</span>
+              <span class="tone-tag">Silent Longing</span>
+              <span class="tone-tag">Emotional Awakening</span>
+            </div>
+            <p class="tone-comp-desc">
+              A luminous, deeply affecting portrait of childhood isolation and unspoken longing—capturing how quiet
+              observation, patient affection, and rural landscapes can tenderly heal a fractured young heart.
+            </p>
+          </div>
+        </article>
+
+        <!-- Comp 4: A Monster Calls -->
+        <article class="tone-comp-card">
+          <div class="tone-comp-poster-wrap">
+            <img src="images/comp_a_monster_calls.jpg" alt="A Monster Calls Movie Poster" class="tone-comp-poster"
+              loading="lazy" decoding="async" width="220" height="326">
+            <div class="tone-comp-poster-overlay"></div>
+          </div>
+          <div class="tone-comp-content">
+            <div class="tone-comp-meta">
+              <span class="tone-comp-director">DIR. J.A. BAYONA</span>
+              <span class="tone-comp-year">2016</span>
+            </div>
+            <h3 class="tone-comp-title">A MONSTER CALLS</h3>
+            <div class="tone-comp-tags">
+              <span class="tone-tag">Magical Realism</span>
+              <span class="tone-tag">Grief &amp; Healing</span>
+              <span class="tone-tag">Mythic Consolation</span>
+            </div>
+            <p class="tone-comp-desc">
+              A powerful cinematic touchstone for how profound maternal loss and childhood grief summon mythic
+              wonders—balancing raw, unsentimental emotional truth with imaginative solace.
+            </p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Section -->
+  <section class="section bios" id="bios">
+    <div class="container">
+      <div class="text-center">
+        <h2 class="accent-heading">THE TEAM</h2>
+      </div>
+
+      <!-- Key Filmmakers (5 Cards: Row 1 = 3 cards, Row 2 = 2 cards centered) -->
+      <div class="filmmakers-row-top">
+        <!-- Nancy Garvin -->
+        <div class="filmmaker-card">
+          <div class="filmmaker-top">
+            <div class="filmmaker-photo-wrapper">
+              <img src="images/nancy_garvin.jpeg" alt="Nancy Garvin - Writer & Lead Producer"
+                class="filmmaker-photo filmmaker-photo-nancy" width="240" height="320" loading="lazy" decoding="async">
+            </div>
+            <div class="filmmaker-header">
+              <h3 class="filmmaker-name">NANCY GARVIN</h3>
+              <span class="filmmaker-role">WRITER / LEAD PRODUCER</span>
+            </div>
+          </div>
+          <div class="filmmaker-bio">
+            <p>At the helm is Producer Nancy Garvin, whose passion for developing rich, emotionally complex narratives
+              drives the company's creative vision.</p>
+            <p>With experience spanning all facets of film production and a sharp eye for story development, Nancy leads
+              with a collaborative, audience-focused approach, partnering with visionary writers, directors and talent
+              to bring meaningful, high-quality films to life.</p>
+            <p><em>ORLA</em> marks a powerful next chapter in her mission to produce compelling, emotionally resonant
+              cinema with international appeal.</p>
+          </div>
+          <div class="filmmaker-credentials">
+            <span class="credential-tag">CEO &amp; Producer, Well Produced Films</span>
+            <span class="credential-tag">Screenwriter, <em>ORLA</em></span>
+            <span class="credential-tag">Independent Film Producer</span>
+          </div>
+        </div>
+
+        <!-- Dr. Maryam Ghorbankarimi -->
+        <div class="filmmaker-card">
+          <div class="filmmaker-top">
+            <div class="filmmaker-photo-wrapper">
+              <img src="images/maryam_ghorbankarimi.jpg" alt="Dr Maryam Ghorbankarimi - Producer"
+                class="filmmaker-photo" width="275" height="345" loading="lazy" decoding="async">
+            </div>
+            <div class="filmmaker-header">
+              <h3 class="filmmaker-name">DR MARYAM GHORBANKARIMI</h3>
+              <span class="filmmaker-role">PRODUCER</span>
+            </div>
+          </div>
+          <div class="filmmaker-bio">
+            <p>Dr Maryam Ghorbankarimi is a filmmaker, producer and editor with more than 20 years’ experience in
+              transnational filmmaking across Iran, Canada, the USA and the UK. She is also Associate Professor of Film
+              Practice at Lancaster University.</p>
+            <p>Her filmmaking and research are closely interconnected, with a focus on transnational cinema,
+              representation, gender and socially engaged storytelling. Working across fiction and documentary, she
+              brings together research and creative practice to develop stories across cultures and borders.</p>
+          </div>
+          <div class="filmmaker-credentials">
+            <span class="credential-tag">Producer &amp; Filmmaker</span>
+            <span class="credential-tag">20+ Years Film &amp; Editing</span>
+            <span class="credential-tag">Story Development &amp; Post-Production</span>
+          </div>
+        </div>
+
+        <!-- Tim Juby -->
+        <div class="filmmaker-card">
+          <div class="filmmaker-top">
+            <div class="filmmaker-photo-wrapper">
+              <img src="images/tim_juby.jpg?v=16" alt="Tim Juby - Producer" class="filmmaker-photo" width="240" height="306" loading="lazy" decoding="async">
+            </div>
+            <div class="filmmaker-header">
+              <h3 class="filmmaker-name">TIM JUBY</h3>
+              <span class="filmmaker-role">PRODUCER</span>
+            </div>
+          </div>
+          <div class="filmmaker-bio">
+            <p>An award-winning Creative Producer and Director with more than 30 years' experience across film,
+              television, animation and commercial production. Tim brings extensive experience in developing and
+              delivering ambitious creative projects, combining strong storytelling with the practical realities of
+              production.</p>
+          </div>
+          <div class="filmmaker-credentials">
+            <span class="credential-tag">Award-Winning Producer &amp; Director</span>
+            <span class="credential-tag">30+ Years Film, TV &amp; Animation</span>
+            <span class="credential-tag">Creative Development &amp; Execution</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="filmmakers-row-bottom">
+        <!-- Michael Shulman -->
+        <div class="filmmaker-card">
+          <div class="filmmaker-top">
+            <div class="filmmaker-photo-wrapper">
+              <img src="images/michael_shulman.jpg" alt="Michael Shulman - Producer" class="filmmaker-photo" width="240" height="320" loading="lazy" decoding="async">
+            </div>
+            <div class="filmmaker-header">
+              <h3 class="filmmaker-name">MICHAEL SHULMAN</h3>
+              <span class="filmmaker-role">PRODUCER</span>
+            </div>
+          </div>
+          <div class="filmmaker-bio">
+            <p>An accomplished executive programme leader with more than 30 years’ experience across Google, Apple,
+              Microsoft, and startups. Michael brings proven operational discipline to film production, promising
+              investors transparent governance, rigorous schedule management, and uncompromising budget control for
+              ambitious creative visions.</p>
+          </div>
+          <div class="filmmaker-credentials">
+            <span class="credential-tag">Executive Programme Leader</span>
+            <span class="credential-tag">30+ Years Tech &amp; Programme Leadership</span>
+            <span class="credential-tag">Governance &amp; Budget Control</span>
+          </div>
+        </div>
+
+        <!-- Red Robin Films -->
+        <div class="filmmaker-card">
+          <div class="filmmaker-top">
+            <div class="filmmaker-photo-wrapper filmmaker-photo-logo">
+              <img src="images/red_robin_films.png" alt="Red Robin Films - Production Partner"
+                class="filmmaker-photo filmmaker-logo-img" width="300" height="300" loading="lazy" decoding="async">
+            </div>
+            <div class="filmmaker-header">
+              <h3 class="filmmaker-name">RED ROBIN FILMS</h3>
+              <span class="filmmaker-role">PRODUCTION PARTNER</span>
+            </div>
+          </div>
+          <div class="filmmaker-bio">
+            <p>A UK-based independent production company led by producers and directors Isobel Drane and Kieran Lowley,
+              dedicated to ambitious, character-driven storytelling.</p>
+            <p>Pioneering innovative filmmaking and cutting-edge virtual production technologies, Red Robin Films
+              collaborated with Sony Europe on the landmark production <em>Hestia</em> to push the boundaries of
+              cinematic storytelling.</p>
+          </div>
+          <div class="filmmaker-credentials">
+            <span class="credential-tag">UK Production Company</span>
+            <span class="credential-tag">Virtual Production &amp; Innovation</span>
+            <span class="credential-tag">Sony Europe Co-Production Partner</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- The Journey Section (Production Timeline) -->
+  <section class="section journey" id="production">
+    <div id="journey"></div>
     <div class="container">
       <div class="text-center journey-header">
         <span class="section-tag">PROJECT ROADMAP</span><br>
@@ -755,264 +1030,6 @@
             <p class="timeline-desc">Taking ORLA to audiences beyond its journey.</p>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Team Section -->
-  <section class="section bios" id="bios">
-    <div class="container">
-      <div class="text-center">
-        <h2 class="accent-heading">THE TEAM</h2>
-      </div>
-
-      <!-- Key Filmmakers (5 Cards: Row 1 = 3 cards, Row 2 = 2 cards centered) -->
-      <div class="filmmakers-row-top">
-        <!-- Nancy Garvin -->
-        <div class="filmmaker-card">
-          <div class="filmmaker-top">
-            <div class="filmmaker-photo-wrapper">
-              <img src="images/nancy_garvin.jpeg" alt="Nancy Garvin - Writer & Lead Producer"
-                class="filmmaker-photo filmmaker-photo-nancy">
-            </div>
-            <div class="filmmaker-header">
-              <h3 class="filmmaker-name">NANCY GARVIN</h3>
-              <span class="filmmaker-role">WRITER / LEAD PRODUCER</span>
-            </div>
-          </div>
-          <div class="filmmaker-bio">
-            <p>At the helm is Producer Nancy Garvin, whose passion for developing rich, emotionally complex narratives
-              drives the company's creative vision.</p>
-            <p>With experience spanning all facets of film production and a sharp eye for story development, Nancy leads
-              with a collaborative, audience-focused approach, partnering with visionary writers, directors and talent
-              to bring meaningful, high-quality films to life.</p>
-            <p><em>ORLA</em> marks a powerful next chapter in her mission to produce compelling, emotionally resonant
-              cinema with international appeal.</p>
-          </div>
-          <div class="filmmaker-credentials">
-            <span class="credential-tag">CEO &amp; Producer, Well Produced Films</span>
-            <span class="credential-tag">Screenwriter, <em>ORLA</em></span>
-            <span class="credential-tag">Independent Film Producer</span>
-          </div>
-        </div>
-
-        <!-- Dr. Maryam Ghorbankarimi -->
-        <div class="filmmaker-card">
-          <div class="filmmaker-top">
-            <div class="filmmaker-photo-wrapper">
-              <img src="images/maryam_ghorbankarimi.png" alt="Dr Maryam Ghorbankarimi - Producer"
-                class="filmmaker-photo">
-            </div>
-            <div class="filmmaker-header">
-              <h3 class="filmmaker-name">DR MARYAM GHORBANKARIMI</h3>
-              <span class="filmmaker-role">PRODUCER</span>
-            </div>
-          </div>
-          <div class="filmmaker-bio">
-            <p>Dr Maryam Ghorbankarimi is a filmmaker, producer and editor with more than 20 years’ experience in
-              transnational filmmaking across Iran, Canada, the USA and the UK. She is also Associate Professor of Film
-              Practice at Lancaster University.</p>
-            <p>Her filmmaking and research are closely interconnected, with a focus on transnational cinema,
-              representation, gender and socially engaged storytelling. Working across fiction and documentary, she
-              brings together research and creative practice to develop stories across cultures and borders.</p>
-          </div>
-          <div class="filmmaker-credentials">
-            <span class="credential-tag">Producer &amp; Filmmaker</span>
-            <span class="credential-tag">20+ Years Film &amp; Editing</span>
-            <span class="credential-tag">Story Development &amp; Post-Production</span>
-          </div>
-        </div>
-
-        <!-- Tim Juby -->
-        <div class="filmmaker-card">
-          <div class="filmmaker-top">
-            <div class="filmmaker-photo-wrapper">
-              <img src="images/tim_juby.jpg?v=16" alt="Tim Juby - Producer" class="filmmaker-photo">
-            </div>
-            <div class="filmmaker-header">
-              <h3 class="filmmaker-name">TIM JUBY</h3>
-              <span class="filmmaker-role">PRODUCER</span>
-            </div>
-          </div>
-          <div class="filmmaker-bio">
-            <p>An award-winning Creative Producer and Director with more than 30 years' experience across film,
-              television, animation and commercial production. Tim brings extensive experience in developing and
-              delivering ambitious creative projects, combining strong storytelling with the practical realities of
-              production.</p>
-          </div>
-          <div class="filmmaker-credentials">
-            <span class="credential-tag">Award-Winning Producer &amp; Director</span>
-            <span class="credential-tag">30+ Years Film, TV &amp; Animation</span>
-            <span class="credential-tag">Creative Development &amp; Execution</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="filmmakers-row-bottom">
-        <!-- Michael Shulman -->
-        <div class="filmmaker-card">
-          <div class="filmmaker-top">
-            <div class="filmmaker-photo-wrapper">
-              <img src="images/michael_shulman.jpg" alt="Michael Shulman - Producer" class="filmmaker-photo">
-            </div>
-            <div class="filmmaker-header">
-              <h3 class="filmmaker-name">MICHAEL SHULMAN</h3>
-              <span class="filmmaker-role">PRODUCER</span>
-            </div>
-          </div>
-          <div class="filmmaker-bio">
-            <p>An accomplished executive programme leader with more than 30 years’ experience across Google, Apple,
-              Microsoft, and startups. Michael brings proven operational discipline to film production, promising
-              investors transparent governance, rigorous schedule management, and uncompromising budget control for
-              ambitious creative visions.</p>
-          </div>
-          <div class="filmmaker-credentials">
-            <span class="credential-tag">Executive Programme Leader</span>
-            <span class="credential-tag">30+ Years Tech &amp; Programme Leadership</span>
-            <span class="credential-tag">Governance &amp; Budget Control</span>
-          </div>
-        </div>
-
-        <!-- Red Robin Films -->
-        <div class="filmmaker-card">
-          <div class="filmmaker-top">
-            <div class="filmmaker-photo-wrapper filmmaker-photo-logo">
-              <img src="https://orlafilm.co.uk/images/red_robin_films.png" alt="Red Robin Films - Production Partner"
-                class="filmmaker-photo filmmaker-logo-img">
-            </div>
-            <div class="filmmaker-header">
-              <h3 class="filmmaker-name">RED ROBIN FILMS</h3>
-              <span class="filmmaker-role">PRODUCTION PARTNER</span>
-            </div>
-          </div>
-          <div class="filmmaker-bio">
-            <p>A UK-based independent production company led by producers and directors Isobel Drane and Kieran Lowley,
-              dedicated to ambitious, character-driven storytelling.</p>
-            <p>Pioneering innovative filmmaking and cutting-edge virtual production technologies, Red Robin Films
-              collaborated with Sony Europe on the landmark production <em>Hestia</em> to push the boundaries of
-              cinematic storytelling.</p>
-          </div>
-          <div class="filmmaker-credentials">
-            <span class="credential-tag">UK Production Company</span>
-            <span class="credential-tag">Virtual Production &amp; Innovation</span>
-            <span class="credential-tag">Sony Europe Co-Production Partner</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Tone Comps Section -->
-  <section class="section tone-comps" id="tone-comps">
-    <div class="tone-comps-bg-decor"></div>
-    <div class="container">
-      <div class="text-center tone-comps-header">
-        <span class="section-tag">CINEMATIC INSPIRATION</span><br>
-        <h2 class="accent-heading">TONE COMPS</h2>
-        <p class="section-subtitle tone-comps-subtitle">
-          Blending wondrous magical realism, raw youth perspective, and heartfelt emotional grounding.
-        </p>
-      </div>
-
-      <div class="tone-comps-grid">
-        <!-- Comp 1: Scrapper -->
-        <article class="tone-comp-card">
-          <div class="tone-comp-poster-wrap">
-            <img src="images/comp_scrapper.jpg" alt="Scrapper Movie Poster" class="tone-comp-poster" loading="lazy">
-            <div class="tone-comp-poster-overlay"></div>
-          </div>
-          <div class="tone-comp-content">
-            <div class="tone-comp-meta">
-              <span class="tone-comp-director">DIR. CHARLOTTE REGAN</span>
-              <span class="tone-comp-year">2023</span>
-            </div>
-            <h3 class="tone-comp-title">SCRAPPER</h3>
-            <div class="tone-comp-tags">
-              <span class="tone-tag">Working-Class Heart</span>
-              <span class="tone-tag">Fierce Resilience</span>
-              <span class="tone-tag">Whimsical Grief</span>
-            </div>
-            <p class="tone-comp-desc">
-              Captures the spirited resilience and imaginative defense mechanisms of a fiercely self-reliant young girl
-              navigating the loss of her mother—blending vibrant, offbeat British realism with tender emotional
-              revelation.
-            </p>
-          </div>
-        </article>
-
-        <!-- Comp 2: Lady Bird -->
-        <article class="tone-comp-card">
-          <div class="tone-comp-poster-wrap">
-            <img src="images/comp_ladybird.jpeg" alt="Lady Bird Movie Poster" class="tone-comp-poster" loading="lazy">
-            <div class="tone-comp-poster-overlay"></div>
-          </div>
-          <div class="tone-comp-content">
-            <div class="tone-comp-meta">
-              <span class="tone-comp-director">DIR. GRETA GERWIG</span>
-              <span class="tone-comp-year">2017</span>
-            </div>
-            <h3 class="tone-comp-title">LADY BIRD</h3>
-            <div class="tone-comp-tags">
-              <span class="tone-tag">Coming-of-Age</span>
-              <span class="tone-tag">Adolescent Rebellion</span>
-              <span class="tone-tag">Family Dynamics</span>
-            </div>
-            <p class="tone-comp-desc">
-              Captures the turbulent, fiercely headstrong essence of teenage girlhood and complicated familial
-              love—navigating rebellion, deep emotional yearning, and the aching search for identity and belonging.
-            </p>
-          </div>
-        </article>
-
-        <!-- Comp 3: The Quiet Girl -->
-        <article class="tone-comp-card">
-          <div class="tone-comp-poster-wrap">
-            <img src="images/comp_the_quiet_girl.jpg" alt="The Quiet Girl Movie Poster" class="tone-comp-poster"
-              loading="lazy">
-            <div class="tone-comp-poster-overlay"></div>
-          </div>
-          <div class="tone-comp-content">
-            <div class="tone-comp-meta">
-              <span class="tone-comp-director">DIR. COLM BAIRÉAD</span>
-              <span class="tone-comp-year">2022</span>
-            </div>
-            <h3 class="tone-comp-title">THE QUIET GIRL</h3>
-            <div class="tone-comp-tags">
-              <span class="tone-tag">Lyrical Tenderness</span>
-              <span class="tone-tag">Silent Longing</span>
-              <span class="tone-tag">Emotional Awakening</span>
-            </div>
-            <p class="tone-comp-desc">
-              A luminous, deeply affecting portrait of childhood isolation and unspoken longing—capturing how quiet
-              observation, patient affection, and rural landscapes can tenderly heal a fractured young heart.
-            </p>
-          </div>
-        </article>
-
-        <!-- Comp 4: A Monster Calls -->
-        <article class="tone-comp-card">
-          <div class="tone-comp-poster-wrap">
-            <img src="images/comp_a_monster_calls.jpg" alt="A Monster Calls Movie Poster" class="tone-comp-poster"
-              loading="lazy">
-            <div class="tone-comp-poster-overlay"></div>
-          </div>
-          <div class="tone-comp-content">
-            <div class="tone-comp-meta">
-              <span class="tone-comp-director">DIR. J.A. BAYONA</span>
-              <span class="tone-comp-year">2016</span>
-            </div>
-            <h3 class="tone-comp-title">A MONSTER CALLS</h3>
-            <div class="tone-comp-tags">
-              <span class="tone-tag">Magical Realism</span>
-              <span class="tone-tag">Grief &amp; Healing</span>
-              <span class="tone-tag">Mythic Consolation</span>
-            </div>
-            <p class="tone-comp-desc">
-              A powerful cinematic touchstone for how profound maternal loss and childhood grief summon mythic
-              wonders—balancing raw, unsentimental emotional truth with imaginative solace.
-            </p>
-          </div>
-        </article>
       </div>
     </div>
   </section>
@@ -1309,11 +1326,11 @@
           <div class="form-row">
             <div class="form-group">
               <label for="contact-name">Name</label>
-              <input type="text" id="contact-name" name="name" required placeholder="Your name">
+              <input type="text" id="contact-name" name="name" required placeholder="Your name" autocomplete="name">
             </div>
             <div class="form-group">
               <label for="contact-email">Email Address</label>
-              <input type="email" id="contact-email" name="email" required placeholder="your.email@example.com">
+              <input type="email" id="contact-email" name="email" required placeholder="your.email@example.com" autocomplete="email">
             </div>
           </div>
           <div class="form-group">
@@ -1335,6 +1352,8 @@
     </div>
   </section>
 
+  </main>
+
   <!-- Footer -->
   <footer class="footer">
     <div class="container footer-grid">
@@ -1348,23 +1367,23 @@
         <a href="#novel">Story</a>
         <a href="#world">World</a>
         <a href="#bios">Filmmakers</a>
-        <a href="#opportunity">Production</a>
+        <a href="#production">Production</a>
         <a href="#contact" style="display: none;">Invest</a>
         <a href="#contact" style="display: none;">Contact</a>
       </div>
       <div class="footer-socials">
         <h4>Contact</h4>
         <p>Well Produced Films, LLC</p>
-        <p>Email: <a href="mailto:info@wellproducedfilms.com" target="_blank">info@wellproducedfilms.com</a></p>
-        <p class="copyright-text">Copyright &copy; 2025 Well Produced Films, LLC - All Rights Reserved.</p>
+        <p>Email: <a href="mailto:info@wellproducedfilms.com">info@wellproducedfilms.com</a></p>
+        <p class="copyright-text">Copyright &copy; 2026 Well Produced Films, LLC - All Rights Reserved.</p>
         <!-- NOTE FOR FUTURE AGENTS: Because this page is static, ALWAYS update the last-updated timestamp below to the current UTC datetime when saving changes to index.html -->
-        <p class="last-updated-text">Last updated: 2026-10-04 22:02:00 UTC</p>
+        <p class="last-updated-text">Last updated: 2026-10-04 22:49:09 UTC</p>
       </div>
     </div>
   </footer>
 
   <!-- Javascript Application -->
-  <script src="js/app.js?v=18"></script>
+  <script src="js/app.js?v=19"></script>
 </body>
 
 </html>

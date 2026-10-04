@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&display=swap');
-
 /* CSS Design System & Tokens */
 :root {
   --bg-primary: #090808;
@@ -45,6 +43,29 @@ body {
   display: flex;
   flex-direction: column;
   -webkit-font-smoothing: antialiased;
+}
+
+/* Accessibility Skip Link */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 20px;
+  background: var(--text-accent);
+  color: var(--bg-primary);
+  padding: 10px 18px;
+  border-radius: 4px;
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: 600;
+  z-index: 10001;
+  transition: top 0.2s ease;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 20px;
 }
 
 /* Custom Scrollbar */
@@ -715,6 +736,7 @@ button.btn-primary:hover,
   width: 100%;
   height: 100%;
   object-fit: cover;
+  aspect-ratio: 3 / 4;
 }
 
 /* Placeholders for characters with missing images */
@@ -1141,7 +1163,7 @@ button.btn-primary:hover,
 }
 
 /* Mobile Viewports (under 768px): Single-Column Vertical Stack with Expandable Show All */
-@media (max-width: 767px) {
+@media (max-width: 767.98px) {
   .world-desktop-only {
     display: none !important;
   }
@@ -1521,7 +1543,8 @@ button.btn-primary:hover,
 }
 
 .novel-cover-col {
-  height: 540px;
+  min-height: 540px;
+  height: auto;
   background-color: var(--bg-secondary);
   border: 1px solid var(--glass-border);
   border-radius: 6px;
@@ -1549,6 +1572,7 @@ button.btn-primary:hover,
   height: 100%;
   object-fit: cover;
   display: block;
+  aspect-ratio: 654 / 1000;
 }
 
 .novel-book-info {
@@ -1579,7 +1603,8 @@ button.btn-primary:hover,
 
 .carousel-wrapper {
   max-width: 100%;
-  height: 540px;
+  min-height: 540px;
+  height: auto;
   position: relative;
   background-color: var(--bg-secondary);
   border: 1px solid var(--glass-border);
@@ -1742,6 +1767,7 @@ button.btn-primary:hover,
   object-fit: cover;
   object-position: top center;
   display: block;
+  aspect-ratio: 165 / 260;
 }
 
 .novel-author-header {
@@ -1829,6 +1855,7 @@ button.btn-primary:hover,
   object-fit: cover;
   object-position: top center;
   display: block;
+  aspect-ratio: 80 / 102;
 }
 
 .filmmaker-photo-nancy {
@@ -2419,7 +2446,7 @@ button.btn-primary:hover,
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767.98px) {
   .novel-showcase {
     grid-template-columns: 1fr;
     gap: 36px;
@@ -2788,7 +2815,9 @@ button.btn-primary:hover,
   height: 100%;
   object-fit: cover;
   display: block;
+  aspect-ratio: 2 / 3;
   transition: transform var(--transition-slow);
+  will-change: transform;
 }
 
 .tone-comp-card:hover .tone-comp-poster {
@@ -2895,7 +2924,7 @@ button.btn-primary:hover,
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767.98px) {
   .tone-comps-grid {
     grid-template-columns: 1fr;
     max-width: 440px;
@@ -3358,7 +3387,7 @@ button.btn-primary:hover,
 }
 
 /* Mobile Timeline (< 768px) */
-@media (max-width: 768px) {
+@media (max-width: 767.98px) {
   .journey {
     padding: 75px 0;
   }
@@ -3684,7 +3713,7 @@ button.btn-primary:hover,
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767.98px) {
   .opportunity {
     padding: 75px 0;
   }

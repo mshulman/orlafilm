@@ -96,8 +96,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (menuToggle && navMenu) {
     menuToggle.addEventListener('click', () => {
-      menuToggle.classList.toggle('open');
+      const isOpen = menuToggle.classList.toggle('open');
       navMenu.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     });
 
     // Close mobile menu on link click
@@ -105,6 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
       link.addEventListener('click', () => {
         menuToggle.classList.remove('open');
         navMenu.classList.remove('open');
+        menuToggle.setAttribute('aria-expanded', 'false');
       });
     });
   }
@@ -121,7 +123,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const prevBtn = document.getElementById('prev-quote');
   const nextBtn = document.getElementById('next-quote');
   let currentSlide = 0;
-  let autoPlayTimer = null;
 
   const showSlide = (index) => {
     slides.forEach(slide => slide.classList.remove('active'));
@@ -140,23 +141,12 @@ document.addEventListener('DOMContentLoaded', () => {
     showSlide(currentSlide - 1);
   };
 
-  const startAutoPlay = () => {
-    autoPlayTimer = setInterval(nextSlide, 6000);
-  };
-
-  const resetAutoPlay = () => {
-    clearInterval(autoPlayTimer);
-    startAutoPlay();
-  };
-
   if (prevBtn && nextBtn) {
     prevBtn.addEventListener('click', () => {
       prevSlide();
-      resetAutoPlay();
     });
     nextBtn.addEventListener('click', () => {
       nextSlide();
-      resetAutoPlay();
     });
   }
 
@@ -164,14 +154,12 @@ document.addEventListener('DOMContentLoaded', () => {
     dot.addEventListener('click', (e) => {
       const index = parseInt(e.target.getAttribute('data-slide'), 10);
       showSlide(index);
-      resetAutoPlay();
     });
   });
 
-  // Initialize Carousel AutoPlay
+  // Initialize Carousel (Manual navigation only)
   if (slides.length > 0) {
     showSlide(0);
-    startAutoPlay();
   }
 
   // =========================================================================
