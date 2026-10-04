@@ -715,6 +715,8 @@ button.btn-primary:hover,
   width: 100%;
   height: 100%;
   object-fit: cover;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: high-quality;
 }
 
 /* Placeholders for characters with missing images */
@@ -979,6 +981,8 @@ button.btn-primary:hover,
   object-fit: cover;
   object-position: center;
   display: block;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: high-quality;
 }
 
 .world-desktop-only {
@@ -1829,6 +1833,8 @@ button.btn-primary:hover,
   object-fit: cover;
   object-position: top center;
   display: block;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: high-quality;
 }
 
 .filmmaker-photo-nancy {
