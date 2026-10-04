@@ -249,7 +249,7 @@ button.btn-primary:hover,
 .nav-menu {
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: 28px;
 }
 
 .nav-link {
@@ -3090,11 +3090,11 @@ button.btn-primary:hover,
 /* Navbar Responsive Scaling */
 @media (min-width: 769px) and (max-width: 1040px) {
   .nav-menu {
-    gap: 22px;
+    gap: 18px;
   }
   .nav-link {
     font-size: 0.85rem;
-    letter-spacing: 0.8px;
+    letter-spacing: 0.7px;
   }
 }
 
