@@ -317,7 +317,7 @@ document.addEventListener('DOMContentLoaded', () => {
           worldSecondarySlides.classList.remove('is-expanded');
           worldSecondarySlides.setAttribute('aria-hidden', 'true');
           if (worldExpandBtnText) {
-            worldExpandBtnText.textContent = 'View All 9 Locations (+5)';
+            worldExpandBtnText.textContent = 'View All 8 Locations (+4)';
           }
           // Smoothly scroll back to button if scrolled below it
           const btnRect = worldExpandBtn.getBoundingClientRect();

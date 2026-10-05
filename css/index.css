@@ -498,10 +498,11 @@ button.btn-primary:hover,
   height: 100%;
   background: linear-gradient(
     to right,
-    rgba(12, 11, 10, 0.94) 0%,
-    rgba(12, 11, 10, 0.82) 35%,
-    rgba(12, 11, 10, 0.25) 55%,
-    rgba(12, 11, 10, 0) 68%,
+    rgba(12, 11, 10, 0.96) 0%,
+    rgba(12, 11, 10, 0.88) 32%,
+    rgba(12, 11, 10, 0.50) 48%,
+    rgba(12, 11, 10, 0.10) 60%,
+    rgba(12, 11, 10, 0) 72%,
     rgba(12, 11, 10, 0) 100%
   );
   z-index: 2;
@@ -513,23 +514,23 @@ button.btn-primary:hover,
 }
 
 .synopsis-content {
-  max-width: 740px;
+  max-width: 48%;
 }
 
 .synopsis-headline {
   font-size: 2.2rem;
   line-height: 1.25;
   color: var(--text-accent);
-  margin-bottom: 24px;
+  margin-bottom: 22px;
   letter-spacing: 0.5px;
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8);
 }
 
 .synopsis-body p {
-  font-size: 1.25rem;
-  line-height: 1.85;
+  font-size: 1.15rem;
+  line-height: 1.75;
   color: var(--text-primary);
-  margin-bottom: 22px;
+  margin-bottom: 20px;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
 }
 
@@ -2392,19 +2393,30 @@ button.btn-primary:hover,
 /* Responsive Styles */
 @media (max-width: 1024px) {
   .synopsis-banner {
-    padding: 70px 0;
+    padding: 60px 0;
     min-height: auto;
   }
-  .themes-banner {
-    padding: 50px 0;
-    min-height: auto;
+  .synopsis-content {
+    max-width: 48%;
+  }
+  .synopsis-headline {
+    font-size: 1.85rem;
+    margin-bottom: 16px;
+  }
+  .synopsis-body p {
+    font-size: 0.98rem;
+    line-height: 1.6;
+    margin-bottom: 14px;
   }
   .synopsis-banner-overlay {
     background: linear-gradient(
       to right,
-      rgba(12, 11, 10, 0.98) 0%,
-      rgba(12, 11, 10, 0.92) 60%,
-      rgba(12, 11, 10, 0.65) 100%
+      rgba(12, 11, 10, 0.97) 0%,
+      rgba(12, 11, 10, 0.90) 35%,
+      rgba(12, 11, 10, 0.50) 50%,
+      rgba(12, 11, 10, 0.08) 64%,
+      rgba(12, 11, 10, 0) 75%,
+      rgba(12, 11, 10, 0) 100%
     );
   }
   .themes-banner-overlay {
@@ -2462,9 +2474,28 @@ button.btn-primary:hover,
     line-height: 1.75;
     margin-bottom: 18px;
   }
+  .synopsis-banner {
+    padding: 60px 0;
+    min-height: auto;
+    background: linear-gradient(160deg, #181513 0%, #12100f 45%, #090808 100%);
+  }
+  .synopsis-banner-bg {
+    display: none;
+  }
+  .synopsis-banner-overlay {
+    display: none;
+  }
+  .synopsis-content {
+    max-width: 100%;
+  }
+  .synopsis-headline {
+    font-size: 1.85rem;
+    margin-bottom: 18px;
+    text-align: left;
+  }
   .synopsis-body p {
-    font-size: 1.15rem;
-    line-height: 1.75;
+    font-size: 1.08rem;
+    line-height: 1.7;
     margin-bottom: 18px;
   }
   .novel-showcase {

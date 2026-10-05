@@ -42,16 +42,15 @@ Whenever making changes to `index.html`:
 
 ## 4. World of Orla Image & Sequence Guidelines
 
-### Desktop Sequence (Horizontal Carousel, 9 slides)
+### Desktop Sequence (Horizontal Carousel, 8 slides)
 1. Canal Bridge at midnight (`images/orla_bike_night_bridge.jpg`)
 2. Historic Lancaster (`images/town_street_night.jpg`)
 3. The Stranger defies death (`images/stranger_underwater_peeled.jpg`)
-4. Traveling circus at twilight (`images/circus_twilight.jpg`)
+4. Travelling circus at twilight (`images/circus_twilight.jpg`)
 5. Orla & Fantasmo (`images/orla_fantasmo_elephant.jpg`)
-6. The Lancaster towpath (`images/canal_towpath_night.jpg` — **dark brunette hair**)
-7. The Stranger's Chair in the Barn (`images/strangers_chair_barn.jpg`)
-8. The river crossing (`images/orla_river_crossing.jpg`)
-9. Confrontation at Morecambe Bay (`images/orla_dad_parking_lot.jpg`)
+6. The Stranger's Chair in the Barn (`images/strangers_chair_barn.jpg`)
+7. The river crossing (`images/orla_river_crossing.jpg`)
+8. Confrontation at Morecambe Bay (`images/orla_dad_parking_lot.jpg`)
 
 ### Mobile Sequence (< 768px Vertical Feed)
 - **Primary 4 (Visible by default)**:
@@ -59,13 +58,12 @@ Whenever making changes to `index.html`:
   2. The Stranger defies death (`images/mobile/world_mobile_2_stranger_defies_death.jpg`)
   3. Orla & Fantasmo (`images/mobile/world_mobile_3_orla_fantasmo.jpg` — **zoomed out to show the elephant's eye looking back at Orla**)
   4. Confrontation at Morecambe Bay (`images/mobile/world_mobile_4_confrontation_morecambe.jpg`)
-- **Disclosure Toggle**: Button labeled `"View All 9 Locations (+5)"` toggles to `"Show Less"`.
-- **Secondary 5 (Revealed upon toggle)**:
+- **Disclosure Toggle**: Button labeled `"View All 8 Locations (+4)"` toggles to `"Show Less"`.
+- **Secondary 4 (Revealed upon toggle)**:
   5. Historic Lancaster (`images/mobile/world_mobile_7_historic_lancaster.jpg`)
-  6. Traveling circus at twilight (`images/mobile/world_mobile_6_circus_twilight.jpg`)
-  7. The Lancaster towpath (`images/mobile/world_mobile_towpath.jpg` — **dark brunette hair**)
-  8. The Stranger's Chair in the Barn (`images/mobile/world_mobile_barn_chair.jpg`)
-  9. The river crossing (`images/mobile/world_mobile_river_crossing.jpg` — **Rule of Thirds: Orla on left, splash in center, Stranger on right**)
+  6. Travelling circus at twilight (`images/mobile/world_mobile_6_circus_twilight.jpg`)
+  7. The Stranger's Chair in the Barn (`images/mobile/world_mobile_barn_chair.jpg`)
+  8. The river crossing (`images/mobile/world_mobile_river_crossing.jpg` — **Rule of Thirds: Orla on left, splash in center, Stranger on right**)
 
 ### Orla & Fantasmo Framing
 - **Elephant's Eye**: On mobile, the Orla & Fantasmo card must be framed wide enough (`aspect-ratio: 5/4` in `.world-mobile-img-fantasmo`) so that Fantasmo's eye is clearly visible in the upper right quadrant, looking directly down at Orla on the left.
