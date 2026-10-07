@@ -7,7 +7,51 @@ document.addEventListener('DOMContentLoaded', () => {
   const gateForm = document.getElementById('gate-form');
   const gatePassword = document.getElementById('gate-password');
   const gateError = document.getElementById('gate-error');
-  const CORRECT_PASSWORD = 'orlawpf';
+
+  // Story-based invite tokens mapped to their canonical hyphenated form
+  const INVITE_TOKENS = {
+    // 1. Sneaky's Grave
+    'sneakysgrave': 'sneakys-grave',
+    'sneakygrave': 'sneakys-grave',
+    // 2. Orla's Bike
+    'orlasbike': 'orlas-bike',
+    'orlabike': 'orlas-bike',
+    // 3. Fantasmo
+    'fantasmo': 'fantasmo',
+    // 4. Stranger's Blanket
+    'strangersblanket': 'strangers-blanket',
+    'strangerblanket': 'strangers-blanket',
+    // 5. Canal Bridge
+    'canalbridge': 'canal-bridge',
+    // 6. Twilight Circus
+    'twilightcircus': 'twilight-circus',
+    // 7. Stone Barn
+    'stonebarn': 'stone-barn',
+    // 8. River Crossing
+    'rivercrossing': 'river-crossing',
+    // 9. Morecambe Bay
+    'morecambebay': 'morecambe-bay',
+    // 10. Irish Sea
+    'irishsea': 'irish-sea',
+    // 11. Stranger's Chair
+    'strangerschair': 'strangers-chair',
+    'strangerchair': 'strangers-chair',
+    // 12. Circus Tent
+    'circustent': 'circus-tent',
+    // 13. Turtledove
+    'turtledove': 'turtledove',
+    // Master fallback
+    'orlawpf': 'orlawpf'
+  };
+
+  const normalizeToken = (input) => {
+    if (!input) return '';
+    return input
+      .toLowerCase()
+      .replace(/['’`"\-_]/g, '')
+      .replace(/\s+/g, '')
+      .trim();
+  };
 
   if (gateOverlay && gateForm && gatePassword) {
     const isAuth = sessionStorage.getItem('orla_gate_auth') === 'true';
@@ -17,19 +61,36 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
       gateOverlay.classList.add('unlocked');
       document.body.style.overflow = '';
+      const savedUserPhrase = sessionStorage.getItem('orla_user_phrase');
+      if (savedUserPhrase && typeof gtag === 'function') {
+        gtag('set', 'user_properties', { user_id: savedUserPhrase });
+        gtag('config', 'G-0G6Q78W4M6', { user_id: savedUserPhrase });
+      }
     }
 
     gateForm.addEventListener('submit', (e) => {
       e.preventDefault();
       const entered = (gatePassword.value || '').trim();
-      if (entered.toLowerCase() === CORRECT_PASSWORD.toLowerCase()) {
+      const normalized = normalizeToken(entered);
+      const canonicalToken = INVITE_TOKENS[normalized];
+
+      if (canonicalToken) {
         sessionStorage.setItem('orla_gate_auth', 'true');
+        sessionStorage.setItem('orla_user_phrase', canonicalToken);
+        if (typeof gtag === 'function') {
+          gtag('set', 'user_properties', { user_id: canonicalToken });
+          gtag('config', 'G-0G6Q78W4M6', { user_id: canonicalToken });
+          gtag('event', 'login', {
+            method: 'invite_token',
+            user_id: canonicalToken
+          });
+        }
         gateOverlay.classList.add('unlocked');
         document.body.style.overflow = '';
         if (gateError) gateError.textContent = '';
         gatePassword.classList.remove('input-error');
       } else {
-        if (gateError) gateError.textContent = 'Incorrect password. Please try again.';
+        if (gateError) gateError.textContent = 'Incorrect phrase. Please try again.';
         gatePassword.classList.remove('input-error');
         void gatePassword.offsetWidth;
         gatePassword.classList.add('input-error');
@@ -317,7 +378,7 @@ document.addEventListener('DOMContentLoaded', () => {
           worldSecondarySlides.classList.remove('is-expanded');
           worldSecondarySlides.setAttribute('aria-hidden', 'true');
           if (worldExpandBtnText) {
-            worldExpandBtnText.textContent = 'View All 8 Locations (+4)';
+            worldExpandBtnText.textContent = 'View All 9 Locations (+5)';
           }
           // Smoothly scroll back to button if scrolled below it
           const btnRect = worldExpandBtn.getBoundingClientRect();

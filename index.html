@@ -35,6 +35,16 @@
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="css/index.css?v=33">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0G6Q78W4M6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-0G6Q78W4M6');
+  </script>
 </head>
 
 <body>
@@ -46,11 +56,11 @@
     <div class="gate-card">
       <span class="gate-tag">PRIVATE PREVIEW</span>
       <div class="gate-title" role="heading" aria-level="2">ORLA</div>
-      <p class="gate-subtitle">Please enter the password to view this preview.</p>
+      <p class="gate-subtitle">Please enter your invite phrase to view this preview.</p>
       <form id="gate-form" class="gate-form" autocomplete="off">
         <div class="gate-input-wrapper">
-          <input type="password" id="gate-password" class="gate-input" placeholder="Enter password" required autofocus
-            autocomplete="current-password" aria-label="Enter password">
+          <input type="text" id="gate-password" class="gate-input" placeholder="Enter invite phrase" required autofocus
+            autocomplete="off" aria-label="Enter invite phrase">
         </div>
         <button type="submit" id="gate-submit-btn" class="btn btn-primary gate-btn">ENTER SITE</button>
         <div id="gate-error" class="gate-error" aria-live="polite"></div>
@@ -207,85 +217,95 @@
       </div>
     </div>
 
-    <!-- Desktop: World of Orla Cinematic 2.35:1 Carousel (8 Slides) -->
+    <!-- Desktop: World of Orla Cinematic 2.35:1 Carousel (9 Slides) -->
     <div class="world-carousel-wrapper world-desktop-only" role="region" aria-roledescription="carousel" aria-label="The World of Orla Gallery">
       <div class="world-carousel-frame">
         <div class="world-slides" id="world-slides">
           <!-- Slide 1: Canal Bridge at Midnight -->
-          <div class="world-slide active" role="group" aria-roledescription="slide" aria-label="1 of 8" data-index="0">
+          <div class="world-slide active" role="group" aria-roledescription="slide" aria-label="1 of 9" data-index="0">
             <img src="images/orla_bike_night_bridge.jpg?v=14" alt="Orla on her Bicycle at the Canal Bridge" class="world-img" loading="eager" decoding="async" width="1200" height="511">
             <div class="world-caption">
-              <span class="world-slide-count">01 / 08</span>
+              <span class="world-slide-count">01 / 09</span>
               <h3 class="world-caption-title">Canal Bridge at Midnight</h3>
               <p class="world-caption-desc">A journey into the unknown.</p>
             </div>
           </div>
 
           <!-- Slide 2: Historic Lancaster -->
-          <div class="world-slide" role="group" aria-roledescription="slide" aria-label="2 of 8" data-index="1" aria-hidden="true">
+          <div class="world-slide" role="group" aria-roledescription="slide" aria-label="2 of 9" data-index="1" aria-hidden="true">
             <img src="images/town_street_night.jpg?v=14" alt="Historic Lancaster Town Street at Night" class="world-img" loading="lazy" decoding="async" width="1200" height="511">
             <div class="world-caption">
-              <span class="world-slide-count">02 / 08</span>
+              <span class="world-slide-count">02 / 09</span>
               <h3 class="world-caption-title">Historic Lancaster</h3>
               <p class="world-caption-desc">An ancient city of shadows and stone, where every corner holds an unseen turning point.</p>
             </div>
           </div>
 
           <!-- Slide 3: The Stranger Defies Death -->
-          <div class="world-slide" role="group" aria-roledescription="slide" aria-label="3 of 8" data-index="2" aria-hidden="true">
+          <div class="world-slide" role="group" aria-roledescription="slide" aria-label="3 of 9" data-index="2" aria-hidden="true">
             <img src="images/stranger_underwater_peeled.jpg?v=14" alt="The Stranger escaping sinking container underwater" class="world-img" loading="lazy" decoding="async" width="1376" height="586">
             <div class="world-caption">
-              <span class="world-slide-count">03 / 08</span>
+              <span class="world-slide-count">03 / 09</span>
               <h3 class="world-caption-title">The Stranger Defies Death</h3>
               <p class="world-caption-desc">A stranger who may not be what he seems.</p>
             </div>
           </div>
 
           <!-- Slide 4: Travelling Circus at Twilight -->
-          <div class="world-slide" role="group" aria-roledescription="slide" aria-label="4 of 8" data-index="3" aria-hidden="true">
+          <div class="world-slide" role="group" aria-roledescription="slide" aria-label="4 of 9" data-index="3" aria-hidden="true">
             <img src="images/circus_twilight.jpg?v=14" alt="Travelling Circus Tent at Twilight" class="world-img" loading="lazy" decoding="async" width="1264" height="538">
             <div class="world-caption">
-              <span class="world-slide-count">04 / 08</span>
+              <span class="world-slide-count">04 / 09</span>
               <h3 class="world-caption-title">Travelling Circus at Twilight</h3>
               <p class="world-caption-desc">A place where the impossible might still be possible.</p>
             </div>
           </div>
 
           <!-- Slide 5: Orla & Fantasmo -->
-          <div class="world-slide" role="group" aria-roledescription="slide" aria-label="5 of 8" data-index="4" aria-hidden="true">
+          <div class="world-slide" role="group" aria-roledescription="slide" aria-label="5 of 9" data-index="4" aria-hidden="true">
             <img src="images/orla_fantasmo_elephant.jpg?v=14" alt="Orla and Fantasmo the Elephant" class="world-img" loading="lazy" decoding="async" width="1376" height="586">
             <div class="world-caption">
-              <span class="world-slide-count">05 / 08</span>
+              <span class="world-slide-count">05 / 09</span>
               <h3 class="world-caption-title">Orla & Fantasmo</h3>
               <p class="world-caption-desc">You are not alone.</p>
             </div>
           </div>
 
           <!-- Slide 6: The Stranger's Chair in the Barn -->
-          <div class="world-slide" role="group" aria-roledescription="slide" aria-label="6 of 8" data-index="5" aria-hidden="true">
+          <div class="world-slide" role="group" aria-roledescription="slide" aria-label="6 of 9" data-index="5" aria-hidden="true">
             <img src="images/strangers_chair_barn.jpg?v=15" alt="The Stranger's Chair in the Barn with Turtledove" class="world-img" loading="lazy" decoding="async" width="1200" height="511">
             <div class="world-caption">
-              <span class="world-slide-count">06 / 08</span>
+              <span class="world-slide-count">06 / 09</span>
               <h3 class="world-caption-title">The Stranger's Chair in the Barn</h3>
               <p class="world-caption-desc">A sanctuary between worlds.</p>
             </div>
           </div>
 
           <!-- Slide 7: The River Crossing -->
-          <div class="world-slide" role="group" aria-roledescription="slide" aria-label="7 of 8" data-index="6" aria-hidden="true">
+          <div class="world-slide" role="group" aria-roledescription="slide" aria-label="7 of 9" data-index="6" aria-hidden="true">
             <img src="images/orla_river_crossing.jpg?v=14" alt="Orla and The Stranger Crossing the River" class="world-img" loading="lazy" decoding="async" width="1376" height="586">
             <div class="world-caption">
-              <span class="world-slide-count">07 / 08</span>
+              <span class="world-slide-count">07 / 09</span>
               <h3 class="world-caption-title">The River Crossing</h3>
               <p class="world-caption-desc">And somewhere beyond the journey, the possibility of finding your way home.</p>
             </div>
           </div>
 
-          <!-- Slide 8: Confrontation at Morecambe Bay -->
-          <div class="world-slide" role="group" aria-roledescription="slide" aria-label="8 of 8" data-index="7" aria-hidden="true">
+          <!-- Slide 8: Fantasmo and Orla are liberated -->
+          <div class="world-slide" role="group" aria-roledescription="slide" aria-label="8 of 9" data-index="7" aria-hidden="true">
+            <img src="images/orla_fantasmo_liberated.jpg?v=4" alt="Fantasmo and Orla are liberated" class="world-img" loading="lazy" decoding="async" width="1376" height="586">
+            <div class="world-caption">
+              <span class="world-slide-count">08 / 09</span>
+              <h3 class="world-caption-title">Fantasmo and Orla are liberated</h3>
+              <p class="world-caption-desc">Freedom comes in many forms</p>
+            </div>
+          </div>
+
+          <!-- Slide 9: Confrontation at Morecambe Bay -->
+          <div class="world-slide" role="group" aria-roledescription="slide" aria-label="9 of 9" data-index="8" aria-hidden="true">
             <img src="images/orla_dad_parking_lot.jpg?v=14" alt="Confrontation between Orla and her father at Morecambe Bay beach parking lot" class="world-img" loading="lazy" decoding="async" width="1376" height="586">
             <div class="world-caption">
-              <span class="world-slide-count">08 / 08</span>
+              <span class="world-slide-count">09 / 09</span>
               <h3 class="world-caption-title">Confrontation at Morecambe Bay</h3>
               <p class="world-caption-desc">Anger leads to acceptance.</p>
             </div>
@@ -315,7 +335,7 @@
           <img src="images/mobile/world_mobile_1_canal_bridge.jpg?v=14" alt="Orla on her Bicycle at the Canal Bridge" class="world-img" loading="eager" decoding="async" width="717" height="896" data-fallback="images/orla_bike_night_bridge.jpg?v=14">
         </div>
         <div class="world-caption">
-          <span class="world-slide-count">01 / 08</span>
+          <span class="world-slide-count">01 / 09</span>
           <h3 class="world-caption-title">Canal Bridge at Midnight</h3>
           <p class="world-caption-desc">A journey into the unknown.</p>
         </div>
@@ -327,7 +347,7 @@
           <img src="images/mobile/world_mobile_2_stranger_defies_death.jpg?v=14" alt="The Stranger escaping sinking container underwater" class="world-img" loading="lazy" decoding="async" width="614" height="768" data-fallback="images/stranger_underwater_peeled.jpg?v=14">
         </div>
         <div class="world-caption">
-          <span class="world-slide-count">02 / 08</span>
+          <span class="world-slide-count">02 / 09</span>
           <h3 class="world-caption-title">The Stranger Defies Death</h3>
           <p class="world-caption-desc">A stranger who may not be what he seems.</p>
         </div>
@@ -339,7 +359,7 @@
           <img src="images/mobile/world_mobile_3_orla_fantasmo.jpg?v=14" alt="Orla and Fantasmo the Elephant" class="world-img" loading="lazy" decoding="async" width="960" height="768" data-fallback="images/orla_fantasmo_elephant.jpg?v=14">
         </div>
         <div class="world-caption">
-          <span class="world-slide-count">03 / 08</span>
+          <span class="world-slide-count">03 / 09</span>
           <h3 class="world-caption-title">Orla & Fantasmo</h3>
           <p class="world-caption-desc">You are not alone.</p>
         </div>
@@ -351,7 +371,7 @@
           <img src="images/mobile/world_mobile_4_confrontation_morecambe.jpg?v=14" alt="Confrontation between Orla and her father at Morecambe Bay beach parking lot" class="world-img" loading="lazy" decoding="async" width="614" height="768" data-fallback="images/orla_dad_parking_lot.jpg?v=14">
         </div>
         <div class="world-caption">
-          <span class="world-slide-count">04 / 08</span>
+          <span class="world-slide-count">04 / 09</span>
           <h3 class="world-caption-title">Confrontation at Morecambe Bay</h3>
           <p class="world-caption-desc">Anger leads to acceptance.</p>
         </div>
@@ -360,7 +380,7 @@
       <!-- Mobile Show All Button (Immediately follows 4th image) -->
       <div class="world-disclosure-wrapper" id="world-disclosure-wrapper">
         <button type="button" class="world-expand-btn" id="world-expand-btn" aria-expanded="false" aria-controls="world-secondary-slides">
-          <span class="world-expand-btn-text">View All 8 Locations (+4)</span>
+          <span class="world-expand-btn-text">View All 9 Locations (+5)</span>
           <svg class="world-expand-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </button>
       </div>
@@ -374,7 +394,7 @@
               <img src="images/mobile/world_mobile_7_historic_lancaster.jpg?v=14" alt="Historic Lancaster Town Street at Night" class="world-img" loading="lazy" decoding="async" width="717" height="896" data-fallback="images/town_street_night.jpg?v=14">
             </div>
             <div class="world-caption">
-              <span class="world-slide-count">05 / 08</span>
+              <span class="world-slide-count">05 / 09</span>
               <h3 class="world-caption-title">Historic Lancaster</h3>
               <p class="world-caption-desc">An ancient city of shadows and stone, where every corner holds an unseen turning point.</p>
             </div>
@@ -386,7 +406,7 @@
               <img src="images/mobile/world_mobile_6_circus_twilight.jpg?v=14" alt="Travelling Circus Tent at Twilight" class="world-img" loading="lazy" decoding="async" width="678" height="848" data-fallback="images/circus_twilight.jpg?v=14">
             </div>
             <div class="world-caption">
-              <span class="world-slide-count">06 / 08</span>
+              <span class="world-slide-count">06 / 09</span>
               <h3 class="world-caption-title">Travelling Circus at Twilight</h3>
               <p class="world-caption-desc">A place where the impossible might still be possible.</p>
             </div>
@@ -398,7 +418,7 @@
               <img src="images/mobile/world_mobile_barn_chair.jpg?v=15" alt="The Stranger's Chair in the Barn with Turtledove" class="world-img" loading="lazy" decoding="async" width="717" height="896" data-fallback="images/strangers_chair_barn.jpg?v=15">
             </div>
             <div class="world-caption">
-              <span class="world-slide-count">07 / 08</span>
+              <span class="world-slide-count">07 / 09</span>
               <h3 class="world-caption-title">The Stranger's Chair in the Barn</h3>
               <p class="world-caption-desc">A sanctuary between worlds.</p>
             </div>
@@ -410,9 +430,21 @@
               <img src="images/mobile/world_mobile_river_crossing.jpg?v=14" alt="Orla and The Stranger Crossing the River" class="world-img" loading="lazy" decoding="async" width="614" height="768" data-fallback="images/orla_river_crossing.jpg?v=14">
             </div>
             <div class="world-caption">
-              <span class="world-slide-count">08 / 08</span>
+              <span class="world-slide-count">08 / 09</span>
               <h3 class="world-caption-title">The River Crossing</h3>
               <p class="world-caption-desc">And somewhere beyond the journey, the possibility of finding your way home.</p>
+            </div>
+          </div>
+
+          <!-- Card 9: Fantasmo and Orla are liberated -->
+          <div class="world-mobile-card">
+            <div class="world-mobile-img-wrap">
+              <img src="images/mobile/world_mobile_fantasmo_liberated.jpg?v=3" alt="Fantasmo and Orla are liberated" class="world-img" loading="lazy" decoding="async" width="614" height="768" data-fallback="images/orla_fantasmo_liberated.jpg?v=3">
+            </div>
+            <div class="world-caption">
+              <span class="world-slide-count">09 / 09</span>
+              <h3 class="world-caption-title">Fantasmo and Orla are liberated</h3>
+              <p class="world-caption-desc">Freedom comes in many forms</p>
             </div>
           </div>
         </div>
@@ -509,7 +541,7 @@
         <!-- Character: Fantasmo -->
         <div class="character-card" data-char="fantasmo">
           <div class="character-img-wrapper">
-            <img src="images/character_fantasmo.png?v=18" alt="Fantasmo" class="character-img" loading="lazy" decoding="async" width="800" height="446">
+            <img src="images/character_fantasmo.jpg?v=19" alt="Fantasmo" class="character-img" loading="lazy" decoding="async" width="896" height="1200">
             <div class="character-hover-overlay">
               <p class="character-short-bio">Fantasmo the Elephant becomes a magical force in Orla’s life, as she sees
                 part of herself in the eyes...</p>
@@ -1332,7 +1364,7 @@
         <p>Email: <a href="mailto:info@wellproducedfilms.com">info@wellproducedfilms.com</a></p>
         <p class="copyright-text">Copyright &copy; 2026 Well Produced Films, LLC - All Rights Reserved.</p>
         <!-- NOTE FOR FUTURE AGENTS: Because this page is static, ALWAYS update the last-updated timestamp below to the current UTC datetime when saving changes to index.html -->
-        <p class="last-updated-text">Last updated: 2026-10-06 02:17:16 UTC</p>
+        <p class="last-updated-text">Last updated: 2026-10-07 02:39:46 UTC</p>
       </div>
     </div>
   </footer>
