@@ -78,10 +78,18 @@ document.addEventListener('DOMContentLoaded', () => {
         sessionStorage.setItem('orla_gate_auth', 'true');
         sessionStorage.setItem('orla_user_phrase', canonicalToken);
         if (typeof gtag === 'function') {
-          gtag('set', 'user_properties', { user_id: canonicalToken });
-          gtag('config', 'G-0G6Q78W4M6', { user_id: canonicalToken });
+          gtag('set', 'user_properties', { 
+            user_id: canonicalToken,
+            invite_token: canonicalToken
+          });
+          gtag('config', 'G-0G6Q78W4M6', { 
+            user_id: canonicalToken,
+            invite_token: canonicalToken
+          });
           gtag('event', 'login', {
             method: 'invite_token',
+            invite_token: canonicalToken,
+            token: canonicalToken,
             user_id: canonicalToken
           });
         }
