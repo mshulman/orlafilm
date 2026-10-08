@@ -55,10 +55,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (gateOverlay && gateForm && gatePassword) {
     const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.has('lock') || urlParams.has('logout') || urlParams.has('relock')) {
+    if (urlParams.has('login') || urlParams.has('lock') || urlParams.has('logout') || urlParams.has('relock')) {
       sessionStorage.removeItem('orla_gate_auth');
       sessionStorage.removeItem('orla_user_phrase');
       // Clean query param from URL bar without reloading
+      urlParams.delete('login');
       urlParams.delete('lock');
       urlParams.delete('logout');
       urlParams.delete('relock');
