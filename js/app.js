@@ -54,6 +54,18 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   if (gateOverlay && gateForm && gatePassword) {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has('lock') || urlParams.has('logout') || urlParams.has('relock')) {
+      sessionStorage.removeItem('orla_gate_auth');
+      sessionStorage.removeItem('orla_user_phrase');
+      // Clean query param from URL bar without reloading
+      urlParams.delete('lock');
+      urlParams.delete('logout');
+      urlParams.delete('relock');
+      const cleanUrl = window.location.pathname + (urlParams.toString() ? '?' + urlParams.toString() : '') + window.location.hash;
+      window.history.replaceState({}, '', cleanUrl);
+    }
+
     const isAuth = sessionStorage.getItem('orla_gate_auth') === 'true';
     if (!isAuth) {
       document.body.style.overflow = 'hidden';
