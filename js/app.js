@@ -194,8 +194,60 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // =========================================================================
-  // 3. Characters Section (Static display - no modal)
+  // 3. Characters Section (Flip Card: 750ms Still Hover on Desktop, Tap on Mobile)
   // =========================================================================
+  const characterCards = document.querySelectorAll('.character-card');
+  const HOVER_STILL_DELAY_MS = 750; // Must hold mouse still for 750ms
+
+  characterCards.forEach(card => {
+    let hoverStillTimer = null;
+
+    const startStillTimer = () => {
+      clearTimeout(hoverStillTimer);
+      hoverStillTimer = setTimeout(() => {
+        // Unflip any other card and flip this one
+        characterCards.forEach(c => {
+          if (c !== card) c.classList.remove('flipped');
+        });
+        card.classList.add('flipped');
+      }, HOVER_STILL_DELAY_MS);
+    };
+
+    // When mouse moves over card, reset the stillness timer
+    card.addEventListener('mousemove', () => {
+      // If not already flipped, wait until user stops moving the mouse for 1s
+      if (!card.classList.contains('flipped')) {
+        startStillTimer();
+      }
+    });
+
+    card.addEventListener('mouseenter', () => {
+      startStillTimer();
+    });
+
+    card.addEventListener('mouseleave', () => {
+      clearTimeout(hoverStillTimer);
+      card.classList.remove('flipped');
+    });
+
+    // Touch / click toggle (works immediately on mobile tap or manual click)
+    card.addEventListener('click', (e) => {
+      clearTimeout(hoverStillTimer);
+      const isFlipped = card.classList.contains('flipped');
+      characterCards.forEach(c => {
+        if (c !== card) c.classList.remove('flipped');
+      });
+      card.classList.toggle('flipped', !isFlipped);
+    });
+
+    // Support keyboard toggle via Enter or Space
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        card.classList.toggle('flipped');
+      }
+    });
+  });
 
   // =========================================================================
   // 4. Praise Slider / Testimonial Carousel
