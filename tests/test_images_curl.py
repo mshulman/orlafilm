@@ -89,10 +89,6 @@ class TestImageSourcesCurl(unittest.TestCase):
         """Verify all 35 images referenced in index.html return HTTP 200 via curl."""
         self._test_images_in_html("index.html")
 
-    def test_preview_options_images(self):
-        """Verify all images referenced in preview_options.html return HTTP 200 via curl."""
-        self._test_images_in_html("preview_options.html")
-
 
 if __name__ == "__main__":
     unittest.main()

@@ -2,7 +2,7 @@
 
 ## 1. Automated Image Verification (MANDATORY)
 
-After making **ANY** change to `index.html`, `preview_options.html`, `admin.html`, `css/index.css`, `js/app.js`, or any image assets in `images/`:
+After making **ANY** change to `index.html`, `admin.html`, `css/index.css`, `js/app.js`, or any image assets in `images/`:
 
 > [!IMPORTANT]
 > **You MUST run the image verification test after every change to verify that all referenced images exist and return HTTP 200.**
