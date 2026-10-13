@@ -36,7 +36,7 @@
 > "Dad is barely holding it together. Recently widowed and grieving deeply, he has the responsibility of caring for his two daughters, Orla, 14, and Lily. By day he is trying to be a good father, but by night the sadness moves in and he drinks to ease his profound sorrow."
 
 ### **Lily**
-> "Lily is the bridge between Orla and Dad, who while complete at odds with one another, they both agree that Lily needs their loving care."
+> "Lily is the bridge between Orla and Dad. Although they are completely at odds with one another, they both agree that Lily needs their loving care."
 
 ### **Orla’s Mum**
 > "Mum comes to the story only through Orla’s memory of her. She feeds Orla’s internal conflict and ultimately becomes the inspiration for Orla’s redemption."
