@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ORLA — Character Bios Editorial Review (For Nancy)</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 18mm 16mm 18mm 16mm;
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: #1a1a1a;
+      background: #ffffff;
+      line-height: 1.5;
+      margin: 0;
+      padding: 24px;
+      font-size: 13px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    .doc-header {
+      border-bottom: 2px solid #b89758;
+      padding-bottom: 12px;
+      margin-bottom: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .title-block h1 {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #111;
+      margin: 0 0 4px 0;
+    }
+
+    .title-block .subtitle {
+      font-size: 13px;
+      color: #666;
+      margin: 0;
+      font-style: italic;
+    }
+
+    .meta-block {
+      text-align: right;
+      font-size: 11px;
+      color: #777;
+    }
+
+    .meta-block strong {
+      color: #333;
+    }
+
+    /* Print instruction pill */
+    .no-print-bar {
+      background: #f7f3eb;
+      border: 1px solid #e2d7be;
+      border-radius: 6px;
+      padding: 10px 14px;
+      margin-bottom: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: #634f27;
+    }
+
+    .print-btn {
+      background: #b89758;
+      color: white;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 4px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 12px;
+    }
+
+    .print-btn:hover {
+      background: #9d7d42;
+    }
+
+    /* Editorial context note */
+    .context-note {
+      background: #fafafa;
+      border-left: 3px solid #b89758;
+      padding: 10px 14px;
+      font-size: 12px;
+      color: #444;
+      margin-bottom: 20px;
+      border-radius: 0 4px 4px 0;
+    }
+
+    .context-note p {
+      margin: 0;
+    }
+
+    /* Table styles */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      page-break-inside: auto;
+    }
+
+    tr {
+      page-break-inside: avoid;
+      page-break-after: auto;
+    }
+
+    th {
+      background: #1f2421;
+      color: #f5f5f5;
+      text-align: left;
+      font-weight: 600;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: 10px 12px;
+      border: 1px solid #1f2421;
+    }
+
+    th.col-char { width: 16%; }
+    th.col-current { width: 42%; }
+    th.col-proposed { width: 42%; }
+
+    td {
+      padding: 11px 12px;
+      vertical-align: top;
+      border: 1px solid #e0e0e0;
+      font-size: 12.5px;
+      line-height: 1.45;
+    }
+
+    tr:nth-child(even) td {
+      background-color: #faf9f6;
+    }
+
+    .char-name {
+      font-weight: 700;
+      color: #1a1a1a;
+      font-size: 13px;
+    }
+
+    .char-role {
+      font-size: 11px;
+      color: #777;
+      margin-top: 2px;
+    }
+
+    .current-text {
+      color: #4a4a4a;
+    }
+
+    .proposed-text {
+      color: #111111;
+      font-weight: 500;
+    }
+
+    .change-highlight {
+      background: #fbf3d5;
+      padding: 1px 3px;
+      border-radius: 2px;
+    }
+
+    .editorial-rationale {
+      margin-top: 6px;
+      padding-top: 6px;
+      border-top: 1px dashed #d5d5d5;
+      font-size: 11px;
+      color: #6f582f;
+      font-style: italic;
+    }
+
+    /* Footer */
+    .doc-footer {
+      margin-top: 24px;
+      padding-top: 10px;
+      border-top: 1px solid #eee;
+      display: flex;
+      justify-content: space-between;
+      font-size: 10.5px;
+      color: #888;
+    }
+
+    @media print {
+      body {
+        padding: 0;
+      }
+      .no-print-bar {
+        display: none;
+      }
+      .container {
+        max-width: 100%;
+      }
+      table {
+        font-size: 11.5px;
+      }
+      td, th {
+        padding: 8px 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <div class="no-print-bar">
+      <span>Print-ready layout formatted for A4 / Letter. Click the button or press <kbd>Cmd + P</kbd> / <kbd>Ctrl + P</kbd>.</span>
+      <button class="print-btn" onclick="window.print()">Print Document</button>
+    </div>
+
+    <header class="doc-header">
+      <div class="title-block">
+        <h1>ORLA — Feature Film</h1>
+        <p class="subtitle">Character Bios & Flip Cards Editorial Review (British English / Pitch Deck Polish)</p>
+      </div>
+      <div class="meta-block">
+        <div><strong>Prepared for:</strong> Nancy Garvin</div>
+        <div><strong>Date:</strong> 13 October 2026</div>
+        <div><strong>Project:</strong> Well Produced Films, LLC</div>
+      </div>
+    </header>
+
+    <div class="context-note">
+      <p><strong>Editorial Purpose:</strong> Reviewing the extended back-of-card copy for the 6 character cards on the pitch website. The goal is authentic UK cadence, removing tautologies and screenplay jargon, and ensuring poignant emotional resonance for British and international co-producers.</p>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th class="col-char">Character</th>
+          <th class="col-current">Current Staging Copy</th>
+          <th class="col-proposed">Proposed British English Revisions</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <!-- Orla -->
+        <tr>
+          <td>
+            <div class="char-name">Orla</div>
+            <div class="char-role">Protagonist (14)</div>
+          </td>
+          <td class="current-text">
+            Orla is a bright but deeply troubled 14-year-old girl who has recently lost her mother. She finds it impossible to settle into her home and school life with this new reality. She believes if she can escape to Ireland, her birthplace, she will find comfort and solace with her relatives. She works day and night to put everything in place for her journey.
+          </td>
+          <td class="proposed-text">
+            Orla is a bright but deeply troubled 14-year-old girl who has recently lost her mother. <span class="change-highlight">Unable to accept life without her, she finds it impossible to settle back into family and school. Convinced that escaping to Ireland, her birthplace, will bring her solace among her mother’s relatives, she schemes day and night to prepare for the secret journey.</span>
+            <div class="editorial-rationale">
+              <strong>Rationale:</strong> Replaces corporate phrase "with this new reality"; removes "comfort and solace" tautology; tightens rhythm from passive "works day and night" to active, evocative "schemes day and night to prepare for the secret journey".
+            </div>
+          </td>
+        </tr>
+
+        <!-- The Stranger -->
+        <tr>
+          <td>
+            <div class="char-name">The Stranger</div>
+            <div class="char-role">The Miracle-Worker</div>
+          </td>
+          <td class="current-text">
+            The Stranger is a refugee in his early 30s. He recently arrived in the county after being the sole survivor of a terrible accident at sea. A stranger in a strange land who came ashore with a special mission, he is searching for his community and his audience. Orla believes that she sees him perform miracles.
+          </td>
+          <td class="proposed-text">
+            The Stranger is a refugee in his <span class="change-highlight">early thirties</span>. He recently arrived in <span class="change-highlight">Lancashire as the sole survivor of a catastrophe at sea</span>. <span class="change-highlight">An enigmatic wanderer who came ashore with an unspoken purpose, he is searching for his audience. Witnessing his quiet, impossible feats, Orla comes to believe he can perform miracles and believes that he can perform one for her.</span>
+            <div class="editorial-rationale">
+              <strong>Rationale:</strong> Uses British literary number style ("early thirties"); grounds "in the county" specifically in "Lancashire"; eliminates triple repetition of "stranger"; fixes perception tense ("believes that she sees" &rarr; "comes to believe he can perform miracles").
+            </div>
+          </td>
+        </tr>
+
+        <!-- Orla's Dad -->
+        <tr>
+          <td>
+            <div class="char-name">Orla’s Dad</div>
+            <div class="char-role">Grieving Father</div>
+          </td>
+          <td class="current-text">
+            Dad is barely holding it together. Recently widowed and grieving deeply, he has the responsibility of caring for his two daughters, Orla, 14, and Lily. By day he is trying to be a good father, but by night the sadness moves in and he drinks to ease his profound sorrow.
+          </td>
+          <td class="proposed-text">
+            Dad is barely holding it together. Recently widowed and grieving deeply, <span class="change-highlight">he struggles with the weight of raising his two young daughters, Orla and Lily</span>. By day <span class="change-highlight">he tries</span> to be a good father, but by night <span class="change-highlight">grief closes in and he drinks to dull the pain</span>.
+            <div class="editorial-rationale">
+              <strong>Rationale:</strong> Removes repetitive "Dad... Dad"; eliminates jarring comma clutter (", Orla, 14, and Lily"); harmonises tense ("tries" vs "drinks"); replaces melodramatic "ease his profound sorrow" with poignant, authentic British idiom "dull the pain".
+            </div>
+          </td>
+        </tr>
+
+        <!-- Lily -->
+        <tr>
+          <td>
+            <div class="char-name">Lily</div>
+            <div class="char-role">Younger Sister</div>
+          </td>
+          <td class="current-text">
+            Lily is the bridge between Orla and Dad. Although they are completely at odds with one another, they both agree that Lily needs their loving care.
+          </td>
+          <td class="proposed-text">
+            Lily is the <span class="change-highlight">gentle bridge</span> between Orla and Dad. <span class="change-highlight">While sister and father remain painfully at odds, their shared devotion to Lily is the one bond that still holds the fractured family together.</span>
+            <div class="editorial-rationale">
+              <strong>Rationale:</strong> Shifts from transactional / custody-agreement phrasing ("they both agree that Lily needs their loving care") to powerful emotional stakes that anchor Lily as the family's fragile emotional glue.
+            </div>
+          </td>
+        </tr>
+
+        <!-- Orla's Mum -->
+        <tr>
+          <td>
+            <div class="char-name">Orla’s Mum</div>
+            <div class="char-role">In Memory</div>
+          </td>
+          <td class="current-text">
+            Mum comes to the story only through Orla’s memory of her. She feeds Orla’s internal conflict and ultimately becomes the inspiration for Orla’s redemption.
+          </td>
+          <td class="proposed-text">
+            <span class="change-highlight">Mum lives on in Orla’s memories. The ache of her absence drives Orla’s frantic quest, yet her remembered love ultimately becomes the key to her daughter’s healing.</span>
+            <div class="editorial-rationale">
+              <strong>Rationale:</strong> Replaces cold script-coverage jargon ("feeds internal conflict", "comes to the story") with resonant narrative prose centering on grief, memory, and healing.
+            </div>
+          </td>
+        </tr>
+
+        <!-- Fantasmo -->
+        <tr>
+          <td>
+            <div class="char-name">Fantasmo the Elephant</div>
+            <div class="char-role">Kinship & Freedom</div>
+          </td>
+          <td class="current-text">
+            Fantasmo becomes a magical presence in Orla’s journey, offering silent kinship through eyes that reflect the girl’s own sorrow. Bound by captivity, she longs to be liberated from the chains that bind her.
+          </td>
+          <td class="proposed-text">
+            Fantasmo becomes a magical presence in Orla’s journey, offering silent kinship through eyes that <span class="change-highlight">mirror</span> the girl’s own sorrow. <span class="change-highlight">Trapped in captivity, she yearns to break free from the heavy chains that hold her.</span>
+            <div class="editorial-rationale">
+              <strong>Rationale:</strong> Resolves root-verb tautology ("Bound... chains that bind her" &rarr; "Trapped... chains that hold her"); syncs card title so back matches front ("Fantasmo the Elephant").
+            </div>
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+
+    <footer class="doc-footer">
+      <div>ORLA Pitch Deck — Character Bios Editorial Review</div>
+      <div>Confidential &mdash; Well Produced Films, LLC</div>
+    </footer>
+
+  </div>
+
+</body>
+</html>
