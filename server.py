@@ -71,12 +71,6 @@ class OrlaRequestHandler(http.server.SimpleHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(json.dumps({"users": users}).encode("utf-8"))
             return
-        elif parsed.path == "/admin":
-            # Redirect /admin to /admin.html
-            self.send_response(302)
-            self.send_header("Location", "/admin.html")
-            self.end_headers()
-            return
         
         # Standard static file serving
         return super().do_GET()
