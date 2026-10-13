@@ -30,7 +30,7 @@
 > "Orla is a bright but deeply troubled 14-year-old girl who has recently lost her mother. Unable to accept life without her, she finds it impossible to settle back into family and school. Convinced that escaping to Ireland, her birthplace, will bring her solace among her mother’s relatives, she schemes day and night to prepare for the secret journey."
 
 ### **The Stranger**
-> "The Stranger is a refugee in his early thirties. He recently arrived in Lancashire as the sole survivor of a catastrophe at sea. An enigmatic wanderer who came ashore with an unspoken purpose, he is searching for his audience. Witnessing his quiet, impossible feats, Orla comes to believe he can perform miracles and believes that he can perform one for her."
+> "The Stranger is a refugee in his early thirties. He recently arrived in the county after being the sole survivor of a catastrophe at sea. An enigmatic wanderer who came ashore with a special mission, he is searching for his audience. Orla believes that she sees him perform miracles and comes to believe that he can perform one for her."
 
 ### **Orla’s Dad**
 > "Dad is barely holding it together. Recently widowed and grieving deeply, he struggles with the weight of raising his two young daughters, Orla and Lily. By day he tries to be a good father, but by night grief closes in and he drinks to dull the pain."
