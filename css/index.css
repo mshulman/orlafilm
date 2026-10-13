@@ -789,17 +789,6 @@ button.btn-primary:hover,
   z-index: 1;
 }
 
-.character-hover-overlay {
-  display: none;
-}
-
-.character-short-bio {
-  font-size: 0.95rem;
-  color: var(--text-primary);
-  margin-bottom: 0;
-  line-height: 1.5;
-}
-
 .character-info {
   padding: 20px;
   text-align: center;
@@ -809,119 +798,6 @@ button.btn-primary:hover,
 .character-name {
   font-size: 1.3rem;
   margin-bottom: 4px;
-}
-
-.character-role {
-  font-size: 0.85rem;
-  color: var(--text-accent);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-/* Modal Lightbox */
-.char-detail-modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 2000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  opacity: 0;
-  pointer-events: none;
-  transition: var(--transition-normal);
-}
-
-.char-detail-modal.open {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.modal-backdrop {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(12, 11, 10, 0.85);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-}
-
-.modal-content {
-  position: relative;
-  background-color: var(--bg-secondary);
-  border: 1px solid var(--glass-border);
-  border-radius: 8px;
-  width: 90%;
-  max-width: 680px;
-  z-index: 2;
-  overflow: hidden;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
-  transform: scale(0.9);
-  transition: var(--transition-normal);
-}
-
-.char-detail-modal.open .modal-content {
-  transform: scale(1);
-}
-
-.modal-close {
-  position: absolute;
-  top: 15px;
-  right: 20px;
-  font-size: 2rem;
-  color: var(--text-secondary);
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  z-index: 3;
-  transition: var(--transition-fast);
-}
-
-.modal-close:hover {
-  color: var(--text-accent);
-}
-
-.modal-body {
-  padding: 40px;
-}
-
-.modal-char-layout {
-  display: grid;
-  grid-template-columns: 200px 1fr;
-  gap: 32px;
-}
-
-.modal-char-img {
-  width: 100%;
-  aspect-ratio: 3/4;
-  object-fit: cover;
-  border-radius: 4px;
-  border: 1px solid var(--glass-border);
-}
-
-.modal-char-title {
-  font-size: 2rem;
-  color: var(--text-accent);
-  margin-bottom: 6px;
-}
-
-.modal-char-role {
-  display: block;
-  font-family: var(--font-heading);
-  text-transform: uppercase;
-  font-size: 0.9rem;
-  letter-spacing: 1.5px;
-  color: var(--text-secondary);
-  margin-bottom: 20px;
-}
-
-.modal-char-desc {
-  font-size: 1.05rem;
-  line-height: 1.8;
 }
 
 /* The World of Orla Section */
