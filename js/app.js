@@ -40,6 +40,31 @@ document.addEventListener('DOMContentLoaded', () => {
     'circustent': 'circus-tent',
     // 13. Turtledove
     'turtledove': 'turtledove',
+    // 14. Historic Lancaster
+    'historiclancaster': 'historic-lancaster',
+    // 15. Canal Towpath
+    'canaltowpath': 'canal-towpath',
+    'towpath': 'canal-towpath',
+    // 16. Circus Caravan
+    'circuscaravan': 'circus-caravan',
+    // 17. Seahorses
+    'seahorses': 'seahorses',
+    'seahorse': 'seahorses',
+    // 18. River Lune
+    'riverlune': 'river-lune',
+    // 19. Lancaster Castle
+    'lancastercastle': 'lancaster-castle',
+    // 20. Framed Photo
+    'framedphoto': 'framed-photo',
+    'framedphotograph': 'framed-photo',
+    // 21. Building Blocks
+    'buildingblocks': 'building-blocks',
+    'buildingblock': 'building-blocks',
+    // 22. Miracle Worker
+    'miracleworker': 'miracle-worker',
+    // 23. Underwater Cities
+    'underwatercities': 'underwater-cities',
+    'underwatercity': 'underwater-cities',
     // Master fallback
     'orlawpf': 'orlawpf'
   };
