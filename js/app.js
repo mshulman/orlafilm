@@ -90,6 +90,49 @@ document.addEventListener('DOMContentLoaded', () => {
     // 33. Rusty Handlebars
     'rustyhandlebars': 'rusty-handlebars',
     'rustyhandlebar': 'rusty-handlebars',
+    // 34. Boots Sandwiches
+    'bootssandwiches': 'boots-sandwiches',
+    'bootssandwich': 'boots-sandwiches',
+    // 35. Chicken Wraps
+    'chickenwraps': 'chicken-wraps',
+    'chickenwrap': 'chicken-wraps',
+    // 36. Orla's Bumbag
+    'orlasbumbag': 'orlas-bumbag',
+    'orlabumbag': 'orlas-bumbag',
+    // 37. Pocket Money
+    'pocketmoney': 'pocket-money',
+    // 38. Soggy Trainers
+    'soggytrainers': 'soggy-trainers',
+    'soggytrainer': 'soggy-trainers',
+    // 39. Wobbly Pedals
+    'wobblypedals': 'wobbly-pedals',
+    'wobblypedal': 'wobbly-pedals',
+    // 40. Nine Lives
+    'ninelives': 'nine-lives',
+    // 41. Wild Rabbit
+    'wildrabbit': 'wild-rabbit',
+    'wildrabbits': 'wild-rabbit',
+    // 42. Runaway Elephant
+    'runawayelephant': 'runaway-elephant',
+    // 43. Big Top
+    'bigtop': 'big-top',
+    // 44. Sandy Footprints
+    'sandyfootprints': 'sandy-footprints',
+    'sandyfootprint': 'sandy-footprints',
+    // 45. Ferry Ticket
+    'ferryticket': 'ferry-ticket',
+    'ferrytickets': 'ferry-ticket',
+    // 46. Painted Narrowboat
+    'paintednarrowboat': 'painted-narrowboat',
+    'paintednarrowboats': 'painted-narrowboat',
+    // 47. School Blazer
+    'schoolblazer': 'school-blazer',
+    // 48. Shipping Container
+    'shippingcontainer': 'shipping-container',
+    'shippingcontainers': 'shipping-container',
+    // 49. Cobbled Streets
+    'cobbledstreets': 'cobbled-streets',
+    'cobbledstreet': 'cobbled-streets',
     // Master fallback
     'orlawpf': 'orlawpf'
   };
