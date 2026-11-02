@@ -388,10 +388,12 @@ button.btn-primary:hover,
   display: block;
   font-family: var(--font-heading);
   color: var(--text-accent);
-  font-size: 1rem;
-  letter-spacing: 3px;
+  font-size: 0.72rem;
+  letter-spacing: 2px;
   text-transform: uppercase;
-  margin-bottom: 6px;
+  max-width: 740px;
+  margin: 0 auto 32px auto;
+  text-align: left;
   animation: fadeInUp 1s ease;
 }
 
@@ -450,6 +452,9 @@ button.btn-primary:hover,
   .hero {
     min-height: 600px;
     padding: 40px 0 20px 0;
+  }
+  .hero-subtitle {
+    margin: 0 auto 22px auto;
   }
   .hero-title {
     font-size: 3.4rem;
