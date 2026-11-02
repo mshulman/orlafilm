@@ -2704,6 +2704,25 @@ button.btn-primary:hover,
   transition: opacity 0.2s ease;
 }
 
+.gate-footer {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid var(--glass-border);
+}
+
+.gate-return-link {
+  font-size: 0.88rem;
+  letter-spacing: 0.8px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: var(--transition-fast);
+  display: inline-block;
+}
+
+.gate-return-link:hover {
+  color: var(--accent-gold);
+}
+
 /* ==========================================================================
    Tone Comps Section
    ========================================================================== */
