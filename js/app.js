@@ -219,10 +219,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // =========================================================================
-  // 3. Characters Section (Flip Card: 750ms Still Hover on Desktop, Tap on Mobile)
+  // 3. Characters Section (Flip Card: 250ms Still Hover on Desktop, Tap on Mobile)
   // =========================================================================
   const characterCards = document.querySelectorAll('.character-card');
-  const HOVER_STILL_DELAY_MS = 750; // Must hold mouse still for 750ms
+  const HOVER_STILL_DELAY_MS = 250; // Must hold mouse still for 250ms
 
   characterCards.forEach(card => {
     let hoverStillTimer = null;
