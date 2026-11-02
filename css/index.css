@@ -2705,22 +2705,28 @@ button.btn-primary:hover,
 }
 
 .gate-footer {
-  margin-top: 18px;
+  margin-top: 20px;
   padding-top: 16px;
   border-top: 1px solid var(--glass-border);
 }
 
-.gate-return-link {
-  font-size: 0.88rem;
-  letter-spacing: 0.8px;
+.gate-brand-text {
+  font-size: 0.9rem;
+  letter-spacing: 1px;
   color: var(--text-secondary);
-  text-decoration: none;
+}
+
+.gate-return-link {
+  color: var(--accent-gold);
+  text-decoration: underline;
+  text-decoration-color: rgba(212, 175, 55, 0.4);
+  text-underline-offset: 3px;
   transition: var(--transition-fast);
-  display: inline-block;
 }
 
 .gate-return-link:hover {
-  color: var(--accent-gold);
+  color: var(--text-primary);
+  text-decoration-color: var(--text-primary);
 }
 
 /* ==========================================================================
