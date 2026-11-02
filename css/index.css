@@ -346,48 +346,14 @@ button.btn-primary:hover,
   height: 100vh;
   min-height: 680px;
   position: relative;
-  overflow: hidden;
-  background-color: var(--bg-primary);
+  background-image: url('../images/hero_final.jpeg');
+  background-size: cover;
+  background-position: center 18%;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
   padding: 60px 0 28px 0;
-}
-
-.hero::before {
-  content: '';
-  position: absolute;
-  top: -4%;
-  left: -4%;
-  width: 108%;
-  height: 108%;
-  background-image: url('../images/hero_final.jpeg');
-  background-size: cover;
-  background-position: center 18%;
-  z-index: 0;
-  will-change: transform;
-  animation: heroSubtleMotion 26s ease-in-out infinite alternate;
-  transform-origin: 50% 30%;
-}
-
-@keyframes heroSubtleMotion {
-  0% {
-    transform: scale(1) translate3d(0, 0, 0);
-  }
-  50% {
-    transform: scale(1.045) translate3d(-0.4%, -0.6%, 0);
-  }
-  100% {
-    transform: scale(1.025) translate3d(0.4%, 0.3%, 0);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero::before {
-    animation: none;
-    transform: none;
-  }
 }
 
 .hero-overlay {
@@ -405,7 +371,6 @@ button.btn-primary:hover,
     rgba(12, 11, 10, 0.98) 100%
   );
   z-index: 1;
-  pointer-events: none;
 }
 
 .hero-content {
