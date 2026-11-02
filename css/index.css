@@ -395,6 +395,19 @@ button.btn-primary:hover,
   animation: fadeInUp 1s ease;
 }
 
+.hero-brand-link {
+  color: var(--accent-gold);
+  text-decoration: underline;
+  text-decoration-color: rgba(212, 175, 55, 0.4);
+  text-underline-offset: 4px;
+  transition: var(--transition-fast);
+}
+
+.hero-brand-link:hover {
+  color: var(--text-primary);
+  text-decoration-color: var(--text-primary);
+}
+
 .hero-title {
   font-size: 4.4rem;
   line-height: 1;
