@@ -65,6 +65,74 @@ document.addEventListener('DOMContentLoaded', () => {
     // 23. Underwater Cities
     'underwatercities': 'underwater-cities',
     'underwatercity': 'underwater-cities',
+    // 24. Heysham Ferry
+    'heyshamferry': 'heysham-ferry',
+    // 25. Sneaky's Collar
+    'sneakyscollar': 'sneakys-collar',
+    'sneakycollar': 'sneakys-collar',
+    // 26. Baby Lily
+    'babylily': 'baby-lily',
+    // 27. Lantern Light
+    'lanternlight': 'lantern-light',
+    // 28. Stolen Sweets
+    'stolensweets': 'stolen-sweets',
+    'stolensweet': 'stolen-sweets',
+    // 29. Tidal Flats
+    'tidalflats': 'tidal-flats',
+    'tidalflat': 'tidal-flats',
+    // 30. Paper Map
+    'papermap': 'paper-map',
+    // 31. Canal Locks
+    'canallocks': 'canal-locks',
+    'canallock': 'canal-locks',
+    // 32. Wooden Jetty
+    'woodenjetty': 'wooden-jetty',
+    // 33. Rusty Handlebars
+    'rustyhandlebars': 'rusty-handlebars',
+    'rustyhandlebar': 'rusty-handlebars',
+    // 34. Boots Sandwiches
+    'bootssandwiches': 'boots-sandwiches',
+    'bootssandwich': 'boots-sandwiches',
+    // 35. Chicken Wraps
+    'chickenwraps': 'chicken-wraps',
+    'chickenwrap': 'chicken-wraps',
+    // 36. Orla's Bumbag
+    'orlasbumbag': 'orlas-bumbag',
+    'orlabumbag': 'orlas-bumbag',
+    // 37. Pocket Money
+    'pocketmoney': 'pocket-money',
+    // 38. Soggy Trainers
+    'soggytrainers': 'soggy-trainers',
+    'soggytrainer': 'soggy-trainers',
+    // 39. Wobbly Pedals
+    'wobblypedals': 'wobbly-pedals',
+    'wobblypedal': 'wobbly-pedals',
+    // 40. Nine Lives
+    'ninelives': 'nine-lives',
+    // 41. Wild Rabbit
+    'wildrabbit': 'wild-rabbit',
+    'wildrabbits': 'wild-rabbit',
+    // 42. Runaway Elephant
+    'runawayelephant': 'runaway-elephant',
+    // 43. Big Top
+    'bigtop': 'big-top',
+    // 44. Sandy Footprints
+    'sandyfootprints': 'sandy-footprints',
+    'sandyfootprint': 'sandy-footprints',
+    // 45. Ferry Ticket
+    'ferryticket': 'ferry-ticket',
+    'ferrytickets': 'ferry-ticket',
+    // 46. Painted Narrowboat
+    'paintednarrowboat': 'painted-narrowboat',
+    'paintednarrowboats': 'painted-narrowboat',
+    // 47. School Blazer
+    'schoolblazer': 'school-blazer',
+    // 48. Shipping Container
+    'shippingcontainer': 'shipping-container',
+    'shippingcontainers': 'shipping-container',
+    // 49. Cobbled Streets
+    'cobbledstreets': 'cobbled-streets',
+    'cobbledstreet': 'cobbled-streets',
     // Master fallback
     'orlawpf': 'orlawpf'
   };
@@ -81,6 +149,8 @@ document.addEventListener('DOMContentLoaded', () => {
   if (gateOverlay && gateForm && gatePassword) {
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.has('login') || urlParams.has('lock') || urlParams.has('logout') || urlParams.has('relock')) {
+      localStorage.removeItem('orla_gate_auth');
+      localStorage.removeItem('orla_user_phrase');
       sessionStorage.removeItem('orla_gate_auth');
       sessionStorage.removeItem('orla_user_phrase');
       // Clean query param from URL bar without reloading
@@ -92,17 +162,31 @@ document.addEventListener('DOMContentLoaded', () => {
       window.history.replaceState({}, '', cleanUrl);
     }
 
-    const isAuth = sessionStorage.getItem('orla_gate_auth') === 'true';
+    // Check localStorage (with fallback to sessionStorage for backwards compatibility)
+    const isAuth = localStorage.getItem('orla_gate_auth') === 'true' || sessionStorage.getItem('orla_gate_auth') === 'true';
     if (!isAuth) {
       document.body.style.overflow = 'hidden';
       setTimeout(() => gatePassword.focus(), 100);
     } else {
       gateOverlay.classList.add('unlocked');
       document.body.style.overflow = '';
-      const savedUserPhrase = sessionStorage.getItem('orla_user_phrase');
+      const savedUserPhrase = localStorage.getItem('orla_user_phrase') || sessionStorage.getItem('orla_user_phrase');
       if (savedUserPhrase && typeof gtag === 'function') {
-        gtag('set', 'user_properties', { user_id: savedUserPhrase });
-        gtag('config', 'G-0G6Q78W4M6', { user_id: savedUserPhrase });
+        gtag('set', 'user_properties', { 
+          user_id: savedUserPhrase,
+          invite_token: savedUserPhrase
+        });
+        gtag('config', 'G-0G6Q78W4M6', { 
+          user_id: savedUserPhrase,
+          invite_token: savedUserPhrase
+        });
+        gtag('event', 'page_view', {
+          user_id: savedUserPhrase,
+          invite_token: savedUserPhrase,
+          page_title: document.title,
+          page_location: window.location.href,
+          page_path: window.location.pathname
+        });
       }
     }
 
@@ -113,8 +197,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const canonicalToken = INVITE_TOKENS[normalized];
 
       if (canonicalToken) {
-        sessionStorage.setItem('orla_gate_auth', 'true');
-        sessionStorage.setItem('orla_user_phrase', canonicalToken);
+        localStorage.setItem('orla_gate_auth', 'true');
+        localStorage.setItem('orla_user_phrase', canonicalToken);
         if (typeof gtag === 'function') {
           gtag('set', 'user_properties', { 
             user_id: canonicalToken,
@@ -129,6 +213,13 @@ document.addEventListener('DOMContentLoaded', () => {
             invite_token: canonicalToken,
             token: canonicalToken,
             user_id: canonicalToken
+          });
+          gtag('event', 'page_view', {
+            user_id: canonicalToken,
+            invite_token: canonicalToken,
+            page_title: document.title,
+            page_location: window.location.href,
+            page_path: window.location.pathname
           });
         }
         gateOverlay.classList.add('unlocked');
