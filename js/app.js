@@ -527,6 +527,22 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
+    // Gently pulsing circle effect on right nav button ">" after 100ms; removed on mouseover
+    if (worldNextBtn) {
+      setTimeout(() => {
+        worldNextBtn.classList.add('pulse-circle');
+      }, 100);
+
+      const removePulse = () => {
+        worldNextBtn.classList.remove('pulse-circle');
+        worldNextBtn.removeEventListener('mouseenter', removePulse);
+        worldNextBtn.removeEventListener('click', removePulse);
+      };
+
+      worldNextBtn.addEventListener('mouseenter', removePulse);
+      worldNextBtn.addEventListener('click', removePulse);
+    }
+
     // Explicitly initialize World carousel to slide 0
     showWorldSlide(0);
 
