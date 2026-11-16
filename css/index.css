@@ -1795,11 +1795,34 @@ button.btn-primary:hover,
 }
 
 /* Bios & Filmmakers Section */
+.team-group {
+  margin-top: 48px;
+}
+
+.team-group-heading {
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  letter-spacing: 2px;
+  color: var(--text-accent);
+  text-transform: uppercase;
+  text-align: center;
+  margin: 0 0 24px 0;
+}
+
+.filmmakers-featured {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
 .filmmakers-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 28px;
   margin-top: 48px;
+}
+
+.team-group .filmmakers-grid {
+  margin-top: 0;
 }
 
 .filmmakers-row-top {
